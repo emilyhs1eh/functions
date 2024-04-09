@@ -29,7 +29,7 @@ const secondLine = svg.append('line') // New line for seconds
   .attr('y1', 0)
   .attr('x2', 900) // Lengthen the line
   .attr('y2', 0)
-  .attr('stroke', '#bf0000') // Set stroke color to red
+  .attr('stroke', '#5460f9') 
   .attr('stroke-width', 2)
   .attr('transform', 'rotate(-90)'); // Start from 12 o'clock position
 
@@ -37,13 +37,13 @@ const minuteIcon = svg.append('circle')
   .attr('cx', 0)
   .attr('cy', -75)
   .attr('r', 5)
-  .attr('fill', 'black'); // Set fill color from CSS
+  .attr('fill', 'black'); 
 
 const hoursIcon = svg.append('circle')
   .attr('cx', 0)
   .attr('cy', -40)
   .attr('r', 7)
-  .attr('fill', 'black'); // Set fill color to red
+  .attr('fill', 'black'); 
 
 function loop() {
   const now = Date.now();
@@ -65,6 +65,7 @@ function loop() {
 
 loop();
 
+let timerInterval; // Global variable to store the interval
 
 
 
@@ -73,61 +74,55 @@ loop();
 document.getElementById('btn').addEventListener('click', function() {
   var minutes = document.getElementById('minutesInput').value;
   if (!isNaN(minutes) && minutes > 0) {
-      startTimer(minutes);
+    startTimer(minutes);
+    this.style.display = 'none'; // Hide the "Take a Break" button when timer starts
+    document.getElementById('resetBtn').style.display = 'inline-block'; // Show the reset button
   } else {
-      alert('Please enter a valid number of minutes.');
+    alert('Please enter a valid number of minutes.');
   }
 });
 
+// Function to start the timer
 function startTimer(duration) {
   var timer = duration * 60;
   var display = document.getElementById('countdown');
   var minutes, seconds;
 
-  var interval = setInterval(function() {
-      minutes = parseInt(timer / 60, 10);
-      seconds = parseInt(timer % 60, 10);
+  timerInterval = setInterval(function() {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
 
-      minutes = minutes < 10 ? '0' + minutes : minutes;
-      seconds = seconds < 10 ? '0' + seconds : seconds;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
 
-      display.textContent = minutes + ':' + seconds;
+    display.textContent = minutes + ':' + seconds;
 
-      if (--timer < 0) {
-          clearInterval(interval);
-          display.textContent = "Time's up!";
-      }
+    if (--timer < 0) {
+      clearInterval(timerInterval);
+      display.textContent = "Time's up!";
+      document.getElementById('btn').style.display = 'inline-block'; // Show the "Take a Break" button when timer ends
+      document.getElementById('resetBtn').style.display = 'none'; // Hide the reset button
+    }
   }, 1000);
+}
+
+// Function to reset the timer
+document.getElementById('resetBtn').addEventListener('click', function() {
+  clearInterval(timerInterval); // Stop the timer interval
+  resetTimer();
+  document.getElementById('btn').style.display = 'inline-block'; // Show the "Take a Break" button when reset
+  this.style.display = 'none'; // Hide the reset button after resetting
+});
+
+function resetTimer() {
+  var display = document.getElementById('countdown');
+  display.textContent = '00:00'; // Reset the timer to 00:00
 }
 
 
 
 
-//circle animation
 
-document.addEventListener('DOMContentLoaded', function() {
-  const circleAnimation = document.getElementById('circle-animation');
-
-  function createCircle(color, x, y) {
-      const circle = document.createElement('div');
-      circle.classList.add('circle');
-      circle.style.width = '100px';
-      circle.style.height = '100px';
-      circle.style.backgroundColor = color;
-      circle.style.left = x + '%';
-      circle.style.top = y + '%';
-      circleAnimation.appendChild(circle);
-
-      setTimeout(() => {
-          circle.remove();
-      }, 20000); // Remove circle after 20 seconds
-  }
-
-  // Create three circles with different colors and overlapping positions
-  createCircle('rgba(255, 0, 0, 0.5)', 50, 50); // Red
-  createCircle('rgba(0, 255, 0, 0.5)', 40, 40); // Green
-  createCircle('rgba(0, 0, 255, 0.5)', 60, 60); // Blue
-});
 
 
 

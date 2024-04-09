@@ -10,6 +10,7 @@ body {
   scroll-snap-type: y mandatory;
 }
 
+
 /* Timer section styles */
 #timer-section {
   width: 20%;
@@ -19,10 +20,42 @@ body {
   left: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: #f0f0f0;
+  background-color: whitesmoke;
   padding: 20px;
   box-sizing: border-box;
 }
+
+/* Button styles */
+#btn {
+  border: 2px solid #ccc;
+  border-radius: 64px;
+  background-color: transparent;
+  color: #333;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btn:hover {
+  background-color: #ccc;
+}
+
+#resetBtn {
+  display: none;
+  border: 2px solid #ccc;
+  border-radius: 64px;
+  background-color: transparent;
+  color: #333;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+#resetBtn:hover {
+  background-color: #ccc;
+}
+
 
 #countdown{
   margin-bottom: 20px;
@@ -32,11 +65,12 @@ body {
   margin-top: 20px;
 }
 
-
 h2{
   margin-bottom: 50px;
-
 }
+
+
+
 
 /* Main sections wrapper */
 #main-sections {
@@ -138,37 +172,4 @@ html, body, .scroll-section {
 
 
 
-
-/* Circle Animation */
-body, html {
-  margin: 0;
-  height: 100%;
-}
-
-#circle-animation {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-}
-
-.circle {
-  position: absolute;
-  border-radius: 50%;
-  animation: moveCircle 20s infinite linear;
-}
-
-@keyframes moveCircle {
-  from {
-      transform: translate(-50%, -50%) scale(0);
-      opacity: 1;
-  }
-  to {
-      transform: translate(-50%, -50%) scale(5);
-      opacity: 0;
-  }
-}
 

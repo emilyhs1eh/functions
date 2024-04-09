@@ -9,11 +9,13 @@
 <body>
     <div class="container">
         <div id="timer-section">
-            <h2>Timer</h2>
-            <div id="countdown">00:00</div>
-            <input type="number" id="minutesInput" placeholder="Enter minutes">
-            <button id="btn">Start Timer</button>
+          <h2>Timer</h2>
+          <div id="countdown">00:00</div>
+          <input type="number" id="minutesInput" placeholder="Enter minutes">
+          <button id="btn" onclick="showResetBtn()">Take a moment</button>
+          <button id="resetBtn" onclick="resetTimer()">Reset</button>
         </div>
+      </div>
         <div id="main-sections">
 
             <div id="clock-section" class="scroll-section">
