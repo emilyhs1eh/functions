@@ -52,6 +52,15 @@ function onGoogleApiLoad() {
     gapi.load('client', initGooglePhotosApi);
 }
 
+// Load the Google API client library
+const clientId = '674705702335-icihv0ftu4245q6sk2tav3vi9opkmqai.apps.googleusercontent.com'; // Your OAuth 2.0 client ID
+
+
+function onGoogleApiLoad() {
+    gapi.load('client', initGooglePhotosApi);
+}
+
+
 function initGooglePhotosApi() {
     gapi.client.init({
         apiKey: null,
@@ -67,10 +76,11 @@ function initGooglePhotosApi() {
     });
 }
 
+
 function fetchPhotos(albumId) {
     gapi.client.photoslibrary.mediaItems.search({
         albumId: albumId,
-        pageSize: 10, // Adjust the number of photos you want to retrieve
+        pageSize: 20, // Adjust the number of photos you want to retrieve
         fields: 'mediaItems(baseUrl)'
     }).then(function(response) {
         const photoGallery = document.getElementById('photoGallery');
@@ -87,6 +97,8 @@ function fetchPhotos(albumId) {
 
 // Load the Google API client library and initialize Google Photos API
 gapi.load('client', onGoogleApiLoad);
+
+
 
 </script>
 </body>
