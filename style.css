@@ -275,3 +275,21 @@ html, body {
   height: 100%;
   object-fit: cover;
 }
+
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.photo-item {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.photo-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
