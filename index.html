@@ -98,6 +98,14 @@ function fetchPhotos(albumId) {
 // Load the Google API client library and initialize Google Photos API
 gapi.load('client', onGoogleApiLoad);
 
+function initGoogleSignIn() {
+    gapi.load('auth2', function() {
+        gapi.auth2.init({
+            client_id: '674705702335-icihv0ftu4245q6sk2tav3vi9opkmqai.apps.googleusercontent.com'
+        });
+        // Initialize sign-in button or widget here
+    });
+}
 
 
 </script>
