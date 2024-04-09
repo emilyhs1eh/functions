@@ -1,25 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <title>Digital Detox</title>
-    
 </head>
-
 <body>
-    <h1>hello</h1>
-    <div class="button-container">
-        <button class="button">Timer Tracker</button>
-        <button class="button">Inspiration Quotes</button>
-        <button class="button">Photo Gallery</button>
-        <button class="button">Music</button>
-    </div>
-    <script src="./app.js" type="module"></script>
-</body>
+    <div class="container">
+        <div id="timer-section">
+            <h2>Timer</h2>
+            <div id="countdown">00:00</div>
+            <input type="number" id="minutesInput" placeholder="Enter minutes">
+            <button id="btn">Start Timer</button>
+        </div>
+        <div id="main-sections">
 
-</html>
+            <div id="clock-section" class="scroll-section">
+                <h2>D3 Clock</h2>
+                <div id="clock"></div>
+            </div>
+
+            <div id="music-section" class="scroll-section">
+                <h2>Music Section</h2>
+                <p>Placeholder content for the music section.</p>
+            </div>
+
+            <div id="photo-gallery-section" class="scroll-section">
+                <h2>Photo Gallery Section</h2>
+                <div class="photo-gallery">
+                    <img src="image1.jpg" alt="Image 1">
+                    <img src="image2.jpg" alt="Image 2">
+                    <img src="image3.jpg" alt="Image 3">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="app.js" type="module"></script> 
+    <script src="timer.js"></script>
+
+
+
+
+
+
 

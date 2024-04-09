@@ -1,15 +1,16 @@
+// Display Clock 
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
-const body = d3.select('body');
+const clockSection = d3.select("#clock-section"); // Select the clock section div
 
-const clock = body.append('div').attr('id', 'clock');
+const clock = clockSection.append('div').attr('id', 'clock').classed('color-changing', true); // Add class to clock element
 
 const svg = clock.append('svg')
   .attr('viewBox', "-150 -150 300 300")
-  .attr('width', '200px') // Set width to match CSS
-  .attr('height', '200px') // Set height to match CSS
+  .attr('width', '600px') // Set width to match CSS
+  .attr('height', '600px') // Set height to match CSS
   .style('display', 'block') // Remove fixed positioning
-  .style('background-color', '#000'); // Set background color from CSS
+  .style('background-color', 'transparant'); // Set background color from CSS
 
 const grid = svg.append('g');
 
@@ -36,13 +37,13 @@ const minuteIcon = svg.append('circle')
   .attr('cx', 0)
   .attr('cy', -75)
   .attr('r', 5)
-  .attr('fill', '#fff'); // Set fill color from CSS
+  .attr('fill', 'black'); // Set fill color from CSS
 
 const hoursIcon = svg.append('circle')
   .attr('cx', 0)
   .attr('cy', -40)
   .attr('r', 7)
-  .attr('fill', '#fff'); // Set fill color from CSS
+  .attr('fill', 'black'); // Set fill color to red
 
 function loop() {
   const now = Date.now();
@@ -63,6 +64,72 @@ function loop() {
 }
 
 loop();
+
+
+
+
+
+// Time Tracker Function
+document.getElementById('btn').addEventListener('click', function() {
+  var minutes = document.getElementById('minutesInput').value;
+  if (!isNaN(minutes) && minutes > 0) {
+      startTimer(minutes);
+  } else {
+      alert('Please enter a valid number of minutes.');
+  }
+});
+
+function startTimer(duration) {
+  var timer = duration * 60;
+  var display = document.getElementById('countdown');
+  var minutes, seconds;
+
+  var interval = setInterval(function() {
+      minutes = parseInt(timer / 60, 10);
+      seconds = parseInt(timer % 60, 10);
+
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+
+      display.textContent = minutes + ':' + seconds;
+
+      if (--timer < 0) {
+          clearInterval(interval);
+          display.textContent = "Time's up!";
+      }
+  }, 1000);
+}
+
+
+
+
+//circle animation
+
+document.addEventListener('DOMContentLoaded', function() {
+  const circleAnimation = document.getElementById('circle-animation');
+
+  function createCircle(color, x, y) {
+      const circle = document.createElement('div');
+      circle.classList.add('circle');
+      circle.style.width = '100px';
+      circle.style.height = '100px';
+      circle.style.backgroundColor = color;
+      circle.style.left = x + '%';
+      circle.style.top = y + '%';
+      circleAnimation.appendChild(circle);
+
+      setTimeout(() => {
+          circle.remove();
+      }, 20000); // Remove circle after 20 seconds
+  }
+
+  // Create three circles with different colors and overlapping positions
+  createCircle('rgba(255, 0, 0, 0.5)', 50, 50); // Red
+  createCircle('rgba(0, 255, 0, 0.5)', 40, 40); // Green
+  createCircle('rgba(0, 0, 255, 0.5)', 60, 60); // Blue
+});
+
+
 
 
 

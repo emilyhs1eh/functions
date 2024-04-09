@@ -7,59 +7,168 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'DM Mono';
+  scroll-snap-type: y mandatory;
 }
 
-/* Clock styles */
-#clock {
-  width: 100%;
+/* Timer section styles */
+#timer-section {
+  width: 20%;
   height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #f0f0f0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#countdown{
+  margin-bottom: 20px;
+}
+
+#btn{
+  margin-top: 20px;
+}
+
+
+h2{
+  margin-bottom: 50px;
+
+}
+
+/* Main sections wrapper */
+#main-sections {
+  width: 80%;
+  margin-left: 20%; /* Adjust to account for fixed timer section */
+  height: 100vh;
+  position: fixed;
+  overflow-y: scroll; /* Change to scroll to enable scrolling */
+  overflow-x: hidden;
+  background-color: #fff;
+}
+
+/* Main sections */
+#clock-section,
+#music-section,
+#photo-gallery-section {
+  height: 100vh; /* Set same height as timer section */
+  padding: 20px;
+  box-sizing: border-box;
+
+}
+
+/* Clock section background */
+#clock-section {
+  background: #252422;
+  background: radial-gradient(circle, #ABB1BD 10%, #D4CAC8 70%);
+}
+  
+
+/* Music section background */
+#music-section {
+  background: radial-gradient(circle, #e8b595 10%, #b190ba 70%);
+}
+
+/* Photo gallery section background */
+#photo-gallery-section {
+  background: radial-gradient(circle, #eed991 10%, #727a9a 70%);
+}
+
+
+/* Section headings */
+#clock-section h2,
+#music-section h2,
+#photo-gallery-section h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+/* List styles */
+#clock-section ul,
+#music-section ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+#clock-section li,
+#music-section li {
+  margin: 10px 0;
+}
+
+/* Photo gallery styles */
+.photo-gallery {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000;
 }
 
-#clock svg {
-  width: 300px;
-  height: 300px;
+.photo-gallery img {
+  margin: 5px;
 }
 
-#clock text {
-  font-family: 'DM Mono';
-  font-weight: 500;
-  fill: brown;
-  font-size: 12px;
-  text-transform: uppercase;
+
+
+
+
+/* Scroll */
+html, body, .scroll-section {
+  height: 100%;
 }
 
-#clock line {
-  stroke: #fff;
-  stroke-width: 1;
-}
-
-#clock .hidden {
-  opacity: 0;
-}
-
-/* Buttons */
-.button-container {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
+.scroll-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
-.button {
-  padding: 10px;
-  background-color: #3498db;
+.scroll-section:nth-of-type(even) {
   color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  background: black;
 }
 
-.button:hover {
-  background-color: #FFC80D;
+.scroll-section:nth-of-type(odd) {
+  color: black;
+  background: white;
 }
+
+
+
+
+/* Circle Animation */
+body, html {
+  margin: 0;
+  height: 100%;
+}
+
+#circle-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  animation: moveCircle 20s infinite linear;
+}
+
+@keyframes moveCircle {
+  from {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 1;
+  }
+  to {
+      transform: translate(-50%, -50%) scale(5);
+      opacity: 0;
+  }
+}
+
