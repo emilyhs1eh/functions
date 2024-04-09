@@ -122,7 +122,26 @@ function resetTimer() {
 
 
 
+// Scroll Section
+const sections = document.querySelectorAll('.scroll-section');
 
+  function setActiveSection() {
+    const scrollPosition = window.scrollX || window.pageXOffset;
+    const sectionWidth = sections[0].clientWidth; // Assuming all sections have the same width
+
+    sections.forEach(section => {
+      const sectionLeft = section.offsetLeft;
+      const sectionRight = sectionLeft + sectionWidth;
+
+      if (scrollPosition >= sectionLeft && scrollPosition < sectionRight) {
+        section.classList.add('active');
+      } else {
+        section.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', setActiveSection);
 
 
 

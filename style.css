@@ -93,22 +93,56 @@ h2{
 
 }
 
-/* Clock section background */
-#clock-section {
-  background: #252422;
-  background: radial-gradient(circle, #ABB1BD 10%, #D4CAC8 70%);
-}
-  
 
-/* Music section background */
+
+
+
+ /* Clock section background animation */
+@keyframes moveBackgroundClock {
+  0% {
+      background-position: -100% 0;
+  }
+  100% {
+      background-position: 100% 0;
+  }
+}
+
+/* Music section background animation */
+@keyframes moveBackgroundMusic {
+  0% {
+      background-position: 0 -100%;
+  }
+  100% {
+      background-position: 0 100%;
+  }
+}
+
+/* Photo gallery section background animation */
+@keyframes moveBackgroundPhotoGallery {
+  0% {
+      background-position: 100% 0;
+  }
+  100% {
+      background-position: -100% 0;
+  }
+}
+
+#clock-section {
+  background: radial-gradient(circle, #ABB1BD 10%, #D4CAC8 70%);
+  animation: moveBackgroundClock 3s ease-in-out;
+}
+
 #music-section {
   background: radial-gradient(circle, #e8b595 10%, #b190ba 70%);
+  animation: moveBackgroundMusic 20s linear infinite;
 }
 
-/* Photo gallery section background */
 #photo-gallery-section {
   background: radial-gradient(circle, #eed991 10%, #727a9a 70%);
+  animation: moveBackgroundPhotoGallery 25s linear infinite;
 }
+
+
 
 
 /* Section headings */
@@ -147,17 +181,44 @@ h2{
 
 
 
+
 /* Scroll */
-html, body, .scroll-section {
+html, body {
   height: 100%;
+  margin: 0;
+}
+
+.scroll-container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  overflow-y: hidden;
+  height: 100vh; /* Full viewport height */
 }
 
 .scroll-section {
+  flex: 0 0 80%; /* Each section takes up 80% of the screen width */
+  min-width: 80vw; /* Minimum width for each section */
+  height: 100vh; /* Full viewport height */
   scroll-snap-align: start;
   scroll-snap-stop: always;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px; /* Optional padding for each section */
+  box-sizing: border-box; /* Include padding in width calculation */
+  position: relative; /* Position relative for dot indicator */
+}
+
+.scroll-section.active::after {
+  content: "•"; /* Dot symbol */
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  color: #ff0000; /* Color of the dot */
 }
 
 .scroll-section:nth-of-type(even) {
@@ -173,3 +234,44 @@ html, body, .scroll-section {
 
 
 
+/* Photo Gallery */
+
+.photo-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: slideGallery 10s linear infinite;
+}
+
+@keyframes slideGallery {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-200%);
+  }
+  75% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

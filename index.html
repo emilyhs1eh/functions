@@ -16,35 +16,72 @@
           <button id="resetBtn" onclick="resetTimer()">Reset</button>
         </div>
       </div>
-        <div id="main-sections">
-
-            <div id="clock-section" class="scroll-section">
-                <h2>D3 Clock</h2>
-                <div id="clock"></div>
+      <div id="main-sections">
+        <div class="scroll-container">
+          <div id="clock-section" class="scroll-section">
+            <div id="clock"></div>
+          </div>
+      
+          <div id="music-section" class="scroll-section">
+            <h2>Music Section</h2>
+            <p>Placeholder content for the music section.</p>
+          </div>
+      
+          <div id="photo-gallery-section" class="scroll-section">
+            <h2>Photo Gallery Section</h2>
+            <div class="photo-gallery" id="photoGallery">
+              <!-- Gallery images will be dynamically added here -->
             </div>
-
-            <div id="music-section" class="scroll-section">
-                <h2>Music Section</h2>
-                <p>Placeholder content for the music section.</p>
-            </div>
-
-            <div id="photo-gallery-section" class="scroll-section">
-                <h2>Photo Gallery Section</h2>
-                <div class="photo-gallery">
-                    <img src="image1.jpg" alt="Image 1">
-                    <img src="image2.jpg" alt="Image 2">
-                    <img src="image3.jpg" alt="Image 3">
-                </div>
-
-            </div>
+          </div>
         </div>
-    </div>
+      </div>
     <script src="app.js" type="module"></script> 
-    <script src="timer.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
 
+<script>
 
+    // Load the Google API client library
+    
+    const accessToken = '92459119565-lghp9judgi3h7hlql9v1higmvlnj77jj.apps.googleusercontent.com';
 
+        function onGoogleApiLoad() {
+            gapi.load('client', initGooglePhotosApi);
+        }
 
+        function initGooglePhotosApi() {
+            gapi.client.init({
+                apiKey: null,
+                discoveryDocs: ['https://photoslibrary.googleapis.com/$discovery/rest'],
+                accessToken: accessToken
+            }).then(function() {
+                console.log('Google Photos API initialized successfully.');
+                // Fetch photos from a specific album
+                fetchPhotos('AF1QipNjCScFJ6Arjnf_dPr9vjuVpbZEpC5yxoSX2116');
+            }).catch(function(error) {
+                console.error('Error initializing Google Photos API:', error);
+            });
+        }
 
+        function fetchPhotos(albumId) {
+            gapi.client.photoslibrary.mediaItems.search({
+                albumId: albumId,
+                pageSize: 10, // Adjust the number of photos you want to retrieve
+                fields: 'mediaItems(baseUrl)'
+            }).then(function(response) {
+                const photoGallery = document.getElementById('photoGallery');
+                photoGallery.innerHTML = ''; // Clear existing photos
+                response.result.mediaItems.forEach(function(item) {
+                    const img = document.createElement('img');
+                    img.src = item.baseUrl;
+                    photoGallery.appendChild(img);
+                });
+            }).catch(function(error) {
+                console.error('Error fetching photos from album:', error);
+            });
+        }
 
-
+        // Load the Google API client library and initialize Google Photos API
+        gapi.load('client', onGoogleApiLoad);
+    </script>
+</body>
+</html>
