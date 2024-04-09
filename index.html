@@ -47,8 +47,7 @@
 
 
 // Load the Google API client library
-// Load the Google API client library
-const accessToken = '674705702335-icihv0ftu4245q6sk2tav3vi9opkmqai.apps.googleusercontent.com';
+const clientId = '674705702335-icihv0ftu4245q6sk2tav3vi9opkmqai.apps.googleusercontent.com';
 
 function onGoogleApiLoad() {
     gapi.load('client', initGooglePhotosApi);
@@ -56,9 +55,9 @@ function onGoogleApiLoad() {
 
 function initGooglePhotosApi() {
     gapi.client.init({
-        apiKey: null,
+        apiKey: apiKey,
         discoveryDocs: ['https://photoslibrary.googleapis.com/$discovery/rest'],
-        clientId: accessToken,
+        clientId: clientId,
         scope: 'https://www.googleapis.com/auth/photoslibrary.readonly'
     }).then(function() {
         console.log('Google Photos API initialized successfully.');
@@ -89,6 +88,7 @@ function fetchPhotos(albumId) {
 
 // Load the Google API client library and initialize Google Photos API
 gapi.load('client', onGoogleApiLoad);
+
 
 
 </script>
