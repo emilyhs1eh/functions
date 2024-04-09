@@ -45,7 +45,6 @@
 
 <script>
 
-
 // Load the Google API client library
 const accessToken = '674705702335-icihv0ftu4245q6sk2tav3vi9opkmqai.apps.googleusercontent.com';
 
@@ -64,7 +63,7 @@ function initGooglePhotosApi() {
         // Fetch photos from a specific album
         fetchPhotos('AF1QipNjCScFJ6Arjnf_dPr9vjuVpbZEpC5yxoSX2116');
     }).catch(function(error) {
-        console.error('Error initializing Google Photos API:', error.details || error.message || error);
+        console.error('Error initializing Google Photos API:', error);
     });
 }
 
@@ -82,14 +81,13 @@ function fetchPhotos(albumId) {
             photoGallery.appendChild(img);
         });
     }).catch(function(error) {
-        console.error('Error fetching photos from album:', error.details || error.message || error);
+        console.error('Error fetching photos from album:', error);
     });
 }
 
 // Load the Google API client library and initialize Google Photos API
 gapi.load('client', onGoogleApiLoad);
 
-
 </script>
 </body>
-</html>
+</html>>
