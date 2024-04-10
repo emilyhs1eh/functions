@@ -117,6 +117,11 @@ h2{
   }
 }
 
+
+
+
+
+
 /* Photo gallery section background animation */
 @keyframes moveBackgroundPhotoGallery {
   0% {
@@ -195,12 +200,13 @@ html, body {
   scroll-snap-type: x mandatory;
   overflow-y: hidden;
   height: 100vh; /* Full viewport height */
+
 }
 
 .scroll-section {
   flex: 0 0 80%; /* Each section takes up 80% of the screen width */
   min-width: 80vw; /* Minimum width for each section */
-  height: 100vh; /* Full viewport height */
+  height: 110vh; /* Full viewport height */
   scroll-snap-align: start;
   scroll-snap-stop: always;
   display: flex;
@@ -211,25 +217,6 @@ html, body {
   position: relative; /* Position relative for dot indicator */
 }
 
-.scroll-section.active::after {
-  content: "•"; /* Dot symbol */
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 24px;
-  color: #ff0000; /* Color of the dot */
-}
-
-.scroll-section:nth-of-type(even) {
-  color: white;
-  background: black;
-}
-
-.scroll-section:nth-of-type(odd) {
-  color: black;
-  background: white;
-}
 
 
 
@@ -292,4 +279,26 @@ html, body {
   width: 100%;
   height: auto;
   display: block;
+}
+
+
+
+
+/* Scroll Icon Styles */
+.arrow-icon {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 24px;
+  color: #333; /* Change the color as needed */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.arrow-icon:hover {
+  color: #555; /* Change the hover color as needed */
+}
+
+.arrow-icon.rotate-up {
+  transform: rotate(-180deg);
 }

@@ -1,16 +1,21 @@
-// Display Clock 
+// Display Clock
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 const clockSection = d3.select("#clock-section"); // Select the clock section div
 
-const clock = clockSection.append('div').attr('id', 'clock').classed('color-changing', true); // Add class to clock element
+const clock = clockSection
+  .append('div')
+  .attr('id', 'clock')
+  .classed('color-changing', true)
 
-const svg = clock.append('svg')
+
+const svg = clock
+  .append('svg')
   .attr('viewBox', "-150 -150 300 300")
   .attr('width', '600px') // Set width to match CSS
   .attr('height', '600px') // Set height to match CSS
   .style('display', 'block') // Remove fixed positioning
-  .style('background-color', 'transparant'); // Set background color from CSS
+  .style('background-color', 'transparent'); // Set background color from CSS
 
 const grid = svg.append('g');
 
@@ -29,7 +34,7 @@ const secondLine = svg.append('line') // New line for seconds
   .attr('y1', 0)
   .attr('x2', 900) // Lengthen the line
   .attr('y2', 0)
-  .attr('stroke', '#5460f9') 
+  .attr('stroke', '#5460f9')
   .attr('stroke-width', 2)
   .attr('transform', 'rotate(-90)'); // Start from 12 o'clock position
 
@@ -37,13 +42,13 @@ const minuteIcon = svg.append('circle')
   .attr('cx', 0)
   .attr('cy', -75)
   .attr('r', 5)
-  .attr('fill', 'black'); 
+  .attr('fill', 'black');
 
 const hoursIcon = svg.append('circle')
   .attr('cx', 0)
   .attr('cy', -40)
   .attr('r', 7)
-  .attr('fill', 'black'); 
+  .attr('fill', 'black');
 
 function loop() {
   const now = Date.now();
@@ -66,6 +71,17 @@ function loop() {
 loop();
 
 let timerInterval; // Global variable to store the interval
+
+function displayTime() {
+  const now = new Date();
+  const formattedTime = now.toLocaleTimeString();
+  clock.text(formattedTime);
+}
+
+function resetClock() {
+  clock.text('');
+}
+
 
 
 
@@ -124,26 +140,30 @@ function resetTimer() {
 
 // Scroll Section
 const sections = document.querySelectorAll('.scroll-section');
+const arrowIcon = document.querySelector('.arrow-icon');
 
-  function setActiveSection() {
-    const scrollPosition = window.scrollX || window.pageXOffset;
-    const sectionWidth = sections[0].clientWidth; // Assuming all sections have the same width
+function setActiveSection() {
+  const scrollPosition = window.scrollY || window.pageYOffset;
+  const windowHeight = window.innerHeight;
 
-    sections.forEach(section => {
-      const sectionLeft = section.offsetLeft;
-      const sectionRight = sectionLeft + sectionWidth;
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionBottom = sectionTop + section.offsetHeight;
 
-      if (scrollPosition >= sectionLeft && scrollPosition < sectionRight) {
-        section.classList.add('active');
-      } else {
-        section.classList.remove('active');
-      }
-    });
-  }
+    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom + windowHeight) {
+      section.classList.add('active');
+    } else {
+      section.classList.remove('active');
+    }
+  });
 
-  window.addEventListener('scroll', setActiveSection);
+  // Move the arrow icon based on the scroll position
+  const maxScroll = document.body.clientHeight - windowHeight;
+  const arrowPosition = (scrollPosition / maxScroll) * 100; // Calculate percentage
+  arrowIcon.style.transform = `translateY(${arrowPosition}%)`;
+}
 
-
+window.addEventListener('scroll', setActiveSection);
 
 
 
