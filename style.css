@@ -530,6 +530,14 @@ html, body {
   position: relative; /* Position relative for dot indicator */
 }
 
+.photo {
+  width: 300px; /* Adjust as needed */
+  height: auto; /* Adjust as needed */
+  margin: 10px;
+}
+
+
+
 
 
 

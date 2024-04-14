@@ -4,37 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
+    <script defer src="arena.js"></script> <!-- Include your JavaScript file -->
     <title>Digital Detox</title>
 </head>
 <body>
     <div class="container">
         <div id="timer-section">
-          <div class="left-section">
-          <div id="countdown">00:00</div></div>
-          <div class="right-section">
-          <input type="number" id="minutesInput" placeholder="Enter minutes">
-          <button id="btn" onclick="showResetBtn()">Take a moment</button>
-          <button id="resetBtn" onclick="resetTimer()">Reset</button>
-        </div></div>
-        
-        
-        <div id="main-sections" class="scroll-container">
-          <div id="clock-section" class="scroll-section">
-            <div id="clock"></div>
-          </div>
-          
-          <div id="music-section" class="scroll-section">
-            <h2>Music Section</h2>
-            <p>Placeholder content for the music section.</p>
-          </div>
-          
-          <div id="photo-gallery-section" class="scroll-section">
-            <h2>Photo Gallery Section</h2>
-            <div class="photo-gallery" id="photoGallery">
-           
-              
+            <div class="left-section">
+                <div id="countdown">00:00</div>
             </div>
-          </div>
+            <div class="right-section">
+                <input type="number" id="minutesInput" placeholder="Enter minutes">
+                <button id="btn" onclick="showResetBtn()">Take a moment</button>
+                <button id="resetBtn" onclick="resetTimer()">Reset</button>
+            </div>
+        </div>
+
+        <div id="main-sections" class="scroll-container">
+            <div id="clock-section" class="scroll-section">
+                <div id="clock"></div>
+            </div>
+          
+            <div id="music-section" class="scroll-section">
+                <h2>Music Section</h2>
+                <p>Placeholder content for the music section.</p>
+            </div>
+          
+            <div id="photo-gallery-section" class="scroll-section">
+                <h2>Photo Gallery Section</h2>
+                <div id="photo-gallery"></div>
+              
+                
+               
+                    <!-- Placeholder content for photos will be inserted here -->
+                </div>
+            </div>
         </div>
     </div>
     <script src="app.js" type="module"></script> 

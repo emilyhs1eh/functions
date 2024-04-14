@@ -182,4 +182,37 @@ sections.forEach(section => {
 
 
 
+// Photo Display
+document.addEventListener('DOMContentLoaded', function() {
+  // Fetch the JSON data
+  fetch('https://www.are.na/emily-hsieh/photography-portfolio-jtppgjlw4o4')
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.json();
+      })
+      .then(data => {
+          // Check if contents property exists
+          if (!data || !data.contents) {
+              throw new Error('Data structure is invalid');
+          }
+          
+          // Extract photo URLs
+          const photoURLs = data.contents.map(item => {
+              if (item.class === 'Image') {
+                  return item.image.original.url;
+              }
+          }).filter(url => url); // Remove any undefined values
 
+          // Display photos
+          const photoGallery = document.getElementById('photo-gallery');
+          photoURLs.forEach(url => {
+              const img = document.createElement('img');
+              img.src = url;
+              img.classList.add('photo');
+              photoGallery.appendChild(img);
+          });
+      })
+      .catch(error => console.error('Error fetching data:', error));
+});
