@@ -1,3 +1,4 @@
+
 // Display Clock
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
@@ -122,6 +123,8 @@ function startTimer(duration) {
   }, 1000);
 }
 
+
+
 // Function to reset the timer
 document.getElementById('resetBtn').addEventListener('click', function() {
   clearInterval(timerInterval); // Stop the timer interval
@@ -138,32 +141,44 @@ function resetTimer() {
 
 
 
-// Scroll Section
+//scroll section
 const sections = document.querySelectorAll('.scroll-section');
-const arrowIcon = document.querySelector('.arrow-icon');
 
-function setActiveSection() {
-  const scrollPosition = window.scrollY || window.pageYOffset;
-  const windowHeight = window.innerHeight;
+function smoothScroll(targetSection) {
+  const startingY = window.scrollY;
+  const targetY = targetSection.offsetTop;
+  const distance = targetY - startingY;
+  let startTime = null;
 
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionBottom = sectionTop + section.offsetHeight;
-
-    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom + windowHeight) {
-      section.classList.add('active');
+  function animate(currentTime) {
+    if (startTime === null) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const ease = easeInOutQuad(timeElapsed, duration, startingY, distance);
+    window.scrollTo(0, ease);
+    if (timeElapsed < duration) {
+      requestAnimationFrame(animate);
     } else {
-      section.classList.remove('active');
+      window.scrollTo(0, targetY); // Ensure we reach the exact target position
     }
-  });
+  }
 
-  // Move the arrow icon based on the scroll position
-  const maxScroll = document.body.clientHeight - windowHeight;
-  const arrowPosition = (scrollPosition / maxScroll) * 100; // Calculate percentage
-  arrowIcon.style.transform = `translateY(${arrowPosition}%)`;
+  const duration = 500; // Adjust duration for desired animation speed (milliseconds)
+  requestAnimationFrame(animate);
 }
 
-window.addEventListener('scroll', setActiveSection);
+function easeInOutQuad(t, b, c, d) {
+  t /= d / 2;
+  if (t < 1) return c/2 * t * t + b;
+  t--;
+  return -c/2 * (t*(t-2) - 1) + b;
+}
+
+sections.forEach(section => {
+  section.addEventListener('click', () => {
+    smoothScroll(section);
+  });
+});
+
 
 
 

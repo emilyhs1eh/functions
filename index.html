@@ -2,145 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
-    <title>Digital Detox</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Detox Homepage</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
 </head>
+
+
 <body>
-    <div class="container">
-        <div id="timer-section">
-          <h2>Timer</h2>
-          <div id="countdown">00:00</div>
-          <input type="number" id="minutesInput" placeholder="Enter minutes">
-          <button id="btn" onclick="showResetBtn()">Take a moment</button>
-          <button id="resetBtn" onclick="resetTimer()">Reset</button>
-        </div>
-      </div>
-      <div id="main-sections">
-        <div class="scroll-container">
-            <i class="arrow-icon fas fa-chevron-down"></i>
-          <div id="clock-section" class="scroll-section">
-            <div id="clock"></div>
-          </div>
-      
-          <div id="music-section" class="scroll-section">
-            <h2>Music Section</h2>
-            <p>Placeholder content for the music section.</p>
-          </div>
-      
-          <div id="photo-gallery-section" class="scroll-section">
-            <h2>Photo Gallery Section</h2>
-            <div class="photo-gallery" id="photoGallery">
-                
+    <div class="home-container">
+        <div class="scroll2-container">
+            <div id="title-section" class="scroll2-section">
+                <div class="typewriter">
+                    <h1>65% of Americans believe in the power of periodic digital detoxes for mental well-being.</h1>
+                </div>
             </div>
-          </div>
+
+            <div id="text-section" class="scroll2-section">
+                <div class="typewriter"></div>
+                <h1>Ready to join the movement and experience the benefits for yourself?</h1>
+            </div>
+
+            <div id="detox-section" class="scroll2-section">
+                <div class="shapes-container relative">
+                    <div class="shape"></div>
+                    <div class="shape"></div>
+                    <a href="detox.html">
+                        <button class="explore-button absolute" style="z-index: 2;">Detox 💀</button>
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
 
-     
-      
-    <script src="app.js" type="module"></script> 
-    <script src="https://apis.google.com/js/api.js"></script>
-</body>
+</body>>    
 </html>
-
-
-
-
-
-
-
-<!-- <script>
-
-const apiKey = 'AIzaSyCivzZhgsDlQLys0LQbjkkTcVwDLkB2YS8'; // Your API key for Google Photos API
-const albumId = 'AF1QipNlQ7XuovyEEIcSUuCkc6bHEIoFBZtu1K2wtB668ayOkqiKsRvsLLBvPtBZWEcEGA'; // ID of the publicly accessible album
-
-function fetchPublicPhotos() {
-    const url = `https://photoslibrary.googleapis.com/v1/albums/${albumId}/mediaItems?key=${apiKey}`;
-    
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            // Process the fetched data (e.g., display photos)
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Error fetching public photos:', error);
-        });
-}
-
-// Call the function to fetch public photos
-fetchPublicPhotos();
-</script> -->
-
-
-
-// Call the function to fetch public photos
-fetchPublicPhotos();
-
-
-// // Load the Google API client library
-// const accessToken = '674705702335-icihv0ftu4245q6sk2tav3vi9opkmqai.apps.googleusercontent.com';
-// const scope = 'https://www.googleapis.com/auth/photoslibrary.readonly';
-
-// function onGoogleApiLoad() {
-//     gapi.load('client', initGooglePhotosApi);
-// }
-
-// // Load the Google API client library
-// const clientId = '674705702335-icihv0ftu4245q6sk2tav3vi9opkmqai.apps.googleusercontent.com'; // Your OAuth 2.0 client ID
-
-
-// function onGoogleApiLoad() {
-//     gapi.load('client', initGooglePhotosApi);
-// }
-
-
-// function initGooglePhotosApi() {
-//     gapi.client.init({
-//         apiKey: null,
-//         discoveryDocs: ['https://photoslibrary.googleapis.com/$discovery/rest'],
-//         clientId: accessToken,
-//         scope: 'https://www.googleapis.com/auth/photoslibrary.readonly'
-//     }).then(function() {
-//         console.log('Google Photos API initialized successfully.');
-//         // Fetch photos from a specific album
-//         fetchPhotos('AF1QipNjCScFJ6Arjnf_dPr9vjuVpbZEpC5yxoSX2116');
-//     }).catch(function(error) {
-//         console.error('Error initializing Google Photos API:', error);
-//     });
-// }
-
-
-// function fetchPhotos(albumId) {
-//     gapi.client.photoslibrary.mediaItems.search({
-//         albumId: albumId,
-//         pageSize: 20, // Adjust the number of photos you want to retrieve
-//         fields: 'mediaItems(baseUrl)'
-//     }).then(function(response) {
-//         const photoGallery = document.getElementById('photoGallery');
-//         photoGallery.innerHTML = ''; // Clear existing photos
-//         response.result.mediaItems.forEach(function(item) {
-//             const img = document.createElement('img');
-//             img.src = item.baseUrl;
-//             photoGallery.appendChild(img);
-//         });
-//     }).catch(function(error) {
-//         console.error('Error fetching photos from album:', error);
-//     });
-// }
-
-// // Load the Google API client library and initialize Google Photos API
-// gapi.load('client', onGoogleApiLoad);
-
-// function initGoogleSignIn() {
-//     gapi.load('auth2', function() {
-//         gapi.auth2.init({
-//             client_id: '674705702335-icihv0ftu4245q6sk2tav3vi9opkmqai.apps.googleusercontent.com'
-//         });
-//         // Initialize sign-in button or widget here
-//     });
-// }
 
 
 

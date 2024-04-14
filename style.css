@@ -2,6 +2,248 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css');
 
+
+/* Home Page styles */
+body, html {
+  font-family: 'DM Mono', monospace;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: black;
+  color: white;
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.home-container {
+  position: relative;
+}
+
+.scroll2-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scroll-right-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+
+.shapes-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  border-radius: 60px;
+  /* filter: blur(40px);  */
+  z-index: 0; /* Ensuring it's behind the button */
+}
+
+.shape {
+  width: 300px; /* Increased size for squares */
+  height: 300px; /* Increased size for squares */
+  border-radius: 100px;
+  background-color: #786189;
+  animation: moveShape 5s ease-in-out infinite alternate;
+  margin: 0 2px; /* Spacing between squares */
+  transition: filter 0.3s ease; /* Added transition for brightness effect */
+  filter: brightness(1.9); 
+  filter: blur(30px);
+}
+
+.shape:nth-child(2) {
+  background-color: #4E7E91;
+}
+
+.shapes-container.relative {
+  position: relative;
+}
+
+.explore-button.absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;  /* Increase z-index if needed */
+  filter: brightness(1.9); 
+}
+
+
+
+@keyframes moveShape {
+  0% {
+      transform: rotate(0deg);
+  }
+
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+
+.explore-button {
+  font-size: 30px;
+  color:whitesmoke;
+  background-color: transparent;
+  padding: 15px 30px;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;  /* Indicate interactivity */
+  position: relative;  /* For layering the shine effect */
+  overflow: hidden;  /* Conceal overflowing content */
+}
+
+.explore-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);  /* Move the gradient off-screen */
+  transition: transform 0.5s ease-in-out;  /* Smooth animation for shine */
+}
+
+.explore-button:hover .explore-button::after {
+  transform: translateX(0);  /* Reveal the shine on hover */
+}
+
+
+/* Add this CSS to create the transition effect */
+.transition-to-right .home-container {
+  animation: transitionToRight 0.5s ease-out forwards;
+}
+
+@keyframes transitionToRight {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(100%);
+  }
+}
+
+
+h1 {
+  color: black;
+  font-size: 20px;
+  height: 1.2;
+  font-weight: 300;
+  margin-left: 10px;
+  border-right: .15em solid transparent; /* Creates blinking cursor effect */
+}
+
+.typewriter h1 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid black; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: black; }
+}
+
+
+
+
+
+p{
+  color: orange;
+  margin-top: 100px;
+  font-size: 24px;
+  margin-right: 150px;
+}
+
+
+.explore-button:hover .shape {
+  transform: scale(1.0); /* Scale on hover */
+}
+
+/* Additional styles for next page transition (optional) */
+.explore-button:active {
+  opacity: 0.7; /* Button opacity on click */
+}
+
+body {
+  overflow: hidden; /* Prevent page scrolling during animation (optional) */
+}
+
+
+
+
+.scroll2-section {
+  flex: 0 0 100%; /* Each section takes up 80% of the screen width */
+  min-width: 100vw; /* Minimum width for each section */
+  height: 110vh; /* Full viewport height */
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px; /* Optional padding for each section */
+  box-sizing: border-box; /* Include padding in width calculation */
+  position: relative; /* Position relative for dot indicator */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* General styles */
 body {
   margin: 0;
@@ -12,18 +254,60 @@ body {
 
 
 /* Timer section styles */
+
+
 #timer-section {
-  width: 20%;
-  height: 100vh;
   position: fixed;
-  top: 0;
-  left: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background-color: whitesmoke;
-  padding: 20px;
+  top: 20px; /* Adjust top spacing */
+  left: 20px; /* Add left spacing */
+  right: 20px; /* Add right spacing */
+  width: calc(100% - 50px); /* Calculate width to consider left and right spacing */
+  z-index: 999; /* Ensure it appears above other content */
+  background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+  padding: 10px;
   box-sizing: border-box;
+  display: flex; /* Use flexbox */
+  justify-content: space-between; /* Spread items evenly */
+  align-items: center; /* Center vertically */
+  border-radius: 100px; /* Rounded corners */
 }
+
+#timer-section h2 {
+  margin: 0; /* Remove default margin */
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+#minutesInput,
+#btn,
+#resetBtn {
+  margin: 0 10px; /* Add spacing between elements */
+}
+
+/* Optional: Add box-shadow for a subtle effect */
+#timer-section {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjust shadow as desired */
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Button styles */
 #btn {
@@ -34,24 +318,21 @@ body {
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  background-color: #ffcccc; /* Lighten red color */
-  border: 1px solid #cc0000; /* Darken red color */
-  box-shadow: 0px 2px 0 #990000, 2px 4px 6px #660000; /* Adjusted shadow colors */
-  font-weight: 900;
+  background-color: transparent;
+  border: 1.5px solid black; /* Darken red color */
+  box-shadow: 2px 2px 2px grey; /* Adjusted shadow colors */
   letter-spacing: 1px;
+  margin-right: 20px;
 }
 
 #btn:hover {
   background-color: #ccc;
   border-color: rgba(0, 0, 0, 0.05); /* Adjusted border color */
   box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2); /* Adjusted shadow color */
-  color: #ff9999; /* Lighten red color on hover */
+  color: #333;
   text-decoration: none;
-  text-shadow: -1px -1px 0 #330000; /* Darken red color for text shadow */
+  
 }
-
-
-
 
 
 #resetBtn {
@@ -63,7 +344,6 @@ body {
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 20px;
 }
 
 #resetBtn:hover {
@@ -72,30 +352,28 @@ body {
 
 
 #countdown{
-  margin-bottom: 20px;
-  color: black;
-  font-size: 40px;
+  color: red;
+  font-size: 36px;
+  margin-left: 20px;
 }
 
-#btn{
-  margin-top: 20px;
-}
+ 
 
 h2{
-  margin-bottom: 50px;
+  color: #333;
 }
+
 
 #minutesInput{
   padding:10px 20px;
-  margin-bottom: 10px;
   border-radius: 5px;
 }
 
 
 /* Main sections wrapper */
 #main-sections {
-  width: 80%;
-  margin-left: 20%; /* Adjust to account for fixed timer section */
+  width: 100%;
+  /* Adjust to account for fixed timer section */
   height: 100vh;
   position: fixed;
   overflow-y: scroll; /* Change to scroll to enable scrolling */
@@ -112,9 +390,6 @@ h2{
   box-sizing: border-box;
 
 }
-
-
-
 
 
  /* Clock section background animation */
@@ -142,18 +417,10 @@ h2{
 
 
 
-/* Photo gallery section background animation */
-@keyframes moveBackgroundPhotoGallery {
-  0% {
-      background-position: 100% 0;
-  }
-  100% {
-      background-position: -100% 0;
-  }
-}
+/* section background animation */
 
 #clock-section {
-  background: radial-gradient(circle, #ABB1BD 10%, #D4CAC8 70%);
+  background: radial-gradient(circle,  #94bbe9 10%, #ABB1BD 70%);
   animation: moveBackgroundClock 3s ease-in-out;
 }
 
@@ -207,6 +474,13 @@ h2{
 
 
 
+#main-sections {
+  flex: 1; /* Make main sections fill remaining space (80%) */
+  overflow-y: auto; /* Enable scroll if content overflows */
+}
+
+
+
 /* Scroll */
 html, body {
   height: 100%;
@@ -218,13 +492,32 @@ html, body {
   flex-direction: row;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
-  overflow-y: hidden;
+  overflow: hidden;
   height: 100vh; /* Full viewport height */
-
 }
 
+
+
+.scroll2-container {
+  background: radial-gradient(circle,  #f3a46c 10%, #f19e18 70%);
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  overflow: hidden;
+  height: 100vh; /* Full viewport height */
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+ 
+}
+
+
+
+
+
 .scroll-section {
-  flex: 0 0 80%; /* Each section takes up 80% of the screen width */
+  flex: 0 0 100%; 
   min-width: 80vw; /* Minimum width for each section */
   height: 110vh; /* Full viewport height */
   scroll-snap-align: start;
@@ -241,84 +534,3 @@ html, body {
 
 
 
-/* Photo Gallery */
-
-.photo-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  animation: slideGallery 10s linear infinite;
-}
-
-@keyframes slideGallery {
-  0% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(-200%);
-  }
-  75% {
-    transform: translateX(-300%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.image {
-  width: 150px;
-  height: 150px;
-  margin: 10px;
-  overflow: hidden;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-}
-
-.photo-item {
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.photo-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-
-
-
-/* Scroll Icon Styles */
-.arrow-icon {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  font-size: 24px;
-  color: #333; /* Change the color as needed */
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.arrow-icon:hover {
-  color: #555; /* Change the hover color as needed */
-}
-
-.arrow-icon.rotate-up {
-  transform: rotate(-180deg);
-}
