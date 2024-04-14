@@ -25,19 +25,32 @@
                 <div id="clock"></div>
             </div>
           
+            
             <div id="music-section" class="scroll-section">
-                <h2>Music Section</h2>
-                <p>Placeholder content for the music section.</p>
-            </div>
-          
-            <div id="photo-gallery-section" class="scroll-section">
-                <h2>Photo Gallery Section</h2>
-                <div id="photo-gallery"></div>
-              
-                
-               
-                    <!-- Placeholder content for photos will be inserted here -->
+                <audio id="meditation-audio" controls loop>
+                  <source src="meditation_music.mp3" type="audio/mpeg">
+             
+  
+                </audio>
+                <div id="playlist">
+                  <h3>Playlist</h3>
+                  <ul>
+                    <li><a href="#" data-src="audio1.mp3">Song 1</a></li>
+                    <li><a href="#" data-src="audio2.mp3">Song 2</a></li>
+                    <li><a href="#" data-src="audio3.mp3">Song 3</a></li>
+                    <!-- Add more songs as needed -->
+                  </ul>
                 </div>
+                <div id="music-controls">
+                  <input type="range" id="volume-control" min="0" max="100" value="50">
+                  <button id="play-pause-btn">Play</button>
+                
+                </div>
+              </div>
+          
+            <div id="photo-gallery-section" class="scroll-section"></div>
+            <div id="photo-gallery" class="gallery-image-container">
+               
             </div>
         </div>
     </div>

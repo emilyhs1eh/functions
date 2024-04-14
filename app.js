@@ -184,35 +184,109 @@ sections.forEach(section => {
 
 // Photo Display
 document.addEventListener('DOMContentLoaded', function() {
-  // Fetch the JSON data
-  fetch('https://www.are.na/emily-hsieh/photography-portfolio-jtppgjlw4o4')
-      .then(response => {
+  // Function to fetch image URLs from JSON file
+  const fetchImageUrls = async () => {
+      try {
+          // Fetch the JSON file containing image URLs
+          const response = await fetch('imageUrls.json');
           if (!response.ok) {
-              throw new Error('Network response was not ok');
+              throw new Error('Failed to fetch image URLs');
           }
-          return response.json();
-      })
-      .then(data => {
-          // Check if contents property exists
-          if (!data || !data.contents) {
-              throw new Error('Data structure is invalid');
-          }
-          
-          // Extract photo URLs
-          const photoURLs = data.contents.map(item => {
-              if (item.class === 'Image') {
-                  return item.image.original.url;
-              }
-          }).filter(url => url); // Remove any undefined values
+          const data = await response.json();
+          return data.imageUrls;
+      } catch (error) {
+          console.error('Error fetching image URLs:', error);
+          return [];
+      }
+  };
 
-          // Display photos
-          const photoGallery = document.getElementById('photo-gallery');
-          photoURLs.forEach(url => {
-              const img = document.createElement('img');
-              img.src = url;
-              img.classList.add('photo');
-              photoGallery.appendChild(img);
-          });
-      })
-      .catch(error => console.error('Error fetching data:', error));
-});
+
+
+// Function to display images in the photo gallery with a slideshow effect
+const displayImagesWithSlideshow = async () => {
+  try {
+      // Fetch image URLs
+      const imageUrls = await fetchImageUrls();
+
+      // Select the photo gallery div
+      const photoGallery = document.getElementById('photo-gallery-section');
+
+      // Clear any existing content
+      photoGallery.innerHTML = '';
+
+      // Create and append img elements for each image URL
+      imageUrls.forEach((url, index) => {
+          const img = document.createElement('img');
+          img.src = url;
+          img.classList.add('gallery-image');
+
+          // Set initial opacity to 0 for all images except the first one
+          img.style.opacity = index === 0 ? 1 : 0;
+
+          photoGallery.appendChild(img);
+      });
+
+      // Simple slideshow effect
+      let currentIndex = 0;
+      const images = photoGallery.querySelectorAll('.gallery-image');
+
+      const showImage = (index) => {
+          // Fade out current image
+          images[currentIndex].style.opacity = 0;
+
+          // Fade in new image
+          images[index].style.opacity = 1;
+
+          currentIndex = index;
+      };
+
+      setInterval(() => {
+          const nextIndex = (currentIndex + 1) % images.length;
+          showImage(nextIndex);
+      }, 2000); // Change image every 3 seconds
+  } catch (error) {
+      console.error('Error displaying images:', error);
+  }
+};
+
+// Call the displayImagesWithSlideshow function when the DOM content is loaded
+displayImagesWithSlideshow();
+
+
+
+//music display
+
+const audio = document.getElementById('meditation-audio');
+  const playPauseBtn = document.getElementById('play-pause-btn');
+  const volumeControl = document.getElementById('volume-control');
+
+  playPauseBtn.addEventListener('click', function() {
+    if (audio.paused) {
+      audio.play();
+      playPauseBtn.textContent = 'Pause';
+    } else {
+      audio.pause();
+      playPauseBtn.textContent = 'Play';
+    }
+  });
+
+  volumeControl.addEventListener('input', function() {
+    audio.volume = volumeControl.value / 100;
+  });
+
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const audioPlayer = document.getElementById("audio-player");
+    const playlistItems = document.querySelectorAll("#playlist li a");
+  
+    playlistItems.forEach(item => {
+      item.addEventListener("click", function(e) {
+        e.preventDefault();
+        const songSrc = this.getAttribute("data-src");
+        audioPlayer.src = songSrc;
+        audioPlayer.play();
+      });
+    });
+  });
+})
