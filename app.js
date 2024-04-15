@@ -353,10 +353,8 @@ const valueGenerator = (angleValue) => {
 const data = [16, 16, 16, 16, 16, 16];
 
 const pieColors = [
-  "rgb(219, 195, 193)", // #dbc3c1
-  "rgb(220, 132, 102)", // #dc8466
-  "rgb(153, 149, 141)", // #99958d
-  "rgb(81, 80, 81)"     // #515051
+  "#786189",
+  "#4E7E91"
 ];
 
 
@@ -419,6 +417,11 @@ const scrollToPhotoGallerySection = () => {
   spinBtn.disabled = false;
 
 
+
+  // Enable the spin button
+  spinBtn.disabled = false;
+
+
 // Spinner count
 let count = 0;
 // 100 rotations for animation and last rotation for result
@@ -450,3 +453,5 @@ spinBtn.addEventListener("click", () => {
     }
   }, 10);
 });
+
+
