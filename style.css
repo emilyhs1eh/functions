@@ -15,6 +15,7 @@ body, html {
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
+
 .home-container {
   position: relative;
 }
@@ -57,7 +58,7 @@ body, html {
   border-radius: 100px;
   background-color: #786189;
   animation: moveShape 5s ease-in-out infinite alternate;
-  margin: 0 2px; /* Spacing between squares */
+  margin: 0 8px; /* Spacing between squares */
   transition: filter 0.3s ease; /* Added transition for brightness effect */
   filter: brightness(1.9); 
   filter: blur(30px);
@@ -254,8 +255,6 @@ body {
 
 
 /* Timer section styles */
-
-
 #timer-section {
   position: fixed;
   top: 20px; /* Adjust top spacing */
@@ -434,12 +433,16 @@ h2{
   animation: moveBackgroundPhotoGallery 25s linear infinite;
 }
 
-
+#spin-section { 
+  background: #DAD8D1;
+  animation: moveBackgroundPhotoGallery 25s linear infinite;
+}
 
 
 /* Section headings */
 #clock-section h2,
 #music-section h2,
+#spin-section h2,
 #photo-gallery-section h2 {
   text-align: center;
   margin-top: 0;
@@ -458,16 +461,6 @@ h2{
   margin: 10px 0;
 }
 
-/* Photo gallery styles */
-.photo-gallery {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.photo-gallery img {
-  margin: 5px;
-}
 
 
 
@@ -499,7 +492,7 @@ html, body {
 
 
 .scroll2-container {
-  background: radial-gradient(circle,  #f3a46c 10%, #f19e18 70%);
+  background: radial-gradient(circle,  #ffaa00 10%, #cdbea7 70%);
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
@@ -603,13 +596,18 @@ audio {
 
 
 
+
+
+
+
+
 /* photo gallery */
 #photo-gallery-section {
-  overflow-y: hidden; /* Remove horizontal scrolling */
+  overflow-x: hidden; /* Remove horizontal scrolling */
   position: relative; /* Add position relative for absolute positioning of arrows */
-  padding: 20px;
+  padding: 50px;
   display: grid;
-  gap: 20px;
+  gap: 0px;
   min-height: 100vh; /* Set minimum height to 100% of viewport height */
   grid-template-columns: repeat(auto-fill, minmax(calc((100% - 40px) / 2), 1fr)); /* Adjusted for 2 images per row */
   justify-items: center; /* Center align items horizontally */
@@ -626,7 +624,7 @@ audio {
   border: 0.5px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 40%; /* Each image occupies the full width of its container */
+  width: 60%; /* Each image occupies the full width of its container */
   position:relative;
   overflow: hidden;
   transition: transform 0.1s ease; /* Smooth transition on hover */
@@ -646,5 +644,94 @@ audio {
 
 
 
+/* Spin wheel */
+#final-value {
+  font-family: "dm mono";
+  color: #202020;
+  align-items: center;
+  font-size: medium;
+  display: none; /* Use "none" to hide the element */
+}
 
+p{
+  font-family: "dm mono";
+  color: #202020;
+
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 34.37em;
+  max-height: 90vh;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  padding: 3em;
+  border-radius: 1em;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#wheel {
+  font-family: "dm mono";
+  color: #333 ;
+  max-height: inherit;
+  width: inherit;
+  top: 0;
+  padding: 0;
+
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#spin-btn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  height: 26%;
+  width: 26%;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 0;
+  background: whitesmoke;
+  opacity: 70%;
+  color: black;
+  text-transform: uppercase;
+  font-size: 1.8em;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+
+img {
+  position: absolute;
+  width: 4em;
+  top: 45%;
+  right: -8%;
+}
+#final-value {
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 1.5em;
+  color: #202020;
+  font-weight: 500;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    font-size: 12px;
+  }
+  img {
+    right: -5%;
+  }
+}
 

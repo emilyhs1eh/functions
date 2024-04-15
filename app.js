@@ -254,8 +254,10 @@ displayImagesWithSlideshow();
 
 
 
-//music display
 
+
+
+//music display
 const audio = document.getElementById('meditation-audio');
   const playPauseBtn = document.getElementById('play-pause-btn');
   const volumeControl = document.getElementById('volume-control');
@@ -290,3 +292,161 @@ const audio = document.getElementById('meditation-audio');
     });
   });
 })
+
+
+
+
+
+
+
+
+
+
+//Spin wheel
+const wheel = document.getElementById("wheel");
+const spinBtn = document.getElementById("spin-btn");
+const finalValue = document.getElementById("final-value");
+
+// Object that stores values of minimum and maximum angle for a value
+const rotationValues = [
+  { minDegree: 0, maxDegree: 30, label: "photo" },
+  { minDegree: 31, maxDegree: 90, label: "music" },
+  { minDegree: 91, maxDegree: 150, label: "clock" },
+  { minDegree: 151, maxDegree: 210, label: "photo" },
+  { minDegree: 211, maxDegree: 270, label: "music" },
+  { minDegree: 271, maxDegree: 330, label: "clock" },
+  { minDegree: 331, maxDegree: 360, label: "photo" },
+];
+
+// Display value based on the randomAngle
+const valueGenerator = (angleValue) => {
+  let label = "";
+  for (let i of rotationValues) {
+    // If the angleValue is between min and max then set the label
+    if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
+      label = i.label;
+      // Add link to the label based on its value
+      switch (label) {
+        case "clock":
+          finalValue.innerHTML = `<p><a href="#clock-section">Value: ${label}</a></p>`;
+          break;
+        case "music":
+          finalValue.innerHTML = `<p><a href="#music-section">Value: ${label}</a></p>`;
+          break;
+        case "photo":
+          finalValue.innerHTML = `<p><a href="#photo-gallery-section">Value: ${label}</a></p>`;
+          break;
+        default:
+          finalValue.innerHTML = `<p>Value: ${label}</p>`;
+      }
+      break;
+    }
+  }
+
+
+  // Enable the spin button
+  spinBtn.disabled = false;
+};
+
+
+// Size of each piece
+const data = [16, 16, 16, 16, 16, 16];
+
+const pieColors = [
+  "rgb(219, 195, 193)", // #dbc3c1
+  "rgb(220, 132, 102)", // #dc8466
+  "rgb(153, 149, 141)", // #99958d
+  "rgb(81, 80, 81)"     // #515051
+];
+
+
+// Create chart
+const myChart = new Chart(wheel, {
+  // Plugin for displaying text on pie chart
+  plugins: [ChartDataLabels],
+  // Chart Type Pie
+  type: "pie",
+  data: {
+    // Labels (values which are to be displayed on chart)
+    labels: ["photo", "music", "clock", "photo", "music", "clock"],
+    // Settings for dataset/pie
+    datasets: [
+      {
+        backgroundColor: pieColors,
+        data: data,
+      },
+    ],
+  },
+  options: {
+    // Responsive chart
+    responsive: true,
+    animation: { duration: 0 },
+    plugins: {
+      // Hide tooltip and legend
+      tooltip: false,
+      legend: {
+        display: false,
+      },
+      // Display labels inside pie chart
+      datalabels: {
+        color: "#ffffff",
+        formatter: (_, context) => context.chart.data.labels[context.dataIndex],
+        font: { size: 24  },
+     
+      },
+    },
+  },
+});
+
+
+
+// Define functions to scroll to sections
+const scrollToClockSection = () => {
+  document.getElementById("clock-section").scrollIntoView({ behavior: "smooth" });
+};
+
+const scrollToMusicSection = () => {
+  document.getElementById("music-section").scrollIntoView({ behavior: "smooth" });
+};
+
+const scrollToPhotoGallerySection = () => {
+  document.getElementById("photo-gallery-section").scrollIntoView({ behavior: "smooth" });
+};
+
+
+
+  // Enable the spin button
+  spinBtn.disabled = false;
+
+
+// Spinner count
+let count = 0;
+// 100 rotations for animation and last rotation for result
+let resultValue = 101;
+
+// Start spinning
+spinBtn.addEventListener("click", () => {
+  spinBtn.disabled = true;
+  // Empty final value
+  finalValue.innerHTML = `<p>Good Luck!</p>`;
+  // Generate random degrees to stop at
+  const randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
+  // Interval for rotation animation
+  const rotationInterval = window.setInterval(() => {
+    // Set rotation for piechart
+    myChart.options.rotation = myChart.options.rotation + resultValue;
+    // Update chart with new value;
+    myChart.update();
+    // If rotation>360 reset it back to 0
+    if (myChart.options.rotation >= 360) {
+      count += 1;
+      resultValue -= 5;
+      myChart.options.rotation = 0;
+    } else if (count > 15 && myChart.options.rotation == randomDegree) {
+      valueGenerator(randomDegree);
+      clearInterval(rotationInterval);
+      count = 0;
+      resultValue = 101;
+    }
+  }, 10);
+});

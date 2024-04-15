@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
-    <script defer src="arena.js"></script> <!-- Include your JavaScript file -->
+
     <title>Digital Detox</title>
 </head>
 <body>
@@ -21,6 +21,27 @@
         </div>
 
         <div id="main-sections" class="scroll-container">
+          
+          <div id="spin-section" class="scroll-section">
+          <div class="wrapper">
+            <div class="container">
+              <canvas id="wheel"></canvas>
+              <button id="spin-btn">Spin</button>
+              <img src="https://chooserandom.com/_next/static/media/arrow.542e87ec.svg" alt="spinner arrow" />
+            </div>
+            <div id="final-value">
+              <p>Click On The Spin Button To Detox</p>
+            </div>
+          </div>
+          <!-- Chart JS -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+          <!-- Chart JS Plugin for displaying text over chart -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
+          <!-- Script -->
+
+        </div>
+
+
             <div id="clock-section" class="scroll-section">
                 <div id="clock"></div>
             </div>
@@ -34,6 +55,7 @@
                 </audio>
                 <div id="playlist">
                   <h3>Playlist</h3>
+                  
                   <ul>
                     <li><a href="#" data-src="audio1.mp3">Song 1</a></li>
                     <li><a href="#" data-src="audio2.mp3">Song 2</a></li>
@@ -55,7 +77,7 @@
         </div>
     </div>
     <script src="app.js" type="module"></script> 
-    <script src="https://apis.google.com/js/api.js"></script>
+
 </body>
 </html>
 
