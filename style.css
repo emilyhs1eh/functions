@@ -146,6 +146,18 @@ body {
 
 
 /* Timer section styles */
+
+#blackScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Black color with some transparency */
+  z-index: 999; /* Ensure it's above other elements */
+  display: none; /* Initially hidden */
+}
+
 #timer-section {
   position: fixed;
   top: 20px; /* Adjust top spacing */
@@ -405,7 +417,6 @@ audio::-webkit-media-controls-volume-slider {
   width: 100%; /* Maintain full width */
   height: auto; /* Allow container to adjust height based on content */
 }
-
 
 /* Style each photo in the gallery */
 .gallery-image {

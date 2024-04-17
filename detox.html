@@ -9,12 +9,26 @@
 </head>
 
 <body>
-
+  
     <div class="container">
         <div id="timer-section">
             <div class="left-section">
                 <div id="countdown">00:00</div>
+                 <!-- Message at the end of detox -->
+                <div id="endMessage" style="display: none; color: red; font-size: 24px; text-align: center; margin-top: 20px;">End of detox
+  </div>
+
+  <!-- Button to redirect to index.html -->
+  <button id="redirectBtn" style="display: none; margin-top: 20px;">Back to Home</button>
+
+  <!-- Black screen element -->
+  <div id="blackScreen"></div>
             </div>
+
+
+
+
+
             <div class="right-section">
                 
                 <input type="number" id="minutesInput" placeholder="Enter minutes">
@@ -93,8 +107,8 @@
 
         <!-- Icons -->
         <div class="bottom-icons">
-            <p><a href="#music-section"><i class="fas fa-music circle-icon"></i></a></p>
             <p><a href="#clock-section"><i class="far fa-clock circle-icon"></i></a></p>
+            <p><a href="#music-section"><i class="fas fa-music circle-icon"></i></a></p>
             <p><a href="#photo-gallery-section"><i class=" fas fa-image  circle-icon"></i></a></p>
         </div>
     </div>

@@ -144,13 +144,12 @@ function resetClock() {
 
 
 
-
 // Time Tracker Function
 document.getElementById('btn').addEventListener('click', function() {
   var minutes = document.getElementById('minutesInput').value;
   if (!isNaN(minutes) && minutes > 0) {
     startTimer(minutes);
-    this.style.display = 'none'; // Hide the "Take a Break" button when timer starts
+    this.style.display = 'none'; // Hide the "Start Timer" button when timer starts
     document.getElementById('resetBtn').style.display = 'inline-block'; // Show the reset button
   } else {
     alert('Please enter a valid number of minutes.');
@@ -175,20 +174,20 @@ function startTimer(duration) {
     if (--timer < 0) {
       clearInterval(timerInterval);
       display.textContent = "Time's up!";
-      document.getElementById('btn').style.display = 'inline-block'; // Show the "Take a Break" button when timer ends
+      document.getElementById('btn').style.display = 'inline-block'; // Show the "Start Timer" button when timer ends
       document.getElementById('resetBtn').style.display = 'none'; // Hide the reset button
+      document.getElementById('blackScreen').style.display = 'block'; // Show the black screen
     }
   }, 1000);
 }
-
-
 
 // Function to reset the timer
 document.getElementById('resetBtn').addEventListener('click', function() {
   clearInterval(timerInterval); // Stop the timer interval
   resetTimer();
-  document.getElementById('btn').style.display = 'inline-block'; // Show the "Take a Break" button when reset
+  document.getElementById('btn').style.display = 'inline-block'; // Show the "Start Timer" button when reset
   this.style.display = 'none'; // Hide the reset button after resetting
+  document.getElementById('blackScreen').style.display = 'none'; // Hide the black screen
 });
 
 function resetTimer() {
@@ -519,3 +518,6 @@ overlayDivs.forEach(overlayDiv => {
     window.location.href = sectionId;
   });
 });})
+
+
+
