@@ -148,14 +148,46 @@ body {
 /* Timer section styles */
 
 #blackScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9); /* Black color with some transparency */
-  z-index: 999; /* Ensure it's above other elements */
-  display: none; /* Initially hidden */
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+}
+
+#endMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 36px;
+  color: white;
+  margin-top: 20%;
+  align-items: center;
+}
+
+#redirectBtn {
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 18px;
+  margin-top: 50px;
+margin-left: 650px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+
+#redirectBtn:hover{
+  background-color: #000000e0;
+  color: white;
+  
 }
 
 #timer-section {
@@ -165,13 +197,13 @@ body {
   right: 20px; /* Add right spacing */
   width: calc(100% - 50px); /* Calculate width to consider left and right spacing */
   z-index: 999; /* Ensure it appears above other content */
-  background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+  background-color:  rgba(255, 255, 255, 0.547); /* Transparent white background */
   padding: 10px;
   box-sizing: border-box;
   display: flex; /* Use flexbox */
   justify-content: space-between; /* Spread items evenly */
   align-items: center; /* Center vertically */
-  border-radius: 100px; /* Rounded corners */
+  border-radius: 80px; /* Rounded corners */
 }
 
 #timer-section h2 {
@@ -277,7 +309,7 @@ h2 {
 }
 
 #clock-section {
-  background: radial-gradient(circle, #94bbe9 10%, #ABB1BD 70%);
+  background: radial-gradient(circle, #8c9fff 10%, #ABB1BD 70%);
 }
 
 #music-section {
@@ -348,27 +380,27 @@ body {
 
 
 /* music section */
-#music-section {
+/* #music-section {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 /* Style for audio player */
-#audio-player {
+/* #audio-player {
   width: 100%;
   margin-bottom: 10px;
 }
 
 /* Style for song titles */
-.song-title {
+/* .song-title {
   font-size: 16px;
   margin-bottom: 5px;
   text-align: center;
-}
+} */ */
 
 /* Style for audio controls */
-audio::-webkit-media-controls-panel {
+/* audio::-webkit-media-controls-panel {
   background-color: rgba(118, 118, 118, 0.657);
   border-radius: 10px;
 }
@@ -392,9 +424,56 @@ audio::-webkit-media-controls-volume-slider {
 }
 #audio-container1 {
   display: block;
+}  */
+
+
+/* Style for each music style container */
+.music-style {
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff58;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust minmax value as needed */
+  gap: 20px; /* Adjust the gap between grid items */
 }
 
+.music-style h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
 
+/* Style for audio containers */
+.audio-container {
+  margin-top: 10px;
+  margin-right: 15px;
+}
+
+.song-title {
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+/* Style for audio controls */
+audio {
+  width: 100%;
+  outline: none;
+  margin-top: 5px;
+}
+
+.beat-line {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: red; /* Change color as needed */
+  z-index: 9999; /* Ensure it's above other elements */
+  animation: none; /* Disable CSS animation */
+}
 
 
 
@@ -406,29 +485,30 @@ audio::-webkit-media-controls-volume-slider {
   flex-direction:row;
   justify-content: center;
   align-items: center;
-
-
 }
 
 .container {
   display: flex; /* Set display to flex */
-  justify-content: center; /* Center content horizontally */
+  justify-content:flex-end; /* Center content horizontally */
   align-items: center; /* Center content vertically */
   width: 100%; /* Maintain full width */
   height: auto; /* Allow container to adjust height based on content */
+
 }
 
 /* Style each photo in the gallery */
 .gallery-image {
   padding: 10px;
-  margin-right: 50%;
+  margin-right: 52%;
   background-color: transparent;
   border: 0.5px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 60%; /* Each image occupies the full width of its container */
-  max-width: 300px; 
+  width: 100%; /* Each image occupies the full width of its container */
+  max-width: 200px; 
+  scale: 2.1;
   overflow: hidden;
+
 }
 
 /* Optional: Add hover effect */

@@ -50,9 +50,6 @@ document.addEventListener("DOMContentLoaded", function() { // On DOM Load initia
 
 
 
-
-
-
 // Display Clock
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
@@ -67,32 +64,31 @@ const clock = clockSection
 const svg = clock
   .append('svg')
   .attr('viewBox', "-150 -150 300 300")
-  .attr('width', '600px') // Set width to match CSS
-  .attr('height', '600px') // Set height to match CSS
+  .attr('width', '480px') // Set width to match CSS
+  .attr('height', '480px') // Set height to match CSS
   .style('display', 'block') // Remove fixed positioning
   .style('background-color', 'transparent'); // Set background color from CSS
 
-const grid = svg.append('g');
+// Draw a circular border
+const circleBorder = svg.append('circle')
+  .attr('cx', 0)
+  .attr('cy', 0)
+  .attr('r', 150)
+  .attr('stroke', 'black')
+  .attr('stroke-width', 2)
+  .attr('fill', 'none');
 
-for (let i = 0; i < 360; i += 6) {
-  grid.append('line')
-    .attr('x1', 0)
-    .attr('y1', 0)
-    .attr('x2', 100 * Math.cos(i * Math.PI / 180))
-    .attr('y2', 100 * Math.sin(i * Math.PI / 180))
-    .attr('stroke', '#fff') // Set stroke color from CSS
-    .attr('stroke-width', i % 30 === 0 ? 2 : 1);
-}
-
-const secondLine = svg.append('line') // New line for seconds
+  const secondLine = svg.append('line') // New line for seconds
   .attr('x1', 0)
   .attr('y1', 0)
-  .attr('x2', 900) // Lengthen the line
+  .attr('x2', 120) // Lengthen the line
   .attr('y2', 0)
-  .attr('stroke', '#5460f9')
-  .attr('stroke-width', 2)
+  .attr('stroke', 'white') 
+  .attr('stroke-width', 1) // Increase the stroke width
   .attr('transform', 'rotate(-90)'); // Start from 12 o'clock position
 
+
+// Set up the hour and minute circles
 const minuteIcon = svg.append('circle')
   .attr('cx', 0)
   .attr('cy', -75)
@@ -104,6 +100,27 @@ const hoursIcon = svg.append('circle')
   .attr('cy', -40)
   .attr('r', 7)
   .attr('fill', 'black');
+
+// Add CSS for the animation
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes shine {
+  0% { fill-opacity: 0; }
+  50% { fill-opacity: 1; }
+  100% { fill-opacity: 0; }
+}
+
+/* Only apply shine animation to the minute circle */
+#minuteIcon {
+  animation: shine 2s infinite;
+  animation-delay: 60s; /* Delay the shine animation for 60 seconds (1 minute) */
+}
+`;
+document.head.appendChild(style);
+
+// Assign an id to the minute circle for targeting it in CSS
+minuteIcon.attr('id', 'minuteIcon');
+
 
 function loop() {
   const now = Date.now();
@@ -137,9 +154,35 @@ function resetClock() {
   clock.text('');
 }
 
+const bigTimeGroup = svg.append('g')
+  .attr('id', 'big-time')
+  .attr('filter', 'url(#blurFilter)') // Apply blur filter
+  .style('opacity', 0.5); // Set opacity for transparency
 
+const bigTimeText = bigTimeGroup.append('text')
+  .attr('x', 0)
+  .attr('y', 20)
+  .attr('font-size', '80px') // Adjust font size for big time display
+  .attr('fill', 'white') // Set text color from CSS
+  .attr('text-anchor', 'middle'); // Center align text
 
+// Define blur filter
+const defs = svg.append('defs');
+const blurFilter = defs.append('filter')
+  .attr('id', 'blurFilter')
+  .append('feGaussianBlur')
+  .attr('stdDeviation', 3); // Adjust blur intensity
 
+function updateBigTime() {
+  const now = new Date();
+  const formattedTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }); // Format time as HH:MM
+  bigTimeText.text(formattedTime);
+}
+
+updateBigTime(); // Initial update
+
+// Call updateBigTime every second
+setInterval(updateBigTime, 1000);
 
 
 
@@ -194,6 +237,11 @@ function resetTimer() {
   var display = document.getElementById('countdown');
   display.textContent = '00:00'; // Reset the timer to 00:00
 }
+
+document.getElementById('redirectBtn').addEventListener('click', function() {
+  // Replace the URL below with the URL of your detox page
+  window.location.href = 'index.html'; // Redirect to the detox page
+});
 
 
 
@@ -520,4 +568,34 @@ overlayDivs.forEach(overlayDiv => {
 });})
 
 
+
+
+//music 
+
+// document.addEventListener("DOMContentLoaded", function() {
+//   const audioElements = document.querySelectorAll("audio");
+//   const beatLine = document.querySelector(".beat-line");
+
+//   // Function to update line position
+//   function updateLine(audio) {
+//       const duration = audio.duration;
+//       const startTime = Date.now();
+
+//       function animateLine() {
+//           const currentTime = Date.now() - startTime;
+//           const progress = (currentTime / (duration * 1000)) * 100; // Convert to percentage
+//           beatLine.style.left = `${progress}%`;
+//           requestAnimationFrame(animateLine);
+//       }
+
+//       animateLine();
+//   }
+
+//   // Listen for the play event on all audio elements
+//   audioElements.forEach(audio => {
+//       audio.addEventListener("play", () => {
+//           updateLine(audio);
+//       });
+//   });
+// });
 
