@@ -3,85 +3,61 @@
 @import url('https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css');
 
 
-/* Home Page styles */
+
+
+/* General Styles */
 body, html {
   font-family: 'DM Mono', monospace;
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: black;
+  background: radial-gradient(circle, #4B79A1 10%, #283E51 70%);
   color: white;
   scroll-behavior: smooth;
-  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-x: hidden; 
 }
 
+p{
+  font-family: "dm mono";
+  color: whitesmoke;
+  font-size: 16px;
 
-.home-container {
-  position: relative;
 }
 
-.scroll2-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.scroll-right-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-}
-
-.flex-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Container 1 */
+.container-1 {
   height: 100vh;
-  margin-left: 100px;
-  margin-right: 100px;
-}
-
-
-.shapes-container {
-  width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  border-radius: 60px;
-  /* filter: blur(40px);  */
-  z-index: 0; /* Ensuring it's behind the button */
+  align-items: center;
 }
 
-.shape {
-  width: 300px; /* Increased size for squares */
-  height: 300px; /* Increased size for squares */
-  border-radius: 100px;
-  background-color: #786189;
-  animation: moveShape 10s ease-in-out infinite alternate;
-  margin: 0 2px; /* Spacing between squares */
-  transition: filter 0.3s ease; /* Added transition for brightness effect */
-  filter: brightness(1.9); 
-  filter: blur(20px);
+.container-1 p {
+  font-size: 36px;
+  padding: 0.5rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  overflow: hidden;
 }
 
-.shape:nth-child(2) {
-  background-color: #4E7E91;
+.container-1 p span.typed-text {
+  font-weight: normal;
+  color: yellow;
+  font-size: 36px;
 }
 
-.shapes-container.relative {
-  position: relative;
+.container-1 p span.cursor {
+  display: inline-block;
+  background-color: #ccc;
+  margin-left: 0.1rem;
+  width: 3px;
+  animation: blink 1s infinite;
 }
 
-.explore-button.absolute {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;  /* Increase z-index if needed */
-  filter: brightness(1.9); 
+.container-1 p span.cursor.typing {
+  animation: none;
 }
-
-
 
 @keyframes moveShape {
   0% {
@@ -93,164 +69,45 @@ body, html {
   }
 }
 
+@keyframes blink {
+  0%  { background-color: #ccc; }
+  49% { background-color: #ccc; }
+  50% { background-color: transparent; }
+  99% { background-color: transparent; }
+  100%  { background-color: #ccc; }
+}
 
-.explore-button {
-  font-size: 30px;
-  color:whitesmoke;
-  background-color: transparent;
-  padding: 15px 30px;
+/* style.css */
+button {
+  background-color: #ffffffe0; 
   border: none;
-  text-decoration: none;
-  cursor: pointer;  /* Indicate interactivity */
-  position: relative;  /* For layering the shine effect */
-  overflow: hidden;  /* Conceal overflowing content */
-}
-
-.explore-button::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: translateX(-100%);  /* Move the gradient off-screen */
-  transition: transform 0.5s ease-in-out;  /* Smooth animation for shine */
-}
-
-.explore-button:hover .explore-button::after {
-  transform: translateX(0);  /* Reveal the shine on hover */
-}
-
-
-/* Add this CSS to create the transition effect */
-.transition-to-right .home-container {
-  animation: transitionToRight 0.5s ease-out forwards;
-}
-
-@keyframes transitionToRight {
-  0% {
-      transform: translateX(0);
-  }
-  100% {
-      transform: translateX(100%);
-  }
-}
-
-
-h1 {
   color: black;
-  font-size: 20px;
-  height: 1.2;
-  font-weight: 300;
-  margin-left: 10px;
-  border-right: .15em solid transparent; /* Creates blinking cursor effect */
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 60px;
+  
 }
 
-.typewriter h1 {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid black; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em; /* Adjust as needed */
-  animation: 
-    typing 3.5s steps(40, end),
-    blink-caret .75s step-end infinite;
-}
+button:hover {
+  background-color: #000000e0;
+  color: white;
 
-/* The typing effect */
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-/* The typewriter cursor effect */
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: black; }
-}
-
-
-
-.explore-button:hover .shape {
-  transform: scale(1.0); /* Scale on hover */
-}
-
-/* Additional styles for next page transition (optional) */
-.explore-button:active {
-  opacity: 0.7; /* Button opacity on click */
-}
-
-body {
-  overflow: hidden; /* Prevent page scrolling during animation (optional) */
-}
-
-
-
-
-.scroll2-section {
-  flex: 0 0 100%; /* Each section takes up 80% of the screen width */
-  min-width: 100vw; /* Minimum width for each section */
-  height: 110vh; /* Full viewport height */
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px; /* Optional padding for each section */
-  box-sizing: border-box; /* Include padding in width calculation */
-  position: relative; /* Position relative for dot indicator */
-}
-
-
-
-
-#detox-section{
-  background-color: black;
 }
 
 
 
 
 
-a {
-    transition: color 0.3s ease; /* Example transition effect: color change over 0.3 seconds */
-    text-decoration: none; /* Remove underline */
-    color: white; /* Set default color */
-    display: flex;
-    flex-direction: row;
-  }
-
-a:hover {
-    color: #007bff; /* Change color on hover */
-  }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Detox Page */
 /* General styles */
 body {
   margin: 0;
@@ -258,6 +115,34 @@ body {
   font-family: 'DM Mono';
   scroll-snap-type: y mandatory;
 }
+
+
+/* Add this to your existing CSS file or style tag */
+.bottom-icons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.circle-icon {
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0.547);
+  color: #fff;
+  border-radius: 50%;
+  padding: 12px;
+  margin-bottom: px;
+  transition: background-color 0.3s ease;
+}
+
+.circle-icon:hover {
+  background-color: #0d0c0c;
+}
+
+
+
 
 
 /* Timer section styles */
@@ -281,11 +166,7 @@ body {
   margin: 0; /* Remove default margin */
 }
 
-.left-section {
-  display: flex;
-  align-items: center;
-}
-
+.left-section,
 .right-section {
   display: flex;
   align-items: center;
@@ -301,18 +182,6 @@ body {
 #timer-section {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjust shadow as desired */
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Button styles */
 #btn {
@@ -336,9 +205,7 @@ body {
   box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2); /* Adjusted shadow color */
   color: #333;
   text-decoration: none;
-  
 }
-
 
 #resetBtn {
   display: none;
@@ -355,25 +222,20 @@ body {
   background-color: #ccc;
 }
 
-
-#countdown{
-  color: red;
+#countdown {
+  color: rgb(165, 6, 6);
   font-size: 36px;
   margin-left: 20px;
 }
 
- 
-
-h2{
+h2 {
   color: #333;
 }
 
-
-#minutesInput{
-  padding:10px 20px;
+#minutesInput {
+  padding: 10px 5px;
   border-radius: 5px;
 }
-
 
 /* Main sections wrapper */
 #main-sections {
@@ -393,40 +255,17 @@ h2{
   height: 100vh; /* Set same height as timer section */
   padding: 20px;
   box-sizing: border-box;
-
 }
-
-
- /* Clock section background animation */
-@keyframes moveBackgroundClock {
-  0% {
-      background-position: -100% 0;
-  }
-  100% {
-      background-position: 100% 0;
-  }
-}
-
-/* Music section background animation */
-@keyframes moveBackgroundMusic {
-  0% {
-      background-position: 0 -100%;
-  }
-  100% {
-      background-position: 0 100%;
-  }
-}
-
-
-
 
 
 
 /* section background animation */
+#spin-section {
+  background: radial-gradient(circle,  #ffffff 10%, #739B95 70%);
+}
 
 #clock-section {
-  background: radial-gradient(circle,  #94bbe9 10%, #ABB1BD 70%);
-  animation: moveBackgroundClock 3s ease-in-out;
+  background: radial-gradient(circle, #94bbe9 10%, #ABB1BD 70%);
 }
 
 #music-section {
@@ -436,11 +275,6 @@ h2{
 
 #photo-gallery-section {
   background: radial-gradient(circle, #eed991 10%, #727a9a 70%);
-  animation: moveBackgroundPhotoGallery 25s linear infinite;
-}
-
-#spin-section { 
-  background: black;
   animation: moveBackgroundPhotoGallery 25s linear infinite;
 }
 
@@ -467,21 +301,9 @@ h2{
   margin: 10px 0;
 }
 
-
-
-
-
-
-
-#main-sections {
-  flex: 1; /* Make main sections fill remaining space (80%) */
-  overflow-y: fixed; /* Enable scroll if content overflows */
-}
-
-
-
 /* Scroll */
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
@@ -495,30 +317,10 @@ html, body {
   height: 100vh; /* Full viewport height */
 }
 
-
-
-.scroll2-container {
-  background: radial-gradient(circle,  #ffaa00 10%, #cdbea7 70%);
-  display: flex;
-  flex-direction: row;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  overflow: hidden;
-  height: 100vh; /* Full viewport height */
-  position: relative;
-  width: 100vw;
-  height: 100vh;
- 
-}
-
-
-
-
-
 .scroll-section {
-  flex: 0 0 100%; 
-  min-width: 80vw; /* Minimum width for each section */
-  height: 110vh; /* Full viewport height */
+  flex: 0 0 100%;
+  min-width: 100vw; /* Minimum width for each section */
+  height: 100vh; /* Full viewport height */
   scroll-snap-align: start;
   scroll-snap-stop: always;
   display: flex;
@@ -533,73 +335,52 @@ html, body {
 
 
 
-
-
-
-
-
-
-
 /* music section */
-
-#music-section{
+#music-section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
 }
 
-#music-controls {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-  padding: auto;
-  background-color: transparent; /* Change this to your desired background color */
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
-  padding: 20px;
-  max-width: 400px; /* Adjust this to your preferred width */
-}
-
-audio {
-  width: 50%;
-  margin-bottom: 20px;
-  color: #4E7E91;
-}
-
-#playlist {
-  margin-top: 20px;
-}
-
-#playlist h3 {
+/* Style for audio player */
+#audio-player {
+  width: 100%;
   margin-bottom: 10px;
 }
 
-#playlist ul {
-  list-style: none;
-  padding: 0;
-}
-
-#playlist ul li {
+/* Style for song titles */
+.song-title {
+  font-size: 16px;
   margin-bottom: 5px;
+  text-align: center;
 }
 
-#playlist ul li a {
-  text-decoration: none;
-  color: #333;
+/* Style for audio controls */
+audio::-webkit-media-controls-panel {
+  background-color: rgba(118, 118, 118, 0.657);
+  border-radius: 10px;
 }
 
-#playlist ul li a:hover {
-  color: #4E7E91;
+audio::-webkit-media-controls-play-button {
+  color: white;
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  color: white;
+}
+
+audio::-webkit-media-controls-volume-slider {
+  width: 70px;
 }
 
 
-
-
-
+.audio-container {
+  display: none;
+}
+#audio-container1 {
+  display: block;
+}
 
 
 
@@ -609,66 +390,76 @@ audio {
 
 /* photo gallery */
 #photo-gallery-section {
-  overflow-x: hidden; /* Remove horizontal scrolling */
-  position: relative; /* Add position relative for absolute positioning of arrows */
-  padding: 50px;
-  display: grid;
-  gap: 0px;
-  min-height: 100vh; /* Set minimum height to 100% of viewport height */
-  grid-template-columns: repeat(auto-fill, minmax(calc((100% - 40px) / 2), 1fr)); /* Adjusted for 2 images per row */
-  justify-items: center; /* Center align items horizontally */
-  align-items: center; /* Center align items vertically */
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.container {
+  display: flex; /* Set display to flex */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  width: 100%; /* Maintain full width */
+  height: auto; /* Allow container to adjust height based on content */
 }
 
 
+/* Style each photo in the gallery */
 .gallery-image {
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
   padding: 10px;
+  margin-right: 50%;
   background-color: transparent;
   border: 0.5px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 60%; /* Each image occupies the full width of its container */
-  position:relative;
+  max-width: 300px; 
   overflow: hidden;
-  transition: transform 0.1s ease; /* Smooth transition on hover */
 }
 
-/* Hover effect for images */
+/* Optional: Add hover effect */
 .gallery-image:hover {
-  transform: scale(1.5); /* Enlarge image on hover */
+  transform: scale(1.05); /* Increase size on hover */
 }
 
 .gallery-image img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
-} 
+  border-radius: 8px; /* Add rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for images */
+.gallery-image:hover img {
+  transform: scale(1.1); /* Enlarge image on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 /* Spin wheel */
-#final-value {
-  font-family: "dm mono";
-  color: #202020;
-  align-items: center;
-  font-size: medium;
-  display: none; /* Use "none" to hide the element */
-}
-
-p{
-  font-family: "dm mono";
-  color: #202020;
-
-}
 
 .wrapper {
   width: 90%;
   max-width: 34.37em;
-  max-height: 90vh;
+  max-height: 100vh;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
@@ -682,52 +473,66 @@ p{
   width: 100%;
   height: 100%;
 }
+
 #wheel {
   font-family: "dm mono";
-  color: #333 ;
+  color: #333;
   max-height: inherit;
   width: inherit;
   top: 0;
   padding: 0;
-
 }
+
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
   }
 }
+
+/* Updated CSS for Spin button */
+
 #spin-btn {
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  height: 26%;
-  width: 26%;
+  top: 160px;
+  left: 170px;
+  height: 26%; /* Adjusted size */
+  width: 26%; /* Adjusted size */
   border-radius: 50%;
   cursor: pointer;
   border: 0;
-  background: whitesmoke;
-  opacity: 70%;
-  color: black;
+  background: linear-gradient(to bottom right, #739B95, #A8D2CB); /* Gradient background for better visibility */
+  color: white; /* Changed text color to white for better contrast */
   text-transform: uppercase;
-  font-size: 1.8em;
-  letter-spacing: 0.1em;
+  font-size: 1.2em; /* Maintained font size */
   font-weight: 600;
+  animation: pulse 1.5s infinite alternate; /* Added pulsating animation */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect */
+#spin-btn:hover {
+  background: linear-gradient(to bottom right, #739B95, #A8D2CB); /* Same gradient as default */
+  box-shadow: 0 0 20px #82C799; /* Added shadow effect on hover */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1); /* Slightly scale up on pulse */
+  }
 }
 
 
-img {
+
+
+img{
   position: absolute;
   width: 4em;
   top: 45%;
   right: -8%;
-}
-#final-value {
-  font-size: 1.5em;
-  text-align: center;
-  margin-top: 1.5em;
-  color: #202020;
-  font-weight: 500;
 }
 
 
@@ -740,4 +545,14 @@ img {
     right: -5%;
   }
 }
+
+#next-button {
+  font-size: 30px;
+  color: whitesmoke;
+  background-color: transparent;
+  padding: 15px 30px;
+  border: none;
+  text-decoration: none;
+}
+
 

@@ -1,3 +1,57 @@
+// Homepage typewriter
+const typedTextSpan = document.querySelector(".typed-text");
+const cursorSpan = document.querySelector(".cursor");
+
+const textArray = ["provides mental space", "focuses on what truly matters", "reclaims control of attention", "enriches wellbeing"];
+const typingDelay = 200;
+const erasingDelay = 100;
+const newTextDelay = 1000; // Delay between current and next text
+let textArrayIndex = 0;
+let charIndex = 0;
+
+function type() {
+  if (charIndex < textArray[textArrayIndex].length) {
+    if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(type, typingDelay);
+  } 
+  else {
+    cursorSpan.classList.remove("typing");
+    setTimeout(erase, newTextDelay);
+  }
+}
+
+function erase() {
+  if (charIndex > 0) {
+    if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+    charIndex--;
+    setTimeout(erase, erasingDelay);
+  } 
+  else {
+    cursorSpan.classList.remove("typing");
+    textArrayIndex++;
+    if(textArrayIndex>=textArray.length) textArrayIndex=0;
+    setTimeout(type, typingDelay + 1100);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() { // On DOM Load initiate the effect
+  if(textArray.length) setTimeout(type, newTextDelay + 250);
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Display Clock
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
@@ -24,8 +78,8 @@ for (let i = 0; i < 360; i += 6) {
   grid.append('line')
     .attr('x1', 0)
     .attr('y1', 0)
-    .attr('x2', 130 * Math.cos(i * Math.PI / 180))
-    .attr('y2', 130 * Math.sin(i * Math.PI / 180))
+    .attr('x2', 100 * Math.cos(i * Math.PI / 180))
+    .attr('y2', 100 * Math.sin(i * Math.PI / 180))
     .attr('stroke', '#fff') // Set stroke color from CSS
     .attr('stroke-width', i % 30 === 0 ? 2 : 1);
 }
@@ -87,6 +141,10 @@ function resetClock() {
 
 
 
+
+
+
+
 // Time Tracker Function
 document.getElementById('btn').addEventListener('click', function() {
   var minutes = document.getElementById('minutesInput').value;
@@ -137,6 +195,18 @@ function resetTimer() {
   var display = document.getElementById('countdown');
   display.textContent = '00:00'; // Reset the timer to 00:00
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -256,43 +326,52 @@ displayImagesWithSlideshow();
 
 
 
+//Music Section 
 
-//music display
-const audio = document.getElementById('meditation-audio');
-  const playPauseBtn = document.getElementById('play-pause-btn');
-  const volumeControl = document.getElementById('volume-control');
+document.addEventListener("DOMContentLoaded", function() {
+  var songLinks = document.querySelectorAll("#song-list a");
+  var audio = document.getElementById("meditation-audio");
+  var playPauseBtn = document.getElementById("play-pause-btn");
 
-  playPauseBtn.addEventListener('click', function() {
-    if (audio.paused) {
-      audio.play();
-      playPauseBtn.textContent = 'Pause';
-    } else {
-      audio.pause();
-      playPauseBtn.textContent = 'Play';
-    }
-  });
+  // Add click event listeners to each song link
+  songLinks.forEach(function(songLink) {
+      songLink.addEventListener("click", function(event) {
+          event.preventDefault(); // Prevent default behavior of link
 
-  volumeControl.addEventListener('input', function() {
-    audio.volume = volumeControl.value / 100;
-  });
+          // Change the source of the audio element to the clicked song
+          audio.src = songLink.getAttribute("data-src");
 
+          // Play the audio
+          audio.play();
 
-
-  document.addEventListener("DOMContentLoaded", function() {
-    const audioPlayer = document.getElementById("audio-player");
-    const playlistItems = document.querySelectorAll("#playlist li a");
-  
-    playlistItems.forEach(item => {
-      item.addEventListener("click", function(e) {
-        e.preventDefault();
-        const songSrc = this.getAttribute("data-src");
-        audioPlayer.src = songSrc;
-        audioPlayer.play();
+          // Update play/pause button text
+          playPauseBtn.textContent = "Pause";
       });
-    });
   });
-})
 
+  // Add click event listener to play/pause button
+  playPauseBtn.addEventListener("click", function() {
+      if (audio.paused) {
+          // If audio is paused, play it
+          audio.play();
+          playPauseBtn.textContent = "Pause";
+      } else {
+          // If audio is playing, pause it
+          audio.pause();
+          playPauseBtn.textContent = "Play";
+      }
+  });
+});
+
+// JavaScript code to add active class to each audio container
+document.addEventListener("DOMContentLoaded", function() {
+  const audioContainers = document.querySelectorAll(".audio-container");
+  audioContainers.forEach((container, index) => {
+    setTimeout(() => {
+      container.classList.add("active");
+    }, index * 1000); // Adjust the delay as needed
+  });
+});
 
 
 
@@ -304,8 +383,8 @@ const audio = document.getElementById('meditation-audio');
 
 //Spin wheel
 const wheel = document.getElementById("wheel");
+const wheelContainer = document.getElementById("wheel-container");
 const spinBtn = document.getElementById("spin-btn");
-const finalValue = document.getElementById("final-value");
 
 // Object that stores values of minimum and maximum angle for a value
 const rotationValues = [
@@ -325,102 +404,58 @@ const valueGenerator = (angleValue) => {
     // If the angleValue is between min and max then set the label
     if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
       label = i.label;
-      // Add link to the label based on its value
-      switch (label) {
-        case "clock":
-          finalValue.innerHTML = `<p><a href="#clock-section">Value: ${label}</a></p>`;
-          break;
-        case "music":
-          finalValue.innerHTML = `<p><a href="#music-section">Value: ${label}</a></p>`;
-          break;
-        case "photo":
-          finalValue.innerHTML = `<p><a href="#photo-gallery-section">Value: ${label}</a></p>`;
-          break;
-        default:
-          finalValue.innerHTML = `<p>Value: ${label}</p>`;
-      }
       break;
     }
   }
-
-
   // Enable the spin button
   spinBtn.disabled = false;
 };
-
 
 // Size of each piece
 const data = [16, 16, 16, 16, 16, 16];
 
 const pieColors = [
-  "#786189",
-  "#4E7E91"
+  "#B0B1CC",
+  "#869FBC",
 ];
-
 
 // Create chart
 const myChart = new Chart(wheel, {
-  // Plugin for displaying text on pie chart
   plugins: [ChartDataLabels],
-  // Chart Type Pie
   type: "pie",
   data: {
-    // Labels (values which are to be displayed on chart)
-    labels: ["photo", "music", "clock", "photo", "music", "clock"],
-    // Settings for dataset/pie
-    datasets: [
-      {
-        backgroundColor: pieColors,
-        data: data,
-      },
+    labels: [
+      'photo',
+      'music',
+      'clock',
+      'photo',
+      'music',
+      'clock'
     ],
+    datasets: [{
+      backgroundColor: pieColors,
+      data: data,
+    }],
   },
   options: {
-    // Responsive chart
     responsive: true,
     animation: { duration: 0 },
     plugins: {
-      // Hide tooltip and legend
       tooltip: false,
-      legend: {
-        display: false,
-      },
-      // Display labels inside pie chart
+      legend: { display: false },
       datalabels: {
         color: "#ffffff",
         formatter: (_, context) => context.chart.data.labels[context.dataIndex],
-        font: { size: 24  },
-     
+        font: { size: 16  },
+        // Enable HTML rendering for labels
+        useHTML: true,
       },
     },
   },
 });
 
-
-
-// Define functions to scroll to sections
-const scrollToClockSection = () => {
-  document.getElementById("clock-section").scrollIntoView({ behavior: "smooth" });
-};
-
-const scrollToMusicSection = () => {
-  document.getElementById("music-section").scrollIntoView({ behavior: "smooth" });
-};
-
-const scrollToPhotoGallerySection = () => {
-  document.getElementById("photo-gallery-section").scrollIntoView({ behavior: "smooth" });
-};
-
-
-
-  // Enable the spin button
-  spinBtn.disabled = false;
-
-
-
-  // Enable the spin button
-  spinBtn.disabled = false;
-
+// Enable the spin button
+spinBtn.disabled = false;
 
 // Spinner count
 let count = 0;
@@ -430,8 +465,6 @@ let resultValue = 101;
 // Start spinning
 spinBtn.addEventListener("click", () => {
   spinBtn.disabled = true;
-  // Empty final value
-  finalValue.innerHTML = `<p>Good Luck!</p>`;
   // Generate random degrees to stop at
   const randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
   // Interval for rotation animation
@@ -455,3 +488,34 @@ spinBtn.addEventListener("click", () => {
 });
 
 
+// Add transparent div elements over each section of the pie chart
+const pieSections = wheel.getElementsByTagName("path");
+const sectionLinks = [
+  "#photo-gallery-section",
+  "#music-section",
+  "#clock-section",
+  "#photo-gallery-section",
+  "#music-section",
+  "#clock-section"
+];
+
+for (let i = 0; i < pieSections.length; i++) {
+  const overlayDiv = document.createElement("div");
+  overlayDiv.classList.add("pie-section-overlay");
+  overlayDiv.style.position = "absolute";
+  overlayDiv.style.width = pieSections[i].getAttribute("d").split(" ")[1] + "px";
+  overlayDiv.style.height = pieSections[i].getAttribute("d").split(" ")[2] + "px";
+  overlayDiv.style.left = pieSections[i].getBoundingClientRect().left - wheelContainer.getBoundingClientRect().left + "px";
+  overlayDiv.style.top = pieSections[i].getBoundingClientRect().top - wheelContainer.getBoundingClientRect().top + "px";
+  overlayDiv.dataset.link = sectionLinks[i];
+  wheelContainer.appendChild(overlayDiv);
+}
+
+// Add click event listeners to the transparent div elements
+const overlayDivs = document.querySelectorAll(".pie-section-overlay");
+overlayDivs.forEach(overlayDiv => {
+  overlayDiv.addEventListener("click", () => {
+    const sectionId = overlayDiv.dataset.link;
+    window.location.href = sectionId;
+  });
+});})
