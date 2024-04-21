@@ -193,7 +193,7 @@ function resetTimer() {
 }
 
 document.getElementById('redirectBtn').addEventListener('click', function() {
-  window.location.href = 'index.html';
+  window.location.href = 'detox.html';
 });
 
 const icons = document.querySelectorAll('.bottom-icons a');

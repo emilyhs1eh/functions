@@ -4,15 +4,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
     trackTitles.forEach(track => {
         track.addEventListener("click", function() {
-            // Change the source of the main audio player
-            mainAudio.src = this.getAttribute("data-src");
-            mainAudio.load();  // Load the new source
-            mainAudio.play();  // Play the new track
+            if (mainAudio.src !== this.getAttribute("data-src")) {
+                mainAudio.src = this.getAttribute("data-src");
+                mainAudio.load();  // Load the new source
+                mainAudio.play();  // Play the new track
+            } else {
+                if (mainAudio.paused) {
+                    mainAudio.play();  // Resume if paused
+                } else {
+                    mainAudio.pause();  // Pause if playing
+                }
+            }
 
-            // Optionally, update the UI to reflect the currently playing track
+            // Update UI to reflect the currently playing or paused track
             trackTitles.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
         });
     });
 });
+
+
 

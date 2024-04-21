@@ -9,12 +9,14 @@
 </head>
 <body>
     <div class="container">
+
+      
         <!-- Timer Section -->
         <div id="timer-section">
             <div class="left-section">
                 <div id="countdown">00:00</div>
                 <div id="blackScreen" style="display: none;">
-                    <div id="endMessage">End of detox</div>
+                    <div id="endMessage">End of Detox</div>
                     <button id="redirectBtn">Back to Detox</button>
                 </div>
             </div>
@@ -41,7 +43,7 @@
                       <div class="wheel-container">
                         <canvas id="wheel" width="500" height="500"></canvas>
                         <button id="spin-btn">
-                          <i class="fa-solid fa-rotate-right" style="color: #000000;"></i>
+                    
                       </button>
                       </div>
                   </div>
@@ -53,18 +55,22 @@
                     <div id="clock"></div>
                 </div>
 
-                <!-- #3 Music Section -->
+               <!-- #3 Music Section -->
                 <div id="music-section" class="scroll-section">
-                    <audio id="main-audio" controls loop>
-                        <source src="/assets/Secret - Secret.mp3" type="audio/mpeg">
-                    </audio>
-                    <div class="track-list">
-                        <p class="song-title" data-src="/assets/Secret - Secret.mp3">Secret - Secret</p>
-                        <p class="song-title" data-src="/assets/Secret - The Swan.mp3">Secret - The Swan</p>
-                        <p class="song-title" data-src="/assets/Ryuichi Sakamoto - Blu.mp3">Ryuichi Sakamoto - Blu</p>
-                        <p class="song-title" data-src="/assets/Ryuichi Sakamoto - Merry Christmas Mr. Lawrence.mp3">Ryuichi Sakamoto - Merry Christmas Mr. Lawrence</p>
-                    </div>
+                  <div class="track-list">
+                      <p class="song-title" data-src="/assets/Secret - Secret.mp3">Secret - Secret</p>
+                      <p class="song-title" data-src="/assets/Secret - The Swan.mp3">Secret - The Swan</p>
+                      <p class="song-title" data-src="/assets/Ryuichi Sakamoto - Blu.mp3">Ryuichi Sakamoto - Blu</p>
+                      <p class="song-title" data-src="/assets/Ryuichi Sakamoto - Merry Christmas Mr. Lawrence.mp3">Ryuichi Sakamoto - Merry Christmas Mr. Lawrence</p>
+                  </div>
+                  <div class="player-section">
+                      <audio id="main-audio" controls loop>
+                          <source src="/assets/Secret - Secret.mp3" type="audio/mpeg">
+                      </audio>
+              
+                  </div>
                 </div>
+
 
                 <!-- #4 Photo Gallery Section -->
                 <div id="photo-gallery-section" class="scroll-section">

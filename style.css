@@ -5,7 +5,7 @@
 
 
 
-/* Index.html age */
+/* Index.html */
 /* General Styles */
 body, html {
   font-family: 'DM Mono', monospace;
@@ -81,11 +81,11 @@ p{
 }
 
 /* style.css */
-button {
-  background-color: #ffffffe0; 
-  border: none;
+#detoxButton {
+  background-color: transparent;
+  border: 1px solid black; /* Specify 'solid' and the border color */
   color: black;
-  padding: 15px 32px;
+  padding: 20px 50px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -93,14 +93,12 @@ button {
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
-  border-radius: 60px;
-  
+  border-radius: 30px; /* Adjusted for a more balanced appearance */
 }
 
-button:hover {
-  background-color: #000000e0;
+#detoxButton:hover {
+  background-color: rgba(0, 0, 0, 0.88); /* Use rgba for better control over opacity */
   color: white;
-
 }
 
 
@@ -170,27 +168,25 @@ body {
   align-items: center;
   font-size: 36px;
   color: white;
-  margin-top: 20%;
-  align-items: center;
+  margin-top: 25%;
 }
 
 
 #redirectBtn {
-  align-items: center;
-  padding: 10px 20px;
+  padding: 10px 40px;
   font-size: 18px;
   margin-top: 50px;
-  margin-left: 650px;
-  background-color: red;
+  background-color: #b7c0b0;
   color: white;
   border: none;
   cursor: pointer;
+  margin-left: 42%;
 }
 
 
 #redirectBtn:hover{
-  background-color: #000000e0;
-  color: white;
+  background-color: #b7c0b0;
+  color: black;
   
 }
 
@@ -235,25 +231,6 @@ body {
   padding: 20px; /* Padding for content */
 }
 
-/* Responsive adjustments for smaller screens, if necessary */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .left-section, .right-section {
-    position: static; /* Reset positioning */
-    width: 100%; /* Full width */
-    margin-left: 0; /* Reset margin */
-    height: auto; /* Height to fit content */
-    flex-grow: 0; /* Disable growing */
-  }
-
-  .right-section {
-    overflow-y: visible; /* Adjust scrolling if needed */
-  }
-}
-
 
 
 
@@ -282,7 +259,7 @@ body {
 
 #btn:hover {
   background-color: #ccc;
-  border-color: rgba(0, 0, 0, 0.05); /* Adjusted border color */
+  border-color: rgb(0, 0, 0); /* Adjusted border color */
   box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2); /* Adjusted shadow color */
   color: white;
   text-decoration: none;
@@ -345,7 +322,7 @@ h2 {
   flex: 1; /* Flex-grow to distribute space equally */
   color: white; /* White text color */
   background-color: transparent; /* Transparent background */
-  border: 2px solid rgb(110, 110, 110); /* White border for aesthetics */
+  border: 2px solid black; 
   border-radius: 20px; /* Rounded corners */
   outline: none; /* Remove focus outline */
   font-size: 16px; /* Uniform font size for all inputs and buttons */
@@ -543,55 +520,74 @@ body {
 
 
 
+
 /* Music Section */
 #music-section {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Changed to row to place elements side by side */
   align-items: center;
   justify-content: center;
-  color: white; /* Bright text for better contrast */
-  padding: 30px; /* Spacing around content */
-  width: 80%; /* Suitable width */
-  max-width: 600px; /* Limit maximum width */
-
+  color: white;
+  padding: 60px;
+  width: 80%;
+  max-width: 100%; /* Increased to better handle two columns */
+  overflow-y: auto; /* Allows for vertical scrolling if needed */
+  gap: 10px; /* Adds space between the two columns */
 }
 
 .track-list {
+  margin-top: 90px;
   width: 100%;
+  max-width: 34.37em;
+  max-height: 100vh;
+  position: relative; /* Updated position */
+  padding: 3em;
+  border-radius: 80px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow for depth */
+  width: 50%; /* Adjust width for side column */
   display: flex;
   flex-direction: column;
   align-items: center;
+}
 
+.player-section {
+  width: 60%; /* Adjust width for side column containing the player */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .song-title {
   cursor: pointer;
-  font-size: 16px; /* Slightly larger font for better readability */
-  color: white; /* White color for text */
-  margin-top: 15px;
-  transition: transform 0.3s ease; /* Smooth transform transition */
-  padding: 8px 12px; /* Padding for better touch area */
+  font-size: 16px;
+  color: white;
+  margin: 10px 0;
+  transition: transform 0.3s ease;
+  padding: 8px 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  width: 100%; /* Makes sure titles use full available width */
 }
 
 .song-title:hover {
-  transform: scale(1.05); /* Slightly scale up on hover */
-  background-color: rgba(255, 255, 255, 0.2); /* Subtle hover background */
-  border-radius: 10px; /* Rounded corners on hover */
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 audio {
-  width: 60%;
+  width: 50%; /* Full width to match the player section */
   margin-top: 20px;
   outline: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Shadow for depth */
-  border-radius: 10px; /* Rounded edges for audio bar */
+  border-radius: 10px;
+
 }
+
 
 .song-title.active {
-  color: #ff0000; /* Change the text color to red */
-  background-color: rgba(255, 255, 255, 0.4); /* Lighter background for better visibility */
-  border-radius: 5px; /* Rounded corners */
-  font-weight: bold; /* Make the font bold */
+  color: black;
+  background-color: rgba(255, 255, 255, 0.4);
+  font-weight: bold;
 }
 
 
@@ -599,56 +595,50 @@ audio {
 
 
 
-
-/* photo gallery */
+/* Photo Section */
 #photo-gallery-section {
   display: flex;
-  flex-direction:row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  overflow: hidden; /* Hide other images from view */
 }
 
 .container {
-  display: flex; /* Set display to flex */
-  justify-content:flex-end; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  width: 100%; /* Maintain full width */
-  height: auto; /* Allow container to adjust height based on content */
-
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative; /* Needed for absolute positioning of images */
 }
 
-/* Style each photo in the gallery */
 .gallery-image {
+  position: absolute; /* Make images stack over each other */
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 1s ease-in-out;
+  opacity: 0; /* Images are initially hidden */
   padding: 10px;
-  margin-right: 52%;
+  margin: 5px;
   background-color: transparent;
   border: 0.5px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Each image occupies the full width of its container */
-  max-width: 200px; 
-  scale: 2.1;
-  overflow: hidden;
-
-}
-
-/* Optional: Add hover effect */
-.gallery-image:hover {
-  transform: scale(1.05); /* Increase size on hover */
+  width: auto;
+  max-width: 400px; /* Smaller maximum width */
 }
 
 .gallery-image img {
   width: 100%;
   height: auto;
-  border-radius: 8px; /* Add rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-  transition: transform 0.3s ease; /* Smooth transition */
+  border-radius: 8px;
 }
 
-/* Hover effect for images */
-.gallery-image:hover img {
-  transform: scale(1.1); /* Enlarge image on hover */
-}
+
+
 
 
 
@@ -683,7 +673,7 @@ body {
   max-height: 100vh;
   position: relative; /* Updated position */
   padding: 3em;
-  border-radius: 1em;
+  border-radius: 80px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow for depth */
 }
 
@@ -703,7 +693,7 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: linear-gradient(to bottom right, #739B95, #A8D2CB);
+  background: linear-gradient(to bottom right, #5C7DBA, #9DB1D5);
   color: white;
   text-align: center;
   cursor: pointer;
@@ -721,11 +711,104 @@ body {
 
 /* Hover effect */
 #spin-btn:hover {
-  box-shadow: 0 0 20px #82C799;
+  box-shadow: 0 0 20px #9DB1D5;
 }
 
-@media screen and (max-width: 768px) {
+
+
+
+
+
+
+
+
+
+/* Responsive adjustments for smaller screens, if necessary */
+@media (max-width: 768px) {
+
+
+  body, html {
+    font-family: 'DM Mono', monospace;
+    background: linear-gradient(180deg, rgba(176,183,192,1) 15%, rgba(245, 216, 211, 0.958) 87%);
+    color: white;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    flex-direction: column;
+  }
+
+  .left-section, .right-section {
+    position: static; /* Reset positioning */
+    width: 100%; /* Full width */
+    margin-left: 0; /* Reset margin */
+    height: auto; /* Height to fit content */
+    flex-grow: 0; /* Disable growing */
+  }
+
+  .right-section {
+    overflow-y: visible; /* Adjust scrolling if needed */
+  }
+
   .wrapper {
     font-size: 12px;
   }
+
+p {
+    font-size: 14px; /* Smaller font size for better readability on small devices */
+}
+
+/* Adjustments for container 1 */
+.container-1 p {
+    font-size: 24px; /* Smaller font size for headlines */
+}
+
+/* Button styles */
+#detoxButton, #redirectBtn, #btn, #resetBtn {
+    padding: 10px 25px; /* Smaller padding */
+    font-size: 14px; /* Smaller font size */
+}
+
+/* Layout adjustments */
+.container, .right-section, .container-1 {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Icon and Button Adjustments */
+.circle-icon, .bottom-icons {
+    display: block;
+    margin: 10px auto;
+    padding: 8px;
+}
+
+/* Adjust styles for media elements and sections */
+#timer-section, #music-section, #photo-gallery-section, #spin-section {
+    padding: 10px;
+    display: block; /* Ensure these elements are more compact */
+}
+
+#main-sections, .scroll-container, .scroll-section {
+    width: 100%; /* Ensure these containers take full width */
+}
+
+.track-list, .player-section, .gallery-image {
+    width: 90%; /* Smaller width for fitting in mobile view */
+}
+
+audio, .song-title, button {
+    width: 100%; /* Full width elements for easier interaction */
+}
+
+/* Additional responsiveness for images and backgrounds */
+.gallery-image img {
+    max-width: 300px; /* Smaller images for better fit */
+}
+
+/* Adjust background settings for various sections to ensure good visibility */
+body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gallery-section {
+    background-size: cover; /* Ensure backgrounds cover the available space well */
+}
+}
 }
