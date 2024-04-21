@@ -728,10 +728,14 @@ body {
     background: linear-gradient(180deg, rgba(176,183,192,1) 15%, rgba(245, 216, 211, 0.958) 87%);
     color: white;
     overflow-x: hidden;
+    font-size: 12px; /* Slightly smaller font size for readability on mobile */
+
   }
 
- 
-
+  
+  p {
+    font-size: 12px; /* Adjust paragraph font size for mobile readability */
+  }
 
 
 
