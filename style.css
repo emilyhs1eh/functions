@@ -755,7 +755,7 @@ body {
   .wrapper {
      font-size: 12px;
       width: 100%;
-      max-width: 34.37em;
+      max-width: 100px;
       max-height: 100vh;
       position: relative;
       padding: 3em;
