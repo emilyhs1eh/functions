@@ -205,3 +205,6 @@ icons.forEach((icon) => {
     targetElement.scrollIntoView({ behavior: 'smooth' });
   });
 });
+
+
+

@@ -536,15 +536,12 @@ body {
 }
 
 .track-list {
-  margin-top: 90px;
-  width: 100%;
-  max-width: 34.37em;
-  max-height: 100vh;
-  position: relative; /* Updated position */
-  padding: 3em;
-  border-radius: 80px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow for depth */
-  width: 50%; /* Adjust width for side column */
+  margin-top: 20px; /* Reduced top margin for better space usage */
+  width: 90%; /* Utilize more of the screen width */
+  max-width: none; /* Remove the max-width restriction */
+  padding: 1em; /* Reduce padding to save space */
+  border-radius: 30px; /* Smaller radius for a softer look on smaller screens */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Lighter shadow for subtlety */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -726,14 +723,19 @@ body {
 /* Responsive adjustments for smaller screens, if necessary */
 @media (max-width: 768px) {
 
-
   body, html {
     font-family: 'DM Mono', monospace;
     background: linear-gradient(180deg, rgba(176,183,192,1) 15%, rgba(245, 216, 211, 0.958) 87%);
     color: white;
     overflow-x: hidden;
   }
-  
+
+ 
+
+
+
+
+
   .container {
     flex-direction: column;
   }
@@ -751,8 +753,17 @@ body {
   }
 
   .wrapper {
-    font-size: 12px;
+     font-size: 12px;
+      width: 100%;
+      max-width: 34.37em;
+      max-height: 100vh;
+      position: relative;
+      padding: 3em;
+      border-radius: 80px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
+      margin-top: 220px;
   }
+  
 
 p {
     font-size: 14px; /* Smaller font size for better readability on small devices */
@@ -776,11 +787,35 @@ p {
     justify-content: center;
 }
 
-/* Icon and Button Adjustments */
-.circle-icon, .bottom-icons {
-    display: block;
-    margin: 10px auto;
-    padding: 8px;
+/* Container holding the icons */
+.bottom-icons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Center icons horizontally */
+  align-items: center; /* Center icons vertically within the container */
+  padding: 10px 0; /* Add padding on top and bottom */
+  background-color: rgba(0, 0, 0, 0.6); /* Optional: add a background color for better visibility */
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Individual icons */
+.circle-icon {
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0.547);
+  color: white;
+  border-radius: 50%;
+  padding: 12px;
+  margin: 0 10px; /* Space out the icons */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  cursor: pointer; /* Change cursor to pointer to indicate clickable items */
+}
+
+.circle-icon:hover {
+  background-color: #0d0c0c; /* Darken background on hover for interactive feedback */
 }
 
 /* Adjust styles for media elements and sections */
@@ -793,17 +828,48 @@ p {
     width: 100%; /* Ensure these containers take full width */
 }
 
-.track-list, .player-section, .gallery-image {
+.track-list, .player-section  {
     width: 90%; /* Smaller width for fitting in mobile view */
 }
 
 audio, .song-title, button {
     width: 100%; /* Full width elements for easier interaction */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Aligns children (audio, song-title, button) centrally */
+
 }
+
+.main-audio{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Aligns children (audio, song-title, button) centrally */
+
+}
+
 
 /* Additional responsiveness for images and backgrounds */
 .gallery-image img {
     max-width: 300px; /* Smaller images for better fit */
+}
+
+.gallery-image {
+  width: 80%; /* Smaller width for fitting in mobile view */
+  top:30%;
+}
+
+
+.track-list {
+  margin-top: 200px; /* Reduced top margin for better space usage */
+  width: 100%; /* Utilize more of the screen width */
+  max-width: none; /* Remove the max-width restriction */
+  padding: 1em; /* Reduce padding to save space */
+  border-radius: 30px; /* Smaller radius for a softer look on smaller screens */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Lighter shadow for subtlety */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Adjust background settings for various sections to ensure good visibility */
@@ -811,4 +877,54 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
     background-size: cover; /* Ensure backgrounds cover the available space well */
 }
 }
+
+/* Media Query for Small Screens */
+@media (max-width: 768px) {
+  /* Adjust the fixed timer input section for mobile */
+  #timer-input-section {
+      position: fixed;
+      top: 10px; /* Adjusted to give space at the top */
+      left: 0; /* Align to the left side */
+      right: 0; /* Align to the right side */
+      width: 100%; /* Make it full width */
+      padding: 10px; /* Add padding for aesthetics */
+      background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background for better visibility */
+      text-align: center; /* Center the contents */
+      z-index: 1000; /* Keep it on top */
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2); /* Soft shadow for depth */
+  }
+
+  /* Styling for the countdown display to appear right below the input section */
+  #countdown {
+      position: fixed;
+      top: 150px; /* Position it below the input section */
+      left: 0;
+      right: 0;
+      width: 100%; /* Full width */
+      font-size: 48px; /* Large font size for easy reading */
+      color: transparent; /* High contrast color for visibility */
+      text-align: center; /* Center the text */
+      background-color: rgba(255, 255, 255, 0.1); /* Slightly different background for distinction */
+      padding: 20px 0; /* Padding for visual spacing */
+      z-index: 999; /* Just below the input section in stacking context */
+    margin: 0;
+  }
+
+  /* Ensure inputs and buttons are usable on mobile */
+  #timer-input-section input, #timer-input-section button {
+      width: 90%; /* Slightly less than full width for aesthetics */
+      margin: 5px auto; /* Center and space out */
+      display: block; /* Stack elements vertically */
+  }
+
+  #timer-input-section button {
+      margin-top: 10px; /* Space between input and button */
+  }
+
+  /* Optional: Adjust other elements that might be affected by the layout change */
+  .other-elements {
+      margin-top: 180px; /* Provide space below the fixed countdown timer */
+  }
+
+  
 }
