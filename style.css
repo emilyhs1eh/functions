@@ -803,8 +803,10 @@ p {
   justify-content: center; /* Center icons horizontally */
   align-items: center; /* Center icons vertically within the container */
   padding: 10px 0; /* Add padding on top and bottom */
-  background-color: rgba(0, 0, 0, 0.6); /* Optional: add a background color for better visibility */
+  background-color: rgba(0, 0, 0, 0.1); /* Optional: add a background color for better visibility */
   z-index: 1000; /* Ensure it's above other content */
+  border-radius: 20px;
+
 }
 
 /* Individual icons */
@@ -893,10 +895,9 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
       right: 0; /* Align to the right side */
       width: 100%; /* Make it full width */
       padding: 10px; /* Add padding for aesthetics */
-      background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background for better visibility */
       text-align: center; /* Center the contents */
       z-index: 1000; /* Keep it on top */
-      box-shadow: 0px 4px 8px rgba(0,0,0,0.2); /* Soft shadow for depth */
+      
   }
 
   /* Styling for the countdown display to appear right below the input section */
@@ -905,14 +906,16 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
       top: 150px; /* Position it below the input section */
       left: 0;
       right: 0;
-      width: 100%; /* Full width */
-      font-size: 48px; /* Large font size for easy reading */
+      width: 60%; /* Full width */
+      margin-left: 20%;
+      font-size: 36px; /* Large font size for easy reading */
       color: transparent; /* High contrast color for visibility */
       text-align: center; /* Center the text */
+      border-radius: 20px;
       background-color: rgba(255, 255, 255, 0.1); /* Slightly different background for distinction */
-      padding: 20px 0; /* Padding for visual spacing */
+      padding: 15px 0px; /* Padding for visual spacing */
       z-index: 999; /* Just below the input section in stacking context */
-    margin: 0;
+
   }
 
   /* Ensure inputs and buttons are usable on mobile */
@@ -931,5 +934,83 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
       margin-top: 180px; /* Provide space below the fixed countdown timer */
   }
 
+
+
+
+
+
+
   
+  /* Timer section styles optimized for mobile */
+#blackScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
 }
+
+#endMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24px; /* Smaller font size for smaller screens */
+  color: white;
+  padding: 10%; /* Use padding instead of margin for better spacing */
+}
+
+#redirectBtn {
+  padding: 10px 20px; /* Smaller padding */
+  font-size: 16px; /* Smaller font size for better readability */
+  background-color: #b7c0b0;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 30px; /* Reduced margin top */
+  width: 40%; /* Wider button for easier touch interaction */
+  margin-left: 150px;
+
+}
+
+#redirectBtn:hover {
+  background-color: #a9b2a1; /* Slightly lighter on hover */
+  color: black;
+}
+
+#timer-section {
+  position: fixed;
+  top: 10px; /* Reduce top spacing */
+  left: 10px; /* Reduce left spacing */
+  right: 10px; /* Reduce right spacing */
+  width: calc(100% - 20px); /* Adjust width for new spacing */
+  z-index: 999;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 480px) {
+  #endMessage {
+    font-size: 18px; /* Even smaller font size for very small devices */
+  }
+  
+  #redirectBtn {
+    font-size: 14px; /* Smaller font size for very small devices */
+    padding: 8px 16px; /* Slightly smaller padding */
+  }
+}}
+
+
+
+
+
+
+
