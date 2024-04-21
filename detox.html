@@ -7,128 +7,96 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-
 <body>
-  
     <div class="container">
+        <!-- Timer Section -->
         <div id="timer-section">
             <div class="left-section">
                 <div id="countdown">00:00</div>
-                 
-                <!-- Message at the end of detox -->
-                
                 <div id="blackScreen" style="display: none;">
-                  <!-- Message at the end of detox -->
-                  <div id="endMessage">End of detox</div>
-                  <!-- Button to redirect to index.html -->
-                  <button id="redirectBtn">Back to Detox</button>
-              </div>
+                    <div id="endMessage">End of detox</div>
+                    <button id="redirectBtn">Back to Detox</button>
+                </div>
+            </div>
+        </div>
+
+
+<!-- #0 Timer Input Section -->
+<div id="timer-input-section">
+  <div class="timer-controls">
+      <input type="number" id="minutesInput" placeholder="Enter minutes">
+      <button id="btn" onclick="takeAMoment()">Take a Break</button>
+      <button id="resetBtn" onclick="resetTimer()" style="display: none;">Reset</button>
+  </div>
+</div>
+
+
+        <!-- Main Sections -->
+        <div class="right-section">
+          <div id="main-sections" style="display: none;" class="scroll-container">
               
-                </div>
-
-
-
-
-            <div class="right-section">
-                
-                <input type="number" id="minutesInput" placeholder="Enter minutes">
-                <button id="btn" onclick="showResetBtn()">Take a moment</button>
-                <button id="resetBtn" onclick="resetTimer()">Reset</button>
-            </div>
-        </div>
-
-        <div id="main-sections" class="scroll-container">
-            <div id="spin-section" class="scroll-section">
-                <div class="wrapper">
-                    <div class="container">
-                        <canvas id="wheel"></canvas>
-                        <button id="spin-btn">Spin</button>
-                        <img src="https://chooserandom.com/_next/static/media/arrow.542e87ec.svg" alt="spinner arrow" />
-                    </div>
-                    
-                    <div id="final-value">
-                        
-                        
-                    </div>
-                </div>
-            </div>
-
-            <div id="clock-section" class="scroll-section">
-                <div id="clock"></div>
-            </div>
-
-
-
-        <div id="music-section" class="scroll-section">
-            <div class="audio-container" id="audio-container1">
-        
-              <audio id="meditation-audio1" controls loop>
-                <source src="/assets/Secret - Secret.mp3" type="audio/mpeg">
-              </audio>
-              <p class="song-title">Secret - Secret</p>
-            </div>
-
-            <div class="audio-container" id="audio-container2">
-              <audio id="meditation-audio2" controls loop>
-                <source src="/assets/Secret - The Swan.mp3" type="audio/mpeg">
-              </audio>
-              <p class="song-title">Secret - The Swan</p>
-            </div>
-
-            <div class="audio-container" id="audio-container3">
-              <audio id="meditation-audio3" controls loop>
-                <source src="/assets/Ryuichi Sakamoto - Blu .mp3" type="audio/mpeg">
-              </audio>
-              <p class="song-title">Ryuichi Sakamoto - Blu</p>
-            </div>
-
-            <div class="audio-container" id="audio-container4">
-              <audio id="meditation-audio4" controls loop>
-                <source src="/assets/Ryuichi Sakamoto - Merry Christmas Mr. Lawrence.mp3" type="audio/mpeg">
-              </audio>
-              <p class="song-title">Ryuichi Sakamoto - Merry Christmas Mr. Lawrence</p>
-            </div>
-            <!-- <div class="beat-line"></div> -->
+            <!-- Spin Section -->
+              <div id="spin-section" class="scroll-section">
+                  <div class="wrapper">
+                      <div class="wheel-container">
+                        <canvas id="wheel" width="500" height="500"></canvas>
+                        <button id="spin-btn">
+                          <i class="fa-solid fa-rotate-right" style="color: #000000;"></i>
+                      </button>
+                      </div>
+                  </div>
+              </div>
       
-          </div>
 
-          
+                <!-- #2 Clock Section -->
+                <div id="clock-section" class="scroll-section">
+                    <div id="clock"></div>
+                </div>
 
-             
-            <div id="photo-gallery-section" class="scroll-section">
-              <div class="container">
-                <div id="photo-gallery" class="gallery-image-container"></div>
+                <!-- #3 Music Section -->
+                <div id="music-section" class="scroll-section">
+                    <audio id="main-audio" controls loop>
+                        <source src="/assets/Secret - Secret.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="track-list">
+                        <p class="song-title" data-src="/assets/Secret - Secret.mp3">Secret - Secret</p>
+                        <p class="song-title" data-src="/assets/Secret - The Swan.mp3">Secret - The Swan</p>
+                        <p class="song-title" data-src="/assets/Ryuichi Sakamoto - Blu.mp3">Ryuichi Sakamoto - Blu</p>
+                        <p class="song-title" data-src="/assets/Ryuichi Sakamoto - Merry Christmas Mr. Lawrence.mp3">Ryuichi Sakamoto - Merry Christmas Mr. Lawrence</p>
+                    </div>
+                </div>
+
+                <!-- #4 Photo Gallery Section -->
+                <div id="photo-gallery-section" class="scroll-section">
+                    <div class="container">
+                        <div id="photo-gallery" class="gallery-image-container"></div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-
-
-
-
-
-
-        <!-- Icons -->
-        <div class="bottom-icons">
-            <p><a href="#clock-section"><i class="far fa-clock circle-icon"></i></a></p>
-            <p><a href="#music-section"><i class="fas fa-music circle-icon"></i></a></p>
-            <p><a href="#photo-gallery-section"><i class=" fas fa-image  circle-icon"></i></a></p>
+            <!-- Icons -->
+            <div class="bottom-icons">
+              <p><a href="#spin-section"><i class="fas fa-cog circle-icon"></i></a></p>  <!-- Spin Section Icon -->
+              <p><a href="#clock-section"><i class="far fa-clock circle-icon"></i></a></p>
+              <p><a href="#music-section"><i class="fas fa-music circle-icon"></i></a></p>
+              <p><a href="#photo-gallery-section"><i class="fas fa-image circle-icon"></i></a></p>
+          </div>
         </div>
     </div>
+</body>
+</html>
 
 
 
-
-
-
-
-
+  
 
     <!-- JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"></script>
     <script src="app.js" type="module"></script>
+    <script src="music.js" type="module"></script>
+    <script src="photo.js" type="module"></script>
+    <script src="spinwheel.js" type="module"></script>
 </body>
 </html>
-
-
 

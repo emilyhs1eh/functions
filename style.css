@@ -5,13 +5,15 @@
 
 
 
+/* Index.html age */
 /* General Styles */
 body, html {
   font-family: 'DM Mono', monospace;
   margin: 0;
   padding: 0;
   height: 100%;
-  background: radial-gradient(circle, #4B79A1 10%, #283E51 70%);
+  background: rgb(176,183,192);
+  background: linear-gradient(180deg, rgba(176,183,192,0.986453956582633) 15%, rgba(245, 216, 211, 0.958) 87%);
   color: white;
   scroll-behavior: smooth;
   overflow-x: hidden; 
@@ -28,6 +30,7 @@ p{
 .container-1 {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -171,12 +174,13 @@ body {
   align-items: center;
 }
 
+
 #redirectBtn {
   align-items: center;
   padding: 10px 20px;
   font-size: 18px;
   margin-top: 50px;
-margin-left: 650px;
+  margin-left: 650px;
   background-color: red;
   color: white;
   border: none;
@@ -190,6 +194,7 @@ margin-left: 650px;
   
 }
 
+
 #timer-section {
   position: fixed;
   top: 20px; /* Adjust top spacing */
@@ -197,48 +202,80 @@ margin-left: 650px;
   right: 20px; /* Add right spacing */
   width: calc(100% - 50px); /* Calculate width to consider left and right spacing */
   z-index: 999; /* Ensure it appears above other content */
-  background-color:  rgba(255, 255, 255, 0.547); /* Transparent white background */
   padding: 10px;
+  color: transparent;
   box-sizing: border-box;
   display: flex; /* Use flexbox */
   justify-content: space-between; /* Spread items evenly */
   align-items: center; /* Center vertically */
-  border-radius: 80px; /* Rounded corners */
+ 
 }
 
-#timer-section h2 {
-  margin: 0; /* Remove default margin */
+
+
+/* Container for both sections */
+.container {
+  display: flex; /* Using flexbox for horizontal layout */
+  height: 100vh; /* Full viewport height */
+  width: 100%; /* Full viewport width */
+  overflow: hidden; /* Prevent scrolling on the container */
+
 }
 
-.left-section,
+
+/* Right section styling */
 .right-section {
+  flex-grow: 1; /* Takes up remaining space */
+  width: 100%; /* 70% of the viewport width */
+  overflow-y: auto; /* Enable vertical scrolling */
+  height: 100vh; /* Full viewport height */
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 20px; /* Padding for content */
 }
+
+/* Responsive adjustments for smaller screens, if necessary */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-section, .right-section {
+    position: static; /* Reset positioning */
+    width: 100%; /* Full width */
+    margin-left: 0; /* Reset margin */
+    height: auto; /* Height to fit content */
+    flex-grow: 0; /* Disable growing */
+  }
+
+  .right-section {
+    overflow-y: visible; /* Adjust scrolling if needed */
+  }
+}
+
+
+
 
 #minutesInput,
 #btn,
 #resetBtn {
-  margin: 0 10px; /* Add spacing between elements */
+  margin: 0 20px; /* Add spacing between elements */
 }
 
-/* Optional: Add box-shadow for a subtle effect */
-#timer-section {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjust shadow as desired */
-}
+
 
 /* Button styles */
 #btn {
-  border: 2px solid #ccc;
+  border: 2px solid #010101;
+  align-items: center;
   border-radius: 64px;
+  margin-top: 10px;
   background-color: transparent;
-  color: #333;
+  color: white;
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  background-color: transparent;
-  border: 1.5px solid black; /* Darken red color */
-  box-shadow: 2px 2px 2px grey; /* Adjusted shadow colors */
   letter-spacing: 1px;
   margin-right: 20px;
 }
@@ -247,7 +284,7 @@ margin-left: 650px;
   background-color: #ccc;
   border-color: rgba(0, 0, 0, 0.05); /* Adjusted border color */
   box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2); /* Adjusted shadow color */
-  color: #333;
+  color: white;
   text-decoration: none;
 }
 
@@ -263,14 +300,16 @@ margin-left: 650px;
 }
 
 #resetBtn:hover {
-  background-color: #ccc;
+  background-color: #545454;
 }
 
 #countdown {
-  color: rgb(165, 6, 6);
-  font-size: 36px;
+  font-size: 160px; /* Larger font size as per your request */
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(110, 110, 110); /* Stroke color for WebKit browsers */
   margin-left: 20px;
 }
+
 
 h2 {
   color: #333;
@@ -278,8 +317,97 @@ h2 {
 
 #minutesInput {
   padding: 10px 5px;
-  border-radius: 5px;
 }
+
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden; /* Prevents scrolling of the entire page */
+}
+
+/* Fixed timer input section */
+#timer-input-section {
+  position: fixed; /* Fixed positioning */
+  top: 20px; /* Distance from the top */
+  right: 20px; /* Distance from the right */
+  z-index: 1000; /* Ensures it stays on top */
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Style adjustments for input and buttons */
+#timer-input-section input,
+#timer-input-section button {
+  margin: 5px; /* Uniform margin for all elements */
+  padding: 10px 20px; /* Padding for better touch targets */
+  flex: 1; /* Flex-grow to distribute space equally */
+  color: white; /* White text color */
+  background-color: transparent; /* Transparent background */
+  border: 2px solid rgb(110, 110, 110); /* White border for aesthetics */
+  border-radius: 20px; /* Rounded corners */
+  outline: none; /* Remove focus outline */
+  font-size: 16px; /* Uniform font size for all inputs and buttons */
+}
+
+#timer-input-section button {
+  background-color: #b7c0b0; /* Soft, neutral background color */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+  border: none; /* No border for a cleaner look */
+  padding: 10px 20px; /* Adequate padding for better readability and clickability */
+  font-size: 16px; /* Appropriate font size for visibility */
+  color: #333; /* Dark color for text for better contrast */
+  border-radius: 8px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Moderate shadow for depth */
+}
+
+#timer-input-section button:hover {
+  background-color: #9da9a0; /* Slightly darker shade on hover for interactive feedback */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Increased shadow on hover for a popping effect */
+}
+
+
+
+/* Main content section that scrolls */
+.right-section {
+  flex-grow: 1; /* Takes up the remaining space */
+  overflow-y: auto; /* Allows vertical scrolling */
+  padding: 10px;
+  margin-top: 60px; /* Adds top margin to avoid overlapping with the fixed header */
+}
+
+/* Additional style adjustments for visual enhancement */
+button {
+  background-color: #ffffffe0; 
+  border: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 60px;
+}
+
+button:hover {
+  background-color: #000000e0;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Main sections wrapper */
 #main-sections {
@@ -289,38 +417,26 @@ h2 {
   position: fixed;
   overflow-y: fixed; /* Change to scroll to enable scrolling */
   overflow-x: hidden;
-  background-color: #fff;
+  background: rgb(176,183,192);
+  background: linear-gradient(180deg, rgba(176,183,192,0.986453956582633) 15%, rgba(245, 216, 211, 0.958) 87%);
 }
 
 /* Main sections */
+#spin-section,
 #clock-section,
 #music-section,
 #photo-gallery-section {
   height: 100vh; /* Set same height as timer section */
   padding: 20px;
   box-sizing: border-box;
+  background: rgb(176,183,192);
+  background: linear-gradient(180deg, rgba(176,183,192,0.986453956582633) 15%, rgba(245, 216, 211, 0.958) 87%);
+    color: white;
+  animation: moveBackgroundSpin 20s linear infinite;
 }
 
 
 
-/* section background animation */
-#spin-section {
-  background: radial-gradient(circle,  #ffffff 10%, #739B95 70%);
-}
-
-#clock-section {
-  background: radial-gradient(circle, #8c9fff 10%, #ABB1BD 70%);
-}
-
-#music-section {
-  background: radial-gradient(circle, #e8b595 10%, #b190ba 70%);
-  animation: moveBackgroundMusic 20s linear infinite;
-}
-
-#photo-gallery-section {
-  background: radial-gradient(circle, #eed991 10%, #727a9a 70%);
-  animation: moveBackgroundPhotoGallery 25s linear infinite;
-}
 
 
 /* Section headings */
@@ -376,104 +492,109 @@ body {
 }
 
 
+@keyframes moveBackgroundSpin {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes moveBackgroundClock {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: -100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes moveBackgroundMusic {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 200% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes moveBackgroundPhotoGallery {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: -200% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
 
 
-/* music section */
-/* #music-section {
+
+/* Music Section */
+#music-section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  color: white; /* Bright text for better contrast */
+  padding: 30px; /* Spacing around content */
+  width: 80%; /* Suitable width */
+  max-width: 600px; /* Limit maximum width */
+
 }
 
-/* Style for audio player */
-/* #audio-player {
+.track-list {
   width: 100%;
-  margin-bottom: 10px;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-/* Style for song titles */
-/* .song-title {
-  font-size: 16px;
-  margin-bottom: 5px;
-  text-align: center;
-} */ */
-
-/* Style for audio controls */
-/* audio::-webkit-media-controls-panel {
-  background-color: rgba(118, 118, 118, 0.657);
-  border-radius: 10px;
-}
-
-audio::-webkit-media-controls-play-button {
-  color: white;
-}
-
-audio::-webkit-media-controls-current-time-display,
-audio::-webkit-media-controls-time-remaining-display {
-  color: white;
-}
-
-audio::-webkit-media-controls-volume-slider {
-  width: 70px;
-}
-
-
-.audio-container {
-  display: none;
-}
-#audio-container1 {
-  display: block;
-}  */
-
-
-/* Style for each music style container */
-.music-style {
-  border: 2px solid #ccc;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #ffffff58;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust minmax value as needed */
-  gap: 20px; /* Adjust the gap between grid items */
-}
-
-.music-style h2 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-/* Style for audio containers */
-.audio-container {
-  margin-top: 10px;
-  margin-right: 15px;
 }
 
 .song-title {
-  margin-top: 5px;
-  margin-bottom: 0;
-  font-size: 14px;
+  cursor: pointer;
+  font-size: 16px; /* Slightly larger font for better readability */
+  color: white; /* White color for text */
+  margin-top: 15px;
+  transition: transform 0.3s ease; /* Smooth transform transition */
+  padding: 8px 12px; /* Padding for better touch area */
 }
 
-/* Style for audio controls */
+.song-title:hover {
+  transform: scale(1.05); /* Slightly scale up on hover */
+  background-color: rgba(255, 255, 255, 0.2); /* Subtle hover background */
+  border-radius: 10px; /* Rounded corners on hover */
+}
+
 audio {
-  width: 100%;
+  width: 60%;
+  margin-top: 20px;
   outline: none;
-  margin-top: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Shadow for depth */
+  border-radius: 10px; /* Rounded edges for audio bar */
 }
 
-.beat-line {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: red; /* Change color as needed */
-  z-index: 9999; /* Ensure it's above other elements */
-  animation: none; /* Disable CSS animation */
+.song-title.active {
+  color: #ff0000; /* Change the text color to red */
+  background-color: rgba(255, 255, 255, 0.4); /* Lighter background for better visibility */
+  border-radius: 5px; /* Rounded corners */
+  font-weight: bold; /* Make the font bold */
 }
+
+
 
 
 
@@ -544,106 +665,67 @@ audio {
 
 
 
+/* Background */
+body {
+  background: rgb(176,183,192);
+  background: linear-gradient(180deg, rgba(176,183,192,0.986453956582633) 15%, rgba(245, 216, 211, 0.958) 87%);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-/* Spin wheel */
-
+/* Spin wheel wrapper */
 .wrapper {
+  margin-top: 90px;
   width: 90%;
   max-width: 34.37em;
   max-height: 100vh;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
+  position: relative; /* Updated position */
   padding: 3em;
   border-radius: 1em;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow for depth */
 }
 
+/* Spin wheel container */
 .container {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-#wheel {
-  font-family: "dm mono";
-  color: #333;
-  max-height: inherit;
-  width: inherit;
-  top: 0;
-  padding: 0;
-}
-
-@keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Updated CSS for Spin button */
-
+/* Spin button with arrow */
 #spin-btn {
   position: absolute;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  top: 160px;
-  left: 170px;
-  height: 26%; /* Adjusted size */
-  width: 26%; /* Adjusted size */
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
+  background: linear-gradient(to bottom right, #739B95, #A8D2CB);
+  color: white;
+  text-align: center;
   cursor: pointer;
-  border: 0;
-  background: linear-gradient(to bottom right, #739B95, #A8D2CB); /* Gradient background for better visibility */
-  color: white; /* Changed text color to white for better contrast */
-  text-transform: uppercase;
-  font-size: 1.2em; /* Maintained font size */
-  font-weight: 600;
-  animation: pulse 1.5s infinite alternate; /* Added pulsating animation */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  user-select: none; /* Prevent text selection */
+}
+
+#spin-btn::before {
+  content: '↻'; /* Unicode for arrow */
+  margin-bottom: 10px;
+  display: block;
 }
 
 /* Hover effect */
 #spin-btn:hover {
-  background: linear-gradient(to bottom right, #739B95, #A8D2CB); /* Same gradient as default */
-  box-shadow: 0 0 20px #82C799; /* Added shadow effect on hover */
+  box-shadow: 0 0 20px #82C799;
 }
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.1); /* Slightly scale up on pulse */
-  }
-}
-
-
-
-
-img{
-  position: absolute;
-  width: 4em;
-  top: 45%;
-  right: -8%;
-}
-
-
 
 @media screen and (max-width: 768px) {
   .wrapper {
     font-size: 12px;
   }
-  img {
-    right: -5%;
-  }
 }
-
-#next-button {
-  font-size: 30px;
-  color: whitesmoke;
-  background-color: transparent;
-  padding: 15px 30px;
-  border: none;
-  text-decoration: none;
-}
-
-

@@ -1,55 +1,3 @@
-// Homepage typewriter
-const typedTextSpan = document.querySelector(".typed-text");
-const cursorSpan = document.querySelector(".cursor");
-
-const textArray = ["provides mental space", "focuses on what truly matters", "reclaims control of attention", "enriches wellbeing"];
-const typingDelay = 200;
-const erasingDelay = 100;
-const newTextDelay = 1000; // Delay between current and next text
-let textArrayIndex = 0;
-let charIndex = 0;
-
-function type() {
-  if (charIndex < textArray[textArrayIndex].length) {
-    if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-    charIndex++;
-    setTimeout(type, typingDelay);
-  } 
-  else {
-    cursorSpan.classList.remove("typing");
-    setTimeout(erase, newTextDelay);
-  }
-}
-
-function erase() {
-  if (charIndex > 0) {
-    if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
-    charIndex--;
-    setTimeout(erase, erasingDelay);
-  } 
-  else {
-    cursorSpan.classList.remove("typing");
-    textArrayIndex++;
-    if(textArrayIndex>=textArray.length) textArrayIndex=0;
-    setTimeout(type, typingDelay + 1100);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function() { // On DOM Load initiate the effect
-  if(textArray.length) setTimeout(type, newTextDelay + 250);
-});
-
-
-
-
-
-
-
-
-
-
 // Display Clock
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
@@ -187,13 +135,19 @@ setInterval(updateBigTime, 1000);
 
 
 
-// Time Tracker Function
+
+
+
+
+
+// Time Tracker Function with visibility control for the main sections
 document.getElementById('btn').addEventListener('click', function() {
   var minutes = document.getElementById('minutesInput').value;
   if (!isNaN(minutes) && minutes > 0) {
     startTimer(minutes);
     this.style.display = 'none'; // Hide the "Start Timer" button when timer starts
     document.getElementById('resetBtn').style.display = 'inline-block'; // Show the reset button
+    document.getElementById('main-sections').style.display = 'block'; // Show the main sections
   } else {
     alert('Please enter a valid number of minutes.');
   }
@@ -204,8 +158,7 @@ function startTimer(duration) {
   var timer = duration * 60;
   var display = document.getElementById('countdown');
   var minutes, seconds;
-
-  timerInterval = setInterval(function() {
+  var timerInterval = setInterval(function() {
     minutes = parseInt(timer / 60, 10);
     seconds = parseInt(timer % 60, 10);
 
@@ -224,378 +177,31 @@ function startTimer(duration) {
   }, 1000);
 }
 
-// Function to reset the timer
+// Function to reset the timer and hide main sections
 document.getElementById('resetBtn').addEventListener('click', function() {
-  clearInterval(timerInterval); // Stop the timer interval
+  clearInterval(timerInterval);
   resetTimer();
-  document.getElementById('btn').style.display = 'inline-block'; // Show the "Start Timer" button when reset
-  this.style.display = 'none'; // Hide the reset button after resetting
-  document.getElementById('blackScreen').style.display = 'none'; // Hide the black screen
+  document.getElementById('btn').style.display = 'inline-block';
+  this.style.display = 'none';
+  document.getElementById('main-sections').style.display = 'none'; // Hide the main sections
+  document.getElementById('blackScreen').style.display = 'none';
 });
 
 function resetTimer() {
   var display = document.getElementById('countdown');
-  display.textContent = '00:00'; // Reset the timer to 00:00
+  display.textContent = '00:00';
 }
 
 document.getElementById('redirectBtn').addEventListener('click', function() {
-  // Replace the URL below with the URL of your detox page
-  window.location.href = 'index.html'; // Redirect to the detox page
+  window.location.href = 'index.html';
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//scroll section
-const sections = document.querySelectorAll('.scroll-section');
-
-function smoothScroll(targetSection) {
-  const startingY = window.scrollY;
-  const targetY = targetSection.offsetTop;
-  const distance = targetY - startingY;
-  let startTime = null;
-
-  function animate(currentTime) {
-    if (startTime === null) startTime = currentTime;
-    const timeElapsed = currentTime - startTime;
-    const ease = easeInOutQuad(timeElapsed, duration, startingY, distance);
-    window.scrollTo(0, ease);
-    if (timeElapsed < duration) {
-      requestAnimationFrame(animate);
-    } else {
-      window.scrollTo(0, targetY); // Ensure we reach the exact target position
-    }
-  }
-
-  const duration = 500; // Adjust duration for desired animation speed (milliseconds)
-  requestAnimationFrame(animate);
-}
-
-function easeInOutQuad(t, b, c, d) {
-  t /= d / 2;
-  if (t < 1) return c/2 * t * t + b;
-  t--;
-  return -c/2 * (t*(t-2) - 1) + b;
-}
-
-sections.forEach(section => {
-  section.addEventListener('click', () => {
-    smoothScroll(section);
+const icons = document.querySelectorAll('.bottom-icons a');
+icons.forEach((icon) => {
+  icon.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = icon.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    targetElement.scrollIntoView({ behavior: 'smooth' });
   });
 });
-
-
-
-
-// Photo Display
-document.addEventListener('DOMContentLoaded', function() {
-  // Function to fetch image URLs from JSON file
-  const fetchImageUrls = async () => {
-      try {
-          // Fetch the JSON file containing image URLs
-          const response = await fetch('imageUrls.json');
-          if (!response.ok) {
-              throw new Error('Failed to fetch image URLs');
-          }
-          const data = await response.json();
-          return data.imageUrls;
-      } catch (error) {
-          console.error('Error fetching image URLs:', error);
-          return [];
-      }
-  };
-
-
-
-// Function to display images in the photo gallery with a slideshow effect
-const displayImagesWithSlideshow = async () => {
-  try {
-      // Fetch image URLs
-      const imageUrls = await fetchImageUrls();
-
-      // Select the photo gallery div
-      const photoGallery = document.getElementById('photo-gallery-section');
-
-      // Clear any existing content
-      photoGallery.innerHTML = '';
-
-      // Create and append img elements for each image URL
-      imageUrls.forEach((url, index) => {
-          const img = document.createElement('img');
-          img.src = url;
-          img.classList.add('gallery-image');
-
-          // Set initial opacity to 0 for all images except the first one
-          img.style.opacity = index === 0 ? 1 : 0;
-
-          photoGallery.appendChild(img);
-      });
-
-      // Simple slideshow effect
-      let currentIndex = 0;
-      const images = photoGallery.querySelectorAll('.gallery-image');
-
-      const showImage = (index) => {
-          // Fade out current image
-          images[currentIndex].style.opacity = 0;
-
-          // Fade in new image
-          images[index].style.opacity = 1;
-
-          currentIndex = index;
-      };
-
-      setInterval(() => {
-          const nextIndex = (currentIndex + 1) % images.length;
-          showImage(nextIndex);
-      }, 2000); // Change image every 3 seconds
-  } catch (error) {
-      console.error('Error displaying images:', error);
-  }
-};
-
-// Call the displayImagesWithSlideshow function when the DOM content is loaded
-displayImagesWithSlideshow();
-
-
-
-
-
-//Music Section 
-
-document.addEventListener("DOMContentLoaded", function() {
-  var songLinks = document.querySelectorAll("#song-list a");
-  var audio = document.getElementById("meditation-audio");
-  var playPauseBtn = document.getElementById("play-pause-btn");
-
-  // Add click event listeners to each song link
-  songLinks.forEach(function(songLink) {
-      songLink.addEventListener("click", function(event) {
-          event.preventDefault(); // Prevent default behavior of link
-
-          // Change the source of the audio element to the clicked song
-          audio.src = songLink.getAttribute("data-src");
-
-          // Play the audio
-          audio.play();
-
-          // Update play/pause button text
-          playPauseBtn.textContent = "Pause";
-      });
-  });
-
-  // Add click event listener to play/pause button
-  playPauseBtn.addEventListener("click", function() {
-      if (audio.paused) {
-          // If audio is paused, play it
-          audio.play();
-          playPauseBtn.textContent = "Pause";
-      } else {
-          // If audio is playing, pause it
-          audio.pause();
-          playPauseBtn.textContent = "Play";
-      }
-  });
-});
-
-// JavaScript code to add active class to each audio container
-document.addEventListener("DOMContentLoaded", function() {
-  const audioContainers = document.querySelectorAll(".audio-container");
-  audioContainers.forEach((container, index) => {
-    setTimeout(() => {
-      container.classList.add("active");
-    }, index * 1000); // Adjust the delay as needed
-  });
-});
-
-
-
-
-
-
-
-
-
-//Spin wheel
-const wheel = document.getElementById("wheel");
-const wheelContainer = document.getElementById("wheel-container");
-const spinBtn = document.getElementById("spin-btn");
-
-// Object that stores values of minimum and maximum angle for a value
-const rotationValues = [
-  { minDegree: 0, maxDegree: 30, label: "photo" },
-  { minDegree: 31, maxDegree: 90, label: "music" },
-  { minDegree: 91, maxDegree: 150, label: "clock" },
-  { minDegree: 151, maxDegree: 210, label: "photo" },
-  { minDegree: 211, maxDegree: 270, label: "music" },
-  { minDegree: 271, maxDegree: 330, label: "clock" },
-  { minDegree: 331, maxDegree: 360, label: "photo" },
-];
-
-// Display value based on the randomAngle
-const valueGenerator = (angleValue) => {
-  let label = "";
-  for (let i of rotationValues) {
-    // If the angleValue is between min and max then set the label
-    if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
-      label = i.label;
-      break;
-    }
-  }
-  // Enable the spin button
-  spinBtn.disabled = false;
-};
-
-// Size of each piece
-const data = [16, 16, 16, 16, 16, 16];
-
-const pieColors = [
-  "#B0B1CC",
-  "#869FBC",
-];
-
-// Create chart
-const myChart = new Chart(wheel, {
-  plugins: [ChartDataLabels],
-  type: "pie",
-  data: {
-    labels: [
-      'photo',
-      'music',
-      'clock',
-      'photo',
-      'music',
-      'clock'
-    ],
-    datasets: [{
-      backgroundColor: pieColors,
-      data: data,
-    }],
-  },
-  options: {
-    responsive: true,
-    animation: { duration: 0 },
-    plugins: {
-      tooltip: false,
-      legend: { display: false },
-      datalabels: {
-        color: "#ffffff",
-        formatter: (_, context) => context.chart.data.labels[context.dataIndex],
-        font: { size: 16  },
-        // Enable HTML rendering for labels
-        useHTML: true,
-      },
-    },
-  },
-});
-
-// Enable the spin button
-spinBtn.disabled = false;
-
-// Spinner count
-let count = 0;
-// 100 rotations for animation and last rotation for result
-let resultValue = 101;
-
-// Start spinning
-spinBtn.addEventListener("click", () => {
-  spinBtn.disabled = true;
-  // Generate random degrees to stop at
-  const randomDegree = Math.floor(Math.random() * (355 - 0 + 1) + 0);
-  // Interval for rotation animation
-  const rotationInterval = window.setInterval(() => {
-    // Set rotation for piechart
-    myChart.options.rotation = myChart.options.rotation + resultValue;
-    // Update chart with new value;
-    myChart.update();
-    // If rotation>360 reset it back to 0
-    if (myChart.options.rotation >= 360) {
-      count += 1;
-      resultValue -= 5;
-      myChart.options.rotation = 0;
-    } else if (count > 15 && myChart.options.rotation == randomDegree) {
-      valueGenerator(randomDegree);
-      clearInterval(rotationInterval);
-      count = 0;
-      resultValue = 101;
-    }
-  }, 10);
-});
-
-
-// Add transparent div elements over each section of the pie chart
-const pieSections = wheel.getElementsByTagName("path");
-const sectionLinks = [
-  "#photo-gallery-section",
-  "#music-section",
-  "#clock-section",
-  "#photo-gallery-section",
-  "#music-section",
-  "#clock-section"
-];
-
-for (let i = 0; i < pieSections.length; i++) {
-  const overlayDiv = document.createElement("div");
-  overlayDiv.classList.add("pie-section-overlay");
-  overlayDiv.style.position = "absolute";
-  overlayDiv.style.width = pieSections[i].getAttribute("d").split(" ")[1] + "px";
-  overlayDiv.style.height = pieSections[i].getAttribute("d").split(" ")[2] + "px";
-  overlayDiv.style.left = pieSections[i].getBoundingClientRect().left - wheelContainer.getBoundingClientRect().left + "px";
-  overlayDiv.style.top = pieSections[i].getBoundingClientRect().top - wheelContainer.getBoundingClientRect().top + "px";
-  overlayDiv.dataset.link = sectionLinks[i];
-  wheelContainer.appendChild(overlayDiv);
-}
-
-// Add click event listeners to the transparent div elements
-const overlayDivs = document.querySelectorAll(".pie-section-overlay");
-overlayDivs.forEach(overlayDiv => {
-  overlayDiv.addEventListener("click", () => {
-    const sectionId = overlayDiv.dataset.link;
-    window.location.href = sectionId;
-  });
-});})
-
-
-
-
-//music 
-
-// document.addEventListener("DOMContentLoaded", function() {
-//   const audioElements = document.querySelectorAll("audio");
-//   const beatLine = document.querySelector(".beat-line");
-
-//   // Function to update line position
-//   function updateLine(audio) {
-//       const duration = audio.duration;
-//       const startTime = Date.now();
-
-//       function animateLine() {
-//           const currentTime = Date.now() - startTime;
-//           const progress = (currentTime / (duration * 1000)) * 100; // Convert to percentage
-//           beatLine.style.left = `${progress}%`;
-//           requestAnimationFrame(animateLine);
-//       }
-
-//       animateLine();
-//   }
-
-//   // Listen for the play event on all audio elements
-//   audioElements.forEach(audio => {
-//       audio.addEventListener("play", () => {
-//           updateLine(audio);
-//       });
-//   });
-// });
-
