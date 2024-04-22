@@ -291,6 +291,7 @@ body {
 }
 
 
+
 h2 {
   color: #333;
 }
@@ -336,38 +337,38 @@ h2 {
   border-radius: 8px;
 }
 
-/* Style adjustments for input and buttons */
+/* Parent container styled as a flexbox */
+#timer-input-section {
+  display: flex;
+  flex-direction: row;  /* Align children horizontally */
+  align-items: center;  /* Center-align children vertically */
+  justify-content: space-between;  /* Distribute space between children */
+  gap: 10px;  /* Space between children */
+}
+
+/* Uniform styles for both inputs and buttons */
 #timer-input-section input,
 #timer-input-section button {
-  margin: 5px; /* Uniform margin for all elements */
-  padding: 10px 20px; /* Padding for better touch targets */
-  flex: 1; /* Flex-grow to distribute space equally */
-  color: black; /* White text color */
-  background-color: transparent; /* Transparent background */
-  border: none; 
-  border-radius: 20px; /* Rounded corners */
-  outline: none; /* Remove focus outline */
-  font-size: 16px; /* Uniform font size for all inputs and buttons */
+  flex: 1;  /* Allow input and button to grow and fill the space equally */
+  margin: 5px;  /* Uniform margin */
+  padding: 10px;  /* Uniform padding */
+  font-size: 14px;  /* Uniform font size */
+  color: black;  /* Text color */
+  background-color: transparent;  /* Background */
+  border: none;  
+  border-radius: 8px;  /* Rounded corners */
+  outline: none;  /* No focus outline */
 }
 
 #timer-input-section button {
-  background-color: #b7c0b0; /* Soft, neutral background color */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* Smooth transitions */
-  border: none; /* No border for a cleaner look */
-  padding: 10px 20px; /* Adequate padding for better readability and clickability */
-  font-size: 16px; /* Appropriate font size for visibility */
-  color: #333; /* Dark color for text for better contrast */
-  border-radius: 8px; /* Rounded corners for a modern look */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Moderate shadow for depth */
-
+  background-color: #b7c0b0;  /* Button background color */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-
 #timer-input-section button:hover {
-  background-color: #9da9a0; /* Slightly darker shade on hover for interactive feedback */
-  
-
+  background-color: #9da9a0;  /* Darker shade on hover */
 }
 
 
@@ -685,7 +686,7 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: linear-gradient(to bottom right, #5C7DBA, #9DB1D5);
+  background: linear-gradient(to bottom right, #b7c0b0, #9DB1D5);
   color: white;
   text-align: center;
   cursor: pointer;
@@ -694,7 +695,7 @@ body {
   font-weight: bold;
   user-select: none; /* Prevent text selection */
   transition: box-shadow 0.3s ease-in-out;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
 #spin-btn::before {
@@ -705,13 +706,13 @@ body {
 
 /* Hover effect */
 #spin-btn:hover {
-  box-shadow: 0 0 20px #9DB1D5, 0 0 40px #9DB1D5 inset;
+  box-shadow: 0 0 20px #b7c0b0, 0 0 40px #9DB1D5 inset;
 }
 
 /* Animation to create a shine effect */
 @keyframes shine-effect {
   0%, 100% {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 8px rgb(216, 216, 216);
   }
   50% {
     box-shadow: 0 0 20px #9DB1D5, 0 0 40px #9DB1D5 inset;
@@ -967,21 +968,24 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
 @media (max-width: 768px) {
   /* Adjust the fixed timer input section for mobile */
   #timer-input-section {
-      position: fixed;
-      top: 10px; /* Adjusted to give space at the top */
-      left: 0; /* Align to the left side */
-      right: 0; /* Align to the right side */
-      width: 100%; /* Make it full width */
-      padding: 10px; /* Add padding for aesthetics */
-      text-align: center; /* Center the contents */
-      z-index: 1000; /* Keep it on top */
-      
-  }
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* This will create two columns of equal width */
+    align-items: center; /* This will vertically center the items in their respective cells */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 10px;
+    border-radius: 8px;
+    width: auto; /* Adjust this as needed, or use max-width for responsiveness */
+    box-sizing: border-box; /* Includes padding in width calculations */
+}
+  
 
   /* Styling for the countdown display to appear right below the input section */
   #countdown {
       position: fixed;
-      top: 150px; /* Position it below the input section */
+      top: 100px; /* Position it below the input section */
       left: 0;
       right: 0;
       width: 60%; /* Full width */
@@ -1003,9 +1007,7 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
       display: block; /* Stack elements vertically */
   }
 
-  #timer-input-section button {
-      margin-top: 10px; /* Space between input and button */
-  }
+
 
   /* Optional: Adjust other elements that might be affected by the layout change */
   .other-elements {
@@ -1074,6 +1076,25 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
 
 
 
+#minutesInput {
+  padding: 10px 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background-color: #222; /* Optional: dark background to make placeholder shine */
+  border: none; /* Optional: remove border for a sleek look */
+  color: grey; /* Text color */
+  font-size: 16px; /* Increase font size for better readability */
+}
+
+#minutesInput::placeholder {
+  color: #f8fbf8; /* Bright green color for the placeholder */
+  opacity: 1; /* Full opacity */
+  text-shadow: 0 0 5px rgba(252, 255, 172, 0.7); /* Glow effect around the text */
+  transition: text-shadow 1s ease-in-out; /* Smooth transition for the effect */
+}
+
+#minutesInput:hover::placeholder {
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.367), 0 0 20px rgb(245, 249, 245); /* Enhanced glow when hovering */
+}
 
 
 

@@ -26,12 +26,17 @@
 
 <!-- #0 Timer Input Section -->
 <div id="timer-input-section">
-  <div class="timer-controls">
-      <input type="number" id="minutesInput" placeholder="Enter minutes">
-      <button id="btn" onclick="takeAMoment()">Take a Break</button>
-      <button id="resetBtn" onclick="resetTimer()" style="display: none;">Reset</button>
-  </div>
+    <div class="left-item">
+        <!-- Content for left column: Enter Minutes -->
+        <input type="number" id="minutesInput" placeholder="Enter minutes">
+    </div>
+    <div class="right-item">
+        <!-- Content for right column: Buttons -->
+        <button id="btn" onclick="takeAMoment()">Take a Break</button>
+        <button id="resetBtn" onclick="resetTimer()" style="display: none;">Reset</button>
+    </div>
 </div>
+
 
 
         <!-- Main Sections -->
