@@ -297,7 +297,22 @@ h2 {
 
 #minutesInput {
   padding: 10px 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3)
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background-color: #222; /* Optional: dark background to make placeholder shine */
+  border: none; /* Optional: remove border for a sleek look */
+  color: grey; /* Text color */
+  font-size: 16px; /* Increase font size for better readability */
+}
+
+#minutesInput::placeholder {
+  color: #f8fbf8; /* Bright green color for the placeholder */
+  opacity: 1; /* Full opacity */
+  text-shadow: 0 0 5px rgba(252, 255, 172, 0.7); /* Glow effect around the text */
+  transition: text-shadow 1s ease-in-out; /* Smooth transition for the effect */
+}
+
+#minutesInput:hover::placeholder {
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.367), 0 0 20px rgb(245, 249, 245); /* Enhanced glow when hovering */
 }
 
 
@@ -310,6 +325,9 @@ h2 {
 
 /* Fixed timer input section */
 #timer-input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
   position: fixed; /* Fixed positioning */
   top: 20px; /* Distance from the top */
   right: 20px; /* Distance from the right */
@@ -832,6 +850,19 @@ p {
     font-size: 14px; /* Smaller font size */
 }
 
+#timer-input-section {
+  grid-template-columns: 1fr 1fr; /* Creates two columns of equal width */
+  justify-content: space-between; /* This will space the two grid items apart */
+align-items: center;
+  position: fixed; /* Fixed positioning */
+  top: 20px; /* Distance from the top */
+  right: 20px; /* Distance from the right */
+  z-index: 1000; /* Ensures it stays on top */
+  padding: 10px;
+  border-radius: 8px;
+}
+
+
 /* Layout adjustments */
 .container, .right-section, .container-1 {
     flex-direction: column;
@@ -895,7 +926,6 @@ audio, .song-title, button {
 }
 
 .main-audio{
-
   display: flex;
   flex-direction: column;
   align-items: center; /* Aligns children (audio, song-title, button) centrally */
