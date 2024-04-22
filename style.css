@@ -99,7 +99,7 @@ p{
 }
 
 #detoxButton:hover {
-  background-color: rgba(0, 0, 0, 0.88); /* Use rgba for better control over opacity */
+  background-color: #9fa899; /* Use rgba for better control over opacity */
   color: white;
 }
 
@@ -240,6 +240,7 @@ body {
 #btn,
 #resetBtn {
   margin: 0 20px; /* Add spacing between elements */
+
 }
 
 
@@ -296,6 +297,7 @@ h2 {
 
 #minutesInput {
   padding: 10px 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3)
 }
 
 
@@ -322,9 +324,9 @@ h2 {
   margin: 5px; /* Uniform margin for all elements */
   padding: 10px 20px; /* Padding for better touch targets */
   flex: 1; /* Flex-grow to distribute space equally */
-  color: white; /* White text color */
+  color: black; /* White text color */
   background-color: transparent; /* Transparent background */
-  border: 2px solid black; 
+  border: none; 
   border-radius: 20px; /* Rounded corners */
   outline: none; /* Remove focus outline */
   font-size: 16px; /* Uniform font size for all inputs and buttons */
@@ -340,11 +342,14 @@ h2 {
   color: #333; /* Dark color for text for better contrast */
   border-radius: 8px; /* Rounded corners for a modern look */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Moderate shadow for depth */
+
 }
+
 
 #timer-input-section button:hover {
   background-color: #9da9a0; /* Slightly darker shade on hover for interactive feedback */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Increased shadow on hover for a popping effect */
+  
+
 }
 
 
