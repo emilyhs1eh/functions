@@ -25,7 +25,7 @@ const secondLine = svg.append('line')
   .attr('y1', 0)
   .attr('x2', 120)
   .attr('y2', 0)
-  .attr('stroke', 'white')
+  .attr('stroke', 'black')
   .attr('stroke-width', 1)
   .attr('transform', 'rotate(-90)');
 
