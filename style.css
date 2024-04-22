@@ -83,8 +83,9 @@ p{
 /* style.css */
 #detoxButton {
   background-color: transparent;
-  border: 1px solid black; /* Specify 'solid' and the border color */
+  border: 1px solid transparent; /* Specify 'solid' and the border color */
   color: black;
+  background-color: #b7c0b0;
   padding: 10px 50px;
   text-align: center;
   text-decoration: none;
@@ -94,6 +95,7 @@ p{
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 30px; /* Adjusted for a more balanced appearance */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 #detoxButton:hover {
@@ -759,6 +761,10 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+  #clock {
+    top: 35%;
+    scale: 0.6;
+  }
   body, html {
     font-family: 'DM Mono', monospace;
     background: linear-gradient(180deg, rgba(176,183,192,1) 15%, rgba(245, 216, 211, 0.958) 87%);
@@ -899,7 +905,7 @@ audio, .song-title, button {
 
 .gallery-image {
   width: 80%; /* Smaller width for fitting in mobile view */
-  top:30%;
+  top:26%;
 }
 
 
@@ -972,11 +978,6 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
   }
 
 
-
-
-
-
-
   
 /* Timer section styles optimized for mobile */
 #blackScreen {
@@ -994,10 +995,11 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
 }
 
 #endMessage {
+ margin-top: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 24px; /* Smaller font size for smaller screens */
+  font-size: 30px; /* Smaller font size for smaller screens */
   color: white;
   padding: 10%; /* Use padding instead of margin for better spacing */
 }
@@ -1006,18 +1008,18 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
   padding: 10px 20px; /* Smaller padding */
   font-size: 16px; /* Smaller font size for better readability */
   background-color: #b7c0b0;
-  color: white;
+  color: black;
   border: none;
   cursor: pointer;
-  margin-top: 30px; /* Reduced margin top */
+  margin-top: 10px; /* Reduced margin top */
   width: 40%; /* Wider button for easier touch interaction */
-  margin-left: 150px;
+  margin-left: 115px;
 
 }
 
 #redirectBtn:hover {
-  background-color: #a9b2a1; /* Slightly lighter on hover */
-  color: black;
+  background-color: black; /* Slightly lighter on hover */
+  color: white;
 }
 
 #timer-section {
