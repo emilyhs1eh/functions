@@ -844,7 +844,7 @@ audio, .song-title, button {
 
 .gallery-image {
   width: 80%; /* Smaller width for fitting in mobile view */
-  top:2%;
+  top:20%;
 }
 
 .track-list {
@@ -1003,6 +1003,17 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
     padding: 8px 16px; /* Slightly smaller padding */
   }
 }}
+
+
+
+footer {
+  text-align: center;      /* Center the text */
+  padding: 10px 0;         /* Padding around the text */
+  font-size: 0.5em;        /* Smaller font size */
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
 
 
 
