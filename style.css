@@ -173,7 +173,7 @@ body {
   font-size: 18px;
   margin-top: 50px;
   background-color: #b7c0b0;
-  color: white;
+  color: black;
   border: none;
   cursor: pointer;
   margin-left: 42%;
@@ -181,7 +181,7 @@ body {
 
 #redirectBtn:hover{
   background-color: #b7c0b0;
-  color: black;
+  color: white;
 }
 
 #timer-section {
@@ -515,14 +515,15 @@ body {
 
 .track-list {
   margin-top: 20px; /* Reduced top margin for better space usage */
-  width: 90%; /* Utilize more of the screen width */
+  width: 60%; /* Utilize more of the screen width */
   max-width: none; /* Remove the max-width restriction */
-  padding: 1em; /* Reduce padding to save space */
+  padding: 4em; /* Reduce padding to save space */
   border-radius: 30px; /* Smaller radius for a softer look on smaller screens */
   box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Lighter shadow for subtlety */
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 
 .player-section {
@@ -818,7 +819,7 @@ body {
 }
 
 .track-list, .player-section  {
-    width: 90%; /* Smaller width for fitting in mobile view */
+    width: 100%; /* Smaller width for fitting in mobile view */
 }
 
 audio, .song-title, button {
@@ -829,6 +830,7 @@ audio, .song-title, button {
 }
 
 .main-audio{
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center; /* Aligns children (audio, song-title, button) centrally */
@@ -842,7 +844,7 @@ audio, .song-title, button {
 
 .gallery-image {
   width: 80%; /* Smaller width for fitting in mobile view */
-  top:26%;
+  top:22%;
 }
 
 .track-list {
