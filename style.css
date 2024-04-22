@@ -46,13 +46,13 @@ p{
 
 .container-1 p span.typed-text {
   font-weight: normal;
-  color: yellow;
+  color: #27251f;
   font-size: 36px;
 }
 
 .container-1 p span.cursor {
   display: inline-block;
-  background-color: #ccc;
+  background-color: #c4ced4;
   margin-left: 0.1rem;
   width: 3px;
   animation: blink 1s infinite;
@@ -85,7 +85,7 @@ p{
   background-color: transparent;
   border: 1px solid black; /* Specify 'solid' and the border color */
   color: black;
-  padding: 20px 50px;
+  padding: 10px 50px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -131,7 +131,7 @@ body {
 .circle-icon {
   font-size: 20px;
   background-color: rgba(255, 255, 255, 0.547);
-  color: #fff;
+  color: rgb(110, 110, 110);
   border-radius: 50%;
   padding: 12px;
   margin-bottom: px;
@@ -139,7 +139,7 @@ body {
 }
 
 .circle-icon:hover {
-  background-color: #0d0c0c;
+  background-color: whitesmoke;
 }
 
 
@@ -377,15 +377,6 @@ button:hover {
 
 
 
-
-
-
-
-
-
-
-
-
 /* Main sections wrapper */
 #main-sections {
   width: 100%;
@@ -411,10 +402,6 @@ button:hover {
     color: white;
   animation: moveBackgroundSpin 20s linear infinite;
 }
-
-
-
-
 
 /* Section headings */
 #clock-section h2,
@@ -591,7 +578,6 @@ audio {
 
 
 
-
 /* Photo Section */
 #photo-gallery-section {
   display: flex;
@@ -633,23 +619,6 @@ audio {
   height: auto;
   border-radius: 8px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* Background */
@@ -720,9 +689,58 @@ body {
 
 
 
-/* Responsive adjustments for smaller screens, if necessary */
-@media (max-width: 768px) {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
   body, html {
     font-family: 'DM Mono', monospace;
     background: linear-gradient(180deg, rgba(176,183,192,1) 15%, rgba(245, 216, 211, 0.958) 87%);
@@ -731,14 +749,10 @@ body {
     font-size: 12px; /* Slightly smaller font size for readability on mobile */
 
   }
-
   
   p {
     font-size: 12px; /* Adjust paragraph font size for mobile readability */
   }
-
-
-
 
   .container {
     flex-direction: column;
@@ -757,7 +771,7 @@ body {
   }
 
   .wrapper {
-     font-size: 12px;
+      font-size: 12px;
       width: 100%;
       align-items: center;
       max-width: 34.37em;
@@ -776,7 +790,11 @@ p {
 
 /* Adjustments for container 1 */
 .container-1 p {
-    font-size: 24px; /* Smaller font size for headlines */
+    font-size: 30px; /* Smaller font size for headlines */
+}
+
+.container-1 p span.typed-text{
+  font-size: 24px; /* Smaller font size for headlines */
 }
 
 /* Button styles */
@@ -803,9 +821,9 @@ p {
   justify-content: center; /* Center icons horizontally */
   align-items: center; /* Center icons vertically within the container */
   padding: 10px 0; /* Add padding on top and bottom */
-  background-color: rgba(0, 0, 0, 0.1); /* Optional: add a background color for better visibility */
   z-index: 1000; /* Ensure it's above other content */
   border-radius: 20px;
+  animation: 500ms ease 200ms 1 normal forwards running k-PnvVd;
 
 }
 
@@ -813,7 +831,7 @@ p {
 .circle-icon {
   font-size: 20px;
   background-color: rgba(255, 255, 255, 0.547);
-  color: white;
+  color: rgb(110, 110, 110);
   border-radius: 50%;
   padding: 12px;
   margin: 0 10px; /* Space out the icons */
@@ -822,7 +840,7 @@ p {
 }
 
 .circle-icon:hover {
-  background-color: #0d0c0c; /* Darken background on hover for interactive feedback */
+  background-color: whitesmoke; /* Darken background on hover for interactive feedback */
 }
 
 /* Adjust styles for media elements and sections */
@@ -885,6 +903,7 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
 }
 }
 
+
 /* Media Query for Small Screens */
 @media (max-width: 768px) {
   /* Adjust the fixed timer input section for mobile */
@@ -941,7 +960,7 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
 
 
   
-  /* Timer section styles optimized for mobile */
+/* Timer section styles optimized for mobile */
 #blackScreen {
   display: flex;
   flex-direction: column;
@@ -996,6 +1015,14 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
   justify-content: space-between;
   align-items: center;
 }
+
+
+
+
+
+
+
+
 
 @media (max-width: 480px) {
   #endMessage {
