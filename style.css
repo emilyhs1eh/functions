@@ -23,7 +23,6 @@ p{
   font-family: "dm mono";
   color: whitesmoke;
   font-size: 16px;
-
 }
 
 /* Container 1 */
@@ -145,11 +144,7 @@ body {
 }
 
 
-
-
-
 /* Timer section styles */
-
 #blackScreen {
   display: flex;
   flex-direction: column;
@@ -173,7 +168,6 @@ body {
   margin-top: 25%;
 }
 
-
 #redirectBtn {
   padding: 10px 40px;
   font-size: 18px;
@@ -185,13 +179,10 @@ body {
   margin-left: 42%;
 }
 
-
 #redirectBtn:hover{
   background-color: #b7c0b0;
   color: black;
-  
 }
-
 
 #timer-section {
   position: fixed;
@@ -206,10 +197,7 @@ body {
   display: flex; /* Use flexbox */
   justify-content: space-between; /* Spread items evenly */
   align-items: center; /* Center vertically */
- 
 }
-
-
 
 /* Container for both sections */
 .container {
@@ -217,9 +205,7 @@ body {
   height: 100vh; /* Full viewport height */
   width: 100%; /* Full viewport width */
   overflow: hidden; /* Prevent scrolling on the container */
-
 }
-
 
 /* Right section styling */
 .right-section {
@@ -233,17 +219,11 @@ body {
   padding: 20px; /* Padding for content */
 }
 
-
-
-
 #minutesInput,
 #btn,
 #resetBtn {
   margin: 0 20px; /* Add spacing between elements */
-
 }
-
-
 
 /* Button styles */
 #btn {
@@ -290,8 +270,6 @@ body {
   margin-left: 20px;
 }
 
-
-
 h2 {
   color: #333;
 }
@@ -315,7 +293,6 @@ h2 {
 #minutesInput:hover::placeholder {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.367), 0 0 20px rgb(245, 249, 245); /* Enhanced glow when hovering */
 }
-
 
 .container-1 {
   display: flex;
@@ -371,8 +348,6 @@ h2 {
   background-color: #9da9a0;  /* Darker shade on hover */
 }
 
-
-
 /* Main content section that scrolls */
 .right-section {
   flex-grow: 1; /* Takes up the remaining space */
@@ -399,10 +374,6 @@ button:hover {
   color: white;
 }
 
-
-
-
-
 /* Main sections wrapper */
 #main-sections {
   width: 100%;
@@ -423,9 +394,7 @@ button:hover {
   height: 100vh; /* Set same height as timer section */
   padding: 20px;
   box-sizing: border-box;
-  background: rgb(176,183,192);
-  background: linear-gradient(180deg, rgba(176,183,192,0.986453956582633) 15%, rgba(245, 216, 211, 0.958) 87%);
-    color: white;
+
   animation: moveBackgroundSpin 20s linear infinite;
 }
 
@@ -481,7 +450,6 @@ body {
   position: relative; /* Position relative for dot indicator */
 }
 
-
 @keyframes moveBackgroundSpin {
   0% {
     background-position: 0% 50%;
@@ -529,9 +497,6 @@ body {
     background-position: 0% 50%;
   }
 }
-
-
-
 
 
 /* Music Section */
@@ -590,18 +555,13 @@ audio {
   margin-top: 20px;
   outline: none;
   border-radius: 10px;
-
 }
-
 
 .song-title.active {
   color: black;
   background-color: rgba(255, 255, 255, 0.4);
   font-weight: bold;
 }
-
-
-
 
 
 /* Photo Section */
@@ -656,6 +616,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 
 /* Spin wheel wrapper */
 .wrapper {
@@ -732,57 +693,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Responsive */
 @media (max-width: 768px) {
   #clock {
@@ -795,7 +705,6 @@ body {
     color: white;
     overflow-x: hidden;
     font-size: 12px; /* Slightly smaller font size for readability on mobile */
-
   }
   
   p {
@@ -832,10 +741,6 @@ body {
   }
   
 
-p {
-    font-size: 14px; /* Smaller font size for better readability on small devices */
-}
-
 /* Adjustments for container 1 */
 .container-1 p {
     font-size: 30px; /* Smaller font size for headlines */
@@ -854,7 +759,7 @@ p {
 #timer-input-section {
   grid-template-columns: 1fr 1fr; /* Creates two columns of equal width */
   justify-content: space-between; /* This will space the two grid items apart */
-align-items: center;
+  align-items: center;
   position: fixed; /* Fixed positioning */
   top: 20px; /* Distance from the top */
   right: 20px; /* Distance from the right */
@@ -862,7 +767,6 @@ align-items: center;
   padding: 10px;
   border-radius: 8px;
 }
-
 
 /* Layout adjustments */
 .container, .right-section, .container-1 {
@@ -885,7 +789,6 @@ align-items: center;
   z-index: 1000; /* Ensure it's above other content */
   border-radius: 20px;
   animation: 500ms ease 200ms 1 normal forwards running k-PnvVd;
-
 }
 
 /* Individual icons */
@@ -923,14 +826,12 @@ audio, .song-title, button {
     display: flex;
     flex-direction: column;
     align-items: center; /* Aligns children (audio, song-title, button) centrally */
-
 }
 
 .main-audio{
   display: flex;
   flex-direction: column;
   align-items: center; /* Aligns children (audio, song-title, button) centrally */
-
 }
 
 
@@ -943,7 +844,6 @@ audio, .song-title, button {
   width: 80%; /* Smaller width for fitting in mobile view */
   top:26%;
 }
-
 
 .track-list {
   margin-top: 200px; /* Reduced top margin for better space usage */
@@ -961,12 +861,9 @@ audio, .song-title, button {
 body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gallery-section {
     background-size: cover; /* Ensure backgrounds cover the available space well */
 }
-}
 
 
-/* Media Query for Small Screens */
-@media (max-width: 768px) {
-  /* Adjust the fixed timer input section for mobile */
+/* Adjust the fixed timer input section for mobile */
   #timer-input-section {
     display: grid;
     grid-template-columns: 1fr 1fr; /* This will create two columns of equal width */
@@ -1008,14 +905,12 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
   }
 
 
-
   /* Optional: Adjust other elements that might be affected by the layout change */
   .other-elements {
       margin-top: 180px; /* Provide space below the fixed countdown timer */
   }
 
 
-  
 /* Timer section styles optimized for mobile */
 #blackScreen {
   display: flex;
@@ -1073,9 +968,6 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
   align-items: center;
 }
 
-
-
-
 #minutesInput {
   padding: 10px 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -1095,7 +987,6 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
 #minutesInput:hover::placeholder {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.367), 0 0 20px rgb(245, 249, 245); /* Enhanced glow when hovering */
 }
-
 
 
 
