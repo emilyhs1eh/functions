@@ -844,7 +844,7 @@ audio, .song-title, button {
 
 .gallery-image {
   width: 80%; /* Smaller width for fitting in mobile view */
-  top:22%;
+  top:2%;
 }
 
 .track-list {
