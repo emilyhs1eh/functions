@@ -651,6 +651,7 @@ body {
 }
 
 /* Spin button with arrow */
+/* Spin button with arrow */
 #spin-btn {
   position: absolute;
   top: 50%;
@@ -667,6 +668,8 @@ body {
   font-size: 24px;
   font-weight: bold;
   user-select: none; /* Prevent text selection */
+  transition: box-shadow 0.3s ease-in-out;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 }
 
 #spin-btn::before {
@@ -677,8 +680,23 @@ body {
 
 /* Hover effect */
 #spin-btn:hover {
-  box-shadow: 0 0 20px #9DB1D5;
+  box-shadow: 0 0 20px #9DB1D5, 0 0 40px #9DB1D5 inset;
 }
+
+/* Animation to create a shine effect */
+@keyframes shine-effect {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 20px #9DB1D5, 0 0 40px #9DB1D5 inset;
+  }
+}
+
+#spin-btn {
+  animation: shine-effect 2s infinite alternate ease-in-out;
+}
+
 
 
 
