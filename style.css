@@ -297,7 +297,7 @@ h2 {
 }
 
 
-.container {
+.container-1 {
   display: flex;
   height: 100vh;
   width: 100%;
@@ -1052,6 +1052,23 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
     padding: 8px 16px; /* Slightly smaller padding */
   }
 }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
