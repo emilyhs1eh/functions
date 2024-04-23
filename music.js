@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
     const mainAudio = document.getElementById("main-audio");
+    const audioSource = mainAudio.querySelector('source');  // Ensure you target the source element
     const trackTitles = document.querySelectorAll(".song-title");
 
     trackTitles.forEach(track => {
         track.addEventListener("click", function() {
-            if (mainAudio.src !== this.getAttribute("data-src")) {
-                mainAudio.src = this.getAttribute("data-src");
+            let newSrc = this.getAttribute("data-src");
+            if (audioSource.src !== newSrc) {
+                audioSource.src = newSrc;  // Update the source element's src attribute
                 mainAudio.load();  // Load the new source
                 mainAudio.play();  // Play the new track
             } else {
