@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     songButtons.forEach(function (button) {
         button.addEventListener('click', function () {
-            // Change the source of the audio
+            // Update the source of the audio player
             player.src = this.getAttribute('data-src');
             // Play the new track
             player.play();
