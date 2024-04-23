@@ -72,12 +72,12 @@ loop();
 const bigTimeGroup = svg.append('g')
   .attr('id', 'big-time')
   .attr('filter', 'url(#blurFilter)')
-  .style('opacity', 0.9); // Set opacity for better visibility
+  .style('opacity', 0.9); 
 
 const bigTimeText = bigTimeGroup.append('text')
   .attr('x', 0)
   .attr('y', 20)
-  .attr('font-size', '70px') // Adjusted for better fit and visibility
+  .attr('font-size', '70px') 
   .attr('fill', 'white')
   .attr('text-anchor', 'middle');
 
@@ -86,7 +86,7 @@ const defs = svg.append('defs');
 const blurFilter = defs.append('filter')
   .attr('id', 'blurFilter')
   .append('feGaussianBlur')
-  .attr('stdDeviation', 3); // Increased blur for aesthetic effect
+  .attr('stdDeviation', 3); 
 
 function updateBigTime() {
   const now = new Date();
@@ -95,4 +95,4 @@ function updateBigTime() {
 }
 
 updateBigTime(); // Initial update
-let clockUpdateInterval = setInterval(updateBigTime, 1000); // Updating time every second
+let clockUpdateInterval = setInterval(updateBigTime, 1000); 

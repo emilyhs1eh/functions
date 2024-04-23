@@ -1,4 +1,4 @@
-// Access the spin wheel element, container, and spin button from the document
+// Access the spin wheel element
 const wheel = document.getElementById("wheel");
 const wheelContainer = document.getElementById("wheel-container");
 const spinBtn = document.getElementById("spin-btn");
@@ -38,7 +38,7 @@ const valueGenerator = (angleValue) => {
 
 // Create chart with Chart.js
 const pieColors = [
-  "rgba(176, 177, 204, 0.6)",  // Semi-transparent
+  "rgba(176, 177, 204, 0.6)", 
   "rgba(176, 177, 204, 0.6)",
   "rgba(176, 177, 204, 0.6)",
   "rgba(176, 177, 204, 0.6)",

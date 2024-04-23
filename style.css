@@ -924,7 +924,7 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9);
   z-index: 9999;
 }
 
@@ -933,7 +933,7 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 30px; /* Smaller font size for smaller screens */
+  font-size: 32px; /* Smaller font size for smaller screens */
   color: white;
   padding: 10%; /* Use padding instead of margin for better spacing */
 }
@@ -1014,26 +1014,6 @@ footer {
   width: 100%;
   bottom: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

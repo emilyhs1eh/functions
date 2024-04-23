@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", function() {
     // Function to handle track switching
     function switchTrack(newSrc) {
         if (audioSource.src !== newSrc) {
-            audioSource.src = newSrc;  // Update the source element's src attribute
-            mainAudio.load();  // Load the new source
-            mainAudio.play();  // Start playing the new track
+            audioSource.src = newSrc;  
+            mainAudio.load();  
+            mainAudio.play();  
         } else {
-            // Toggle play/pause if the same track is clicked
+       
             if (mainAudio.paused) {
                 mainAudio.play();
             } else {
@@ -25,13 +25,13 @@ document.addEventListener("DOMContentLoaded", function() {
             let newSrc = this.getAttribute("data-src");
             switchTrack(newSrc);
 
-            // Update UI to reflect the currently playing or paused track
+      
             trackTitles.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
         });
     });
 
-    // Optional: Handling a general play/pause button if present in the HTML
+
     const playButton = document.getElementById("playButton");
     if (playButton) {
         playButton.addEventListener('click', () => {

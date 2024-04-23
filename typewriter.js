@@ -5,7 +5,7 @@ const cursorSpan = document.querySelector(".cursor");
 const textArray = ["provides mental space", "focuses on what truly matters", "reclaims control of attention", "enriches wellbeing"];
 const typingDelay = 200;
 const erasingDelay = 100;
-const newTextDelay = 1000; // Delay between current and next text
+const newTextDelay = 1000; 
 let textArrayIndex = 0;
 let charIndex = 0;
 
@@ -37,21 +37,20 @@ function erase() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function() { // On DOM Load initiate the effect
+document.addEventListener("DOMContentLoaded", function() { 
   if(textArray.length) setTimeout(type, newTextDelay + 250);
 });
 
 
-//page animation 
-
+//Page animation 
 document.getElementById("detoxButton").addEventListener("click", function() {
-  // Add animation class to container
+  
   document.querySelector(".container-1").classList.add("scale-down");
 
-  // Redirect to detox.html after the animation finishes
+  // Redirect to detox.html 
   setTimeout(function() {
       window.location.href = "detox.html";
-  }, 1000); // Adjust the delay (in milliseconds) according to your animation duration
+  }, 1000); 
 });
 
 

@@ -32,7 +32,7 @@
     </div>
     <div class="right-item">
         <!-- Content for right column: Buttons -->
-        <button id="btn" onclick="takeAMoment()">Take a Break</button>
+        <button id="btn" >Take a Break</button>
         <button id="resetBtn" onclick="resetTimer()" style="display: none;">Reset</button>
     </div>
 </div>
@@ -43,8 +43,8 @@
         <div class="right-section">
           <div id="main-sections" style="display: none;" class="scroll-container">
               
-            <!-- Spin Section -->
-              <div id="spin-section" class="scroll-section">
+                <!-- #1 Spin Section -->
+                <div id="spin-section" class="scroll-section">
                   <div class="wrapper">
                       <div class="wheel-container">
                         <canvas id="wheel" width="500" height="500"></canvas>
@@ -53,7 +53,7 @@
                       </button>
                       </div>
                   </div>
-              </div>
+                </div>
       
 
                 <!-- #2 Clock Section -->
@@ -61,11 +61,10 @@
                     <div id="clock"></div>
                 </div>
 
-               <!-- #3 Music Section -->
+                <!-- #3 Music Section -->
                 <div id="music-section" class="scroll-section">
                     <!-- Track List -->
                     <div class="track-list">
-                        <!-- Using button elements for accessibility and semantic correctness -->
                         <button class="song-title" data-src="/assets/secret.mp3">Secret - Secret</button>
                         <button class="song-title" data-src="/assets/the swan.mp3">Secret - The Swan</button>
                         <button class="song-title" data-src="/assets/blu.mp3">Ryuichi Sakamoto - Blu</button>
@@ -79,15 +78,6 @@
                         </audio>
                     </div>
                 </div>
-
-               
-
-
-
-
-
-                
-
 
                 <!-- #4 Photo Gallery Section -->
                 <div id="photo-gallery-section" class="scroll-section">
@@ -106,12 +96,7 @@
           </div>
         </div>
     </div>
-</body>
-</html>
 
-
-
-  
 
     <!-- JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
