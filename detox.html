@@ -63,19 +63,30 @@
 
                <!-- #3 Music Section -->
                 <div id="music-section" class="scroll-section">
-                  <div class="track-list">
-                      <p class="song-title" data-src="/assets/secret.mp3">Secret - Secret</p>
-                      <p class="song-title" data-src="/assets/the swan.mp3">Secret - The Swan</p>
-                      <p class="song-title" data-src="/assets/blu.mp3">Ryuichi Sakamoto - Blu</p>
-                      <p class="song-title" data-src="/assets/merry christmas.mp3">Ryuichi Sakamoto - Merry Christmas Mr. Lawrence</p>
-                  </div>
-                  <div class="player-section">
-                      <audio id="main-audio" controls loop>
-                          <source src="/assets/Secret - Secret.mp3" type="audio/mpeg">
-                      </audio>
-              
-                  </div>
+                    <!-- Track List -->
+                    <div class="track-list">
+                        <!-- Using button elements for accessibility and semantic correctness -->
+                        <button class="song-title" data-src="/assets/secret.mp3">Secret - Secret</button>
+                        <button class="song-title" data-src="/assets/the swan.mp3">Secret - The Swan</button>
+                        <button class="song-title" data-src="/assets/blu.mp3">Ryuichi Sakamoto - Blu</button>
+                        <button class="song-title" data-src="/assets/merry christmas.mp3">Ryuichi Sakamoto - Merry Christmas Mr. Lawrence</button>
+                    </div>
+                    
+                    <!-- Audio Player Section -->
+                    <div class="player-section">
+                        <audio id="main-audio" controls loop>
+                            <source src="/assets/secret.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
                 </div>
+
+               
+
+
+
+
+
+                
 
 
                 <!-- #4 Photo Gallery Section -->
