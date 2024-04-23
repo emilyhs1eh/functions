@@ -8,24 +8,16 @@ document.addEventListener("DOMContentLoaded", function() {
         if (audioSource.src !== newSrc) {
             audioSource.src = newSrc;  // Update the source element's src attribute
             mainAudio.load();  // Load the new source
-            mainAudio.oncanplaythrough = function() {
-                mainAudio.play().catch(e => console.error("Error attempting to play audio:", e));
-                mainAudio.oncanplaythrough = null;  // Remove the event handler to prevent multiple triggers
-            };
+            mainAudio.play();  // Start playing the new track
         } else {
             // Toggle play/pause if the same track is clicked
-            togglePlayPause();
+            if (mainAudio.paused) {
+                mainAudio.play();
+            } else {
+                mainAudio.pause();
+            }
         }
     }
-    
-    function togglePlayPause() {
-        if (mainAudio.paused) {
-            mainAudio.play().catch(e => console.error("Error attempting to play audio:", e));
-        } else {
-            mainAudio.pause();
-        }
-    }
-    
 
     // Setting up event listeners for all track title buttons
     trackTitles.forEach(track => {
