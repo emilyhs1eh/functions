@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', function () {
             player.src = this.getAttribute('data-src');
             // Play the new track
             player.play();
+
+            // Set all song titles back to their original color (assuming default is not black)
+            songButtons.forEach(function (btn) {
+                btn.style.color = ''; // Reset to default color
+            });
+
+            // Change the clicked song title's color to black
+            this.style.color = 'black';
         });
     });
 });
