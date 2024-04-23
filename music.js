@@ -1,45 +1,13 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const mainAudio = document.getElementById("main-audio");
-    const audioSource = mainAudio.querySelector('source');
-    const trackTitles = document.querySelectorAll(".song-title");
+document.addEventListener('DOMContentLoaded', function () {
+    var player = document.getElementById('main-audio');
+    var songButtons = document.querySelectorAll('.song-title');
 
-    // Function to handle track switching
-    function switchTrack(newSrc) {
-        if (audioSource.src !== newSrc) {
-            audioSource.src = newSrc;  
-            mainAudio.load();  
-            mainAudio.play();  
-        } else {
-       
-            if (mainAudio.paused) {
-                mainAudio.play();
-            } else {
-                mainAudio.pause();
-            }
-        }
-    }
-
-    // Setting up event listeners for all track title buttons
-    trackTitles.forEach(track => {
-        track.addEventListener("click", function() {
-            let newSrc = this.getAttribute("data-src");
-            switchTrack(newSrc);
-
-      
-            trackTitles.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
+    songButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            // Change the source of the audio
+            player.src = this.getAttribute('data-src');
+            // Play the new track
+            player.play();
         });
     });
-
-
-    const playButton = document.getElementById("playButton");
-    if (playButton) {
-        playButton.addEventListener('click', () => {
-            if (mainAudio.paused) {
-                mainAudio.play();
-            } else {
-                mainAudio.pause();
-            }
-        });
-    }
 });
