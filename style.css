@@ -7,6 +7,7 @@
 
 /* Index.html */
 /* General Styles */
+
 body, html {
   font-family: 'DM Mono', monospace;
   margin: 0;
@@ -18,6 +19,7 @@ body, html {
   scroll-behavior: smooth;
   overflow-x: hidden; 
 }
+
 
 p{
   font-family: "dm mono";
@@ -82,7 +84,7 @@ p{
 /* style.css */
 #detoxButton {
   background-color: transparent;
-  border: 1px solid transparent; /* Specify 'solid' and the border color */
+  border: 1px solid transparent; 
   color: black;
   background-color: #b7c0b0;
   padding: 10px 50px;
@@ -93,12 +95,12 @@ p{
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
-  border-radius: 30px; /* Adjusted for a more balanced appearance */
+  border-radius: 30px; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 #detoxButton:hover {
-  background-color: #9fa899; /* Use rgba for better control over opacity */
+  background-color: #9fa899; 
   color: white;
 }
 
@@ -186,37 +188,37 @@ body {
 
 #timer-section {
   position: fixed;
-  top: 20px; /* Adjust top spacing */
-  left: 20px; /* Add left spacing */
-  right: 20px; /* Add right spacing */
-  width: calc(100% - 50px); /* Calculate width to consider left and right spacing */
-  z-index: 999; /* Ensure it appears above other content */
+  top: 20px; 
+  left: 20px; 
+  right: 20px; 
+  width: calc(100% - 50px); 
+  z-index: 999; 
   padding: 10px;
   color: transparent;
   box-sizing: border-box;
-  display: flex; /* Use flexbox */
-  justify-content: space-between; /* Spread items evenly */
-  align-items: center; /* Center vertically */
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
 }
 
 /* Container for both sections */
 .container {
-  display: flex; /* Using flexbox for horizontal layout */
-  height: 100vh; /* Full viewport height */
-  width: 100%; /* Full viewport width */
-  overflow: hidden; /* Prevent scrolling on the container */
+  display: flex; 
+  height: 100vh; 
+  width: 100%; 
+  overflow: hidden; 
 }
 
 /* Right section styling */
 .right-section {
-  flex-grow: 1; /* Takes up remaining space */
-  width: 100%; /* 70% of the viewport width */
-  overflow-y: auto; /* Enable vertical scrolling */
-  height: 100vh; /* Full viewport height */
+  flex-grow: 1; 
+  width: 100%; 
+  overflow-y: auto; 
+  height: 100vh; 
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px; /* Padding for content */
+  padding: 20px; 
 }
 
 #minutesInput,
@@ -242,8 +244,8 @@ body {
 
 #btn:hover {
   background-color: #ccc;
-  border-color: rgb(0, 0, 0); /* Adjusted border color */
-  box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2); /* Adjusted shadow color */
+  border-color: rgb(0, 0, 0); 
+  box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2); 
   color: white;
   text-decoration: none;
 }
@@ -264,9 +266,9 @@ body {
 }
 
 #countdown {
-  font-size: 160px; /* Larger font size as per your request */
+  font-size: 160px; 
   color: transparent;
-  -webkit-text-stroke: 2px rgb(110, 110, 110); /* Stroke color for WebKit browsers */
+  -webkit-text-stroke: 2px rgb(110, 110, 110); 
   margin-left: 20px;
 }
 
@@ -277,28 +279,28 @@ h2 {
 #minutesInput {
   padding: 10px 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  background-color: #222; /* Optional: dark background to make placeholder shine */
-  border: none; /* Optional: remove border for a sleek look */
-  color: grey; /* Text color */
-  font-size: 16px; /* Increase font size for better readability */
+  background-color: #222; 
+  border: none; 
+  color: grey; 
+  font-size: 16px; 
 }
 
 #minutesInput::placeholder {
-  color: #f8fbf8; /* Bright green color for the placeholder */
-  opacity: 1; /* Full opacity */
-  text-shadow: 0 0 5px rgba(252, 255, 172, 0.7); /* Glow effect around the text */
-  transition: text-shadow 1s ease-in-out; /* Smooth transition for the effect */
+  color: #f8fbf8; 
+  opacity: 1; 
+  text-shadow: 0 0 5px rgba(252, 255, 172, 0.7); 
+  transition: text-shadow 1s ease-in-out; 
 }
 
 #minutesInput:hover::placeholder {
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.367), 0 0 20px rgb(245, 249, 245); /* Enhanced glow when hovering */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.367), 0 0 20px rgb(245, 249, 245); 
 }
 
 .container-1 {
   display: flex;
   height: 100vh;
   width: 100%;
-  overflow: hidden; /* Prevents scrolling of the entire page */
+  overflow: hidden; 
 }
 
 /* Fixed timer input section */
@@ -306,10 +308,10 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: end;
-  position: fixed; /* Fixed positioning */
-  top: 20px; /* Distance from the top */
-  right: 20px; /* Distance from the right */
-  z-index: 1000; /* Ensures it stays on top */
+  position: fixed; 
+  top: 20px; 
+  right: 20px; 
+  z-index: 1000; 
   padding: 10px;
   border-radius: 8px;
 }
@@ -317,43 +319,43 @@ h2 {
 /* Parent container styled as a flexbox */
 #timer-input-section {
   display: flex;
-  flex-direction: row;  /* Align children horizontally */
-  align-items: center;  /* Center-align children vertically */
-  justify-content: space-between;  /* Distribute space between children */
-  gap: 10px;  /* Space between children */
+  flex-direction: row;  
+  align-items: center;  
+  justify-content: space-between;  
+  gap: 10px;  
 }
 
 /* Uniform styles for both inputs and buttons */
 #timer-input-section input,
 #timer-input-section button {
-  flex: 1;  /* Allow input and button to grow and fill the space equally */
-  margin: 5px;  /* Uniform margin */
-  padding: 10px;  /* Uniform padding */
-  font-size: 14px;  /* Uniform font size */
-  color: black;  /* Text color */
-  background-color: transparent;  /* Background */
+  flex: 1;  
+  margin: 5px;  
+  padding: 10px;  
+  font-size: 14px;  
+  color: black; 
+  background-color: transparent;  
   border: none;  
-  border-radius: 8px;  /* Rounded corners */
-  outline: none;  /* No focus outline */
+  border-radius: 8px; 
+  outline: none;  
 }
 
 #timer-input-section button {
-  background-color: #b7c0b0;  /* Button background color */
+  background-color: #b7c0b0;  
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 #timer-input-section button:hover {
-  background-color: #9da9a0;  /* Darker shade on hover */
+  background-color: #9da9a0;  
 }
 
 /* Main content section that scrolls */
 .right-section {
-  flex-grow: 1; /* Takes up the remaining space */
-  overflow-y: auto; /* Allows vertical scrolling */
+  flex-grow: 1; 
+  overflow-y: auto; 
   padding: 10px;
-  margin-top: 60px; /* Adds top margin to avoid overlapping with the fixed header */
+  margin-top: 60px; 
 }
 
 /* Additional style adjustments for visual enhancement */
@@ -377,10 +379,9 @@ button:hover {
 /* Main sections wrapper */
 #main-sections {
   width: 100%;
-  /* Adjust to account for fixed timer section */
   height: 100vh;
   position: fixed;
-  overflow-y: fixed; /* Change to scroll to enable scrolling */
+  overflow-y: fixed; 
   overflow-x: hidden;
   background: rgb(176,183,192);
   background: linear-gradient(180deg, rgba(176,183,192,0.986453956582633) 15%, rgba(245, 216, 211, 0.958) 87%);
@@ -391,7 +392,7 @@ button:hover {
 #clock-section,
 #music-section,
 #photo-gallery-section {
-  height: 100vh; /* Set same height as timer section */
+  height: 100vh; 
   padding: 20px;
   box-sizing: border-box;
 
@@ -433,21 +434,21 @@ body {
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   overflow: hidden;
-  height: 100vh; /* Full viewport height */
+  height: 100vh; 
 }
 
 .scroll-section {
   flex: 0 0 100%;
-  min-width: 100vw; /* Minimum width for each section */
-  height: 100vh; /* Full viewport height */
+  min-width: 100vw; 
+  height: 100vh; 
   scroll-snap-align: start;
   scroll-snap-stop: always;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px; /* Optional padding for each section */
-  box-sizing: border-box; /* Include padding in width calculation */
-  position: relative; /* Position relative for dot indicator */
+  padding: 20px; 
+  box-sizing: border-box; 
+  position: relative; 
 }
 
 @keyframes moveBackgroundSpin {
@@ -502,24 +503,24 @@ body {
 /* Music Section */
 #music-section {
   display: flex;
-  flex-direction: row; /* Changed to row to place elements side by side */
+  flex-direction: row; 
   align-items: center;
   justify-content: center;
   color: white;
   padding: 60px;
   width: 80%;
-  max-width: 100%; /* Increased to better handle two columns */
-  overflow-y: auto; /* Allows for vertical scrolling if needed */
-  gap: 10px; /* Adds space between the two columns */
+  max-width: 100%; 
+  overflow-y: auto; 
+  gap: 10px; 
 }
 
 .track-list {
-  margin-top: 20px; /* Reduced top margin for better space usage */
-  width: 60%; /* Utilize more of the screen width */
-  max-width: none; /* Remove the max-width restriction */
-  padding: 4em; /* Reduce padding to save space */
-  border-radius: 30px; /* Smaller radius for a softer look on smaller screens */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Lighter shadow for subtlety */
+  margin-top: 20px; 
+  width: 60%; 
+  max-width: none; 
+  padding: 4em; 
+  border-radius: 30px; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -527,7 +528,7 @@ body {
 }
 
 .player-section {
-  width: 60%; /* Adjust width for side column containing the player */
+  width: 60%; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -543,7 +544,7 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  width: 100%; /* Makes sure titles use full available width */
+  width: 100%; 
 }
 
 .song-title:hover {
@@ -552,7 +553,7 @@ body {
 }
 
 audio {
-  width: 50%; /* Full width to match the player section */
+  width: 50%; 
   margin-top: 20px;
   outline: none;
   border-radius: 10px;
@@ -572,7 +573,7 @@ audio {
   justify-content: center;
   align-items: center;
   width: 100%;
-  overflow: hidden; /* Hide other images from view */
+  overflow: hidden; 
 }
 
 .container {
@@ -581,16 +582,16 @@ audio {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  position: relative; /* Needed for absolute positioning of images */
+  position: relative; 
 }
 
 .gallery-image {
-  position: absolute; /* Make images stack over each other */
+  position: absolute; 
   top: 22%;
   left: 50%;
   transform: translateX(-50%);
   transition: opacity 1s ease-in-out;
-  opacity: 0; /* Images are initially hidden */
+  opacity: 0; 
   padding: 10px;
   margin: 5px;
   background-color: transparent;
@@ -598,7 +599,7 @@ audio {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: auto;
-  max-width: 400px; /* Smaller maximum width */
+  max-width: 400px; 
 }
 
 .gallery-image img {
@@ -625,10 +626,10 @@ body {
   width: 90%;
   max-width: 34.37em;
   max-height: 100vh;
-  position: relative; /* Updated position */
+  position: relative; 
   padding: 3em;
   border-radius: 80px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow for depth */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
 }
 
 /* Spin wheel container */
@@ -638,7 +639,7 @@ body {
   height: 100%;
 }
 
-/* Spin button with arrow */
+
 /* Spin button with arrow */
 #spin-btn {
   position: absolute;
@@ -655,13 +656,13 @@ body {
   border: none;
   font-size: 24px;
   font-weight: bold;
-  user-select: none; /* Prevent text selection */
+  user-select: none; 
   transition: box-shadow 0.3s ease-in-out;
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
 #spin-btn::before {
-  content: '↻'; /* Unicode for arrow */
+  content: '↻'; 
   margin-bottom: 10px;
   display: block;
 }
@@ -705,11 +706,11 @@ body {
     background: linear-gradient(180deg, rgba(176,183,192,1) 15%, rgba(245, 216, 211, 0.958) 87%);
     color: white;
     overflow-x: hidden;
-    font-size: 12px; /* Slightly smaller font size for readability on mobile */
+    font-size: 12px; 
   }
   
   p {
-    font-size: 12px; /* Adjust paragraph font size for mobile readability */
+    font-size: 12px; 
   }
 
   .container {
@@ -717,15 +718,15 @@ body {
   }
 
   .left-section, .right-section {
-    position: static; /* Reset positioning */
-    width: 100%; /* Full width */
-    margin-left: 0; /* Reset margin */
-    height: auto; /* Height to fit content */
-    flex-grow: 0; /* Disable growing */
+    position: static; 
+    width: 100%; 
+    margin-left: 0; 
+    height: auto; 
+    flex-grow: 0; 
   }
 
   .right-section {
-    overflow-y: visible; /* Adjust scrolling if needed */
+    overflow-y: visible; 
   }
 
   .wrapper {
@@ -744,27 +745,27 @@ body {
 
 /* Adjustments for container 1 */
 .container-1 p {
-    font-size: 30px; /* Smaller font size for headlines */
+    font-size: 30px; 
 }
 
 .container-1 p span.typed-text{
-  font-size: 24px; /* Smaller font size for headlines */
+  font-size: 24px; 
 }
 
 /* Button styles */
 #detoxButton, #redirectBtn, #btn, #resetBtn {
-    padding: 10px 25px; /* Smaller padding */
-    font-size: 14px; /* Smaller font size */
+    padding: 10px 25px; 
+    font-size: 14px; 
 }
 
 #timer-input-section {
-  grid-template-columns: 1fr 1fr; /* Creates two columns of equal width */
-  justify-content: space-between; /* This will space the two grid items apart */
+  grid-template-columns: 1fr 1fr; 
+  justify-content: space-between; 
   align-items: center;
-  position: fixed; /* Fixed positioning */
-  top: 20px; /* Distance from the top */
-  right: 20px; /* Distance from the right */
-  z-index: 1000; /* Ensures it stays on top */
+  position: fixed; 
+  top: 20px; 
+  right: 20px; 
+  z-index: 1000; 
   padding: 10px;
   border-radius: 8px;
 }
@@ -784,10 +785,10 @@ body {
   right: 0;
   display: flex;
   flex-direction: row;
-  justify-content: center; /* Center icons horizontally */
-  align-items: center; /* Center icons vertically within the container */
-  padding: 10px 0; /* Add padding on top and bottom */
-  z-index: 1000; /* Ensure it's above other content */
+  justify-content: center; 
+  align-items: center; 
+  padding: 10px 0; 
+  z-index: 1000; 
   border-radius: 20px;
   animation: 500ms ease 200ms 1 normal forwards running k-PnvVd;
 }
@@ -799,117 +800,115 @@ body {
   color: rgb(110, 110, 110);
   border-radius: 50%;
   padding: 12px;
-  margin: 0 10px; /* Space out the icons */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-  cursor: pointer; /* Change cursor to pointer to indicate clickable items */
+  margin: 0 10px; 
+  transition: background-color 0.3s ease; 
+  cursor: pointer;
 }
 
 .circle-icon:hover {
-  background-color: whitesmoke; /* Darken background on hover for interactive feedback */
+  background-color: whitesmoke; 
 }
 
 /* Adjust styles for media elements and sections */
 #timer-section, #music-section, #photo-gallery-section, #spin-section {
     padding: 10px;
-    display: block; /* Ensure these elements are more compact */
+    display: block; 
 }
 
 #main-sections, .scroll-container, .scroll-section {
-    width: 100%; /* Ensure these containers take full width */
+    width: 100%; 
 }
 
 .track-list, .player-section  {
-    width: 100%; /* Smaller width for fitting in mobile view */
+    width: 100%; 
 }
 
 audio, .song-title, button {
-    width: 100%; /* Full width elements for easier interaction */
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Aligns children (audio, song-title, button) centrally */
+    align-items: center;
 }
 
 .main-audio{
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Aligns children (audio, song-title, button) centrally */
+  align-items: center; 
 }
 
 
 /* Additional responsiveness for images and backgrounds */
 .gallery-image img {
-    max-width: 300px; /* Smaller images for better fit */
+    max-width: 300px;
 }
 
 .gallery-image {
-  width: 80%; /* Smaller width for fitting in mobile view */
-  top:20%;
+  width: 80%; 
 }
 
 .track-list {
-  margin-top: 200px; /* Reduced top margin for better space usage */
-  width: 100%; /* Utilize more of the screen width */
-  max-width: none; /* Remove the max-width restriction */
-  padding: 1em; /* Reduce padding to save space */
-  border-radius: 30px; /* Smaller radius for a softer look on smaller screens */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Lighter shadow for subtlety */
+  margin-top: 200px; 
+  width: 100%;
+  max-width: none; 
+  padding: 1em; 
+  border-radius: 30px; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Adjust background settings for various sections to ensure good visibility */
+
 body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gallery-section {
-    background-size: cover; /* Ensure backgrounds cover the available space well */
+    background-size: cover; 
 }
 
 
 /* Adjust the fixed timer input section for mobile */
   #timer-input-section {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* This will create two columns of equal width */
-    align-items: center; /* This will vertically center the items in their respective cells */
+    grid-template-columns: 1fr 1fr; 
+    align-items: center; 
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 1000;
     padding: 10px;
     border-radius: 8px;
-    width: auto; /* Adjust this as needed, or use max-width for responsiveness */
-    box-sizing: border-box; /* Includes padding in width calculations */
+    width: auto; 
+    box-sizing: border-box; 
 }
   
 
   /* Styling for the countdown display to appear right below the input section */
   #countdown {
       position: fixed;
-      top: 100px; /* Position it below the input section */
+      top: 100px; 
       left: 0;
       right: 0;
-      width: 60%; /* Full width */
+      width: 60%; 
       margin-left: 20%;
-      font-size: 36px; /* Large font size for easy reading */
-      color: transparent; /* High contrast color for visibility */
-      text-align: center; /* Center the text */
+      font-size: 36px; 
+      color: transparent;
+      text-align: center; 
       border-radius: 20px;
-      background-color: rgba(255, 255, 255, 0.1); /* Slightly different background for distinction */
-      padding: 15px 0px; /* Padding for visual spacing */
-      z-index: 999; /* Just below the input section in stacking context */
+      background-color: rgba(255, 255, 255, 0.1); 
+      padding: 15px 0px; 
 
   }
 
-  /* Ensure inputs and buttons are usable on mobile */
+
   #timer-input-section input, #timer-input-section button {
-      width: 90%; /* Slightly less than full width for aesthetics */
-      margin: 5px auto; /* Center and space out */
-      display: block; /* Stack elements vertically */
+      width: 90%; 
+      margin: 5px auto; 
+      display: block; 
   }
 
 
-  /* Optional: Adjust other elements that might be affected by the layout change */
+
   .other-elements {
-      margin-top: 180px; /* Provide space below the fixed countdown timer */
+      margin-top: 180px; 
   }
 
 
@@ -933,35 +932,35 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 32px; /* Smaller font size for smaller screens */
+  font-size: 32px; 
   color: white;
-  padding: 10%; /* Use padding instead of margin for better spacing */
+  padding: 10%; 
 }
 
 #redirectBtn {
-  padding: 10px 20px; /* Smaller padding */
-  font-size: 16px; /* Smaller font size for better readability */
+  padding: 10px 20px; 
+  font-size: 16px; 
   background-color: #b7c0b0;
   color: black;
   border: none;
   cursor: pointer;
-  margin-top: 10px; /* Reduced margin top */
-  width: 40%; /* Wider button for easier touch interaction */
+  margin-top: 10px; 
+  width: 40%; 
   margin-left: 115px;
 
 }
 
 #redirectBtn:hover {
-  background-color: black; /* Slightly lighter on hover */
+  background-color: black; 
   color: white;
 }
 
 #timer-section {
   position: fixed;
-  top: 10px; /* Reduce top spacing */
-  left: 10px; /* Reduce left spacing */
-  right: 10px; /* Reduce right spacing */
-  width: calc(100% - 20px); /* Adjust width for new spacing */
+  top: 10px; 
+  left: 10px; 
+  right: 10px; 
+  width: calc(100% - 20px); 
   z-index: 999;
   padding: 10px;
   box-sizing: border-box;
@@ -973,21 +972,21 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
 #minutesInput {
   padding: 10px 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  background-color: #222; /* Optional: dark background to make placeholder shine */
-  border: none; /* Optional: remove border for a sleek look */
-  color: grey; /* Text color */
-  font-size: 16px; /* Increase font size for better readability */
+  background-color: #222; 
+  border: none; 
+  color: grey; 
+  font-size: 16px; 
 }
 
 #minutesInput::placeholder {
-  color: #f8fbf8; /* Bright green color for the placeholder */
-  opacity: 1; /* Full opacity */
-  text-shadow: 0 0 5px rgba(252, 255, 172, 0.7); /* Glow effect around the text */
-  transition: text-shadow 1s ease-in-out; /* Smooth transition for the effect */
+  color: #f8fbf8; 
+  opacity: 1; 
+  text-shadow: 0 0 5px rgba(252, 255, 172, 0.7); 
+  transition: text-shadow 1s ease-in-out; 
 }
 
 #minutesInput:hover::placeholder {
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.367), 0 0 20px rgb(245, 249, 245); /* Enhanced glow when hovering */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.367), 0 0 20px rgb(245, 249, 245); 
 }
 
 
@@ -995,21 +994,21 @@ body, #main-sections, #spin-section, #clock-section, #music-section, #photo-gall
 
 @media (max-width: 480px) {
   #endMessage {
-    font-size: 18px; /* Even smaller font size for very small devices */
+    font-size: 18px; 
   }
   
   #redirectBtn {
-    font-size: 14px; /* Smaller font size for very small devices */
-    padding: 8px 16px; /* Slightly smaller padding */
+    font-size: 14px; 
+    padding: 8px 16px; 
   }
 }}
 
 
 
 footer {
-  text-align: center;      /* Center the text */
-  padding: 10px 0;         /* Padding around the text */
-  font-size: 0.5em;        /* Smaller font size */
+  text-align: center;      
+  padding: 10px 0;         
+  font-size: 0.5em;        
   position: absolute;
   width: 100%;
   bottom: 0;

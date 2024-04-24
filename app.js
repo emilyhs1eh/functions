@@ -96,3 +96,10 @@ function updateBigTime() {
 
 updateBigTime(); // Initial update
 let clockUpdateInterval = setInterval(updateBigTime, 1000); 
+
+
+
+
+
+
+
